@@ -1,0 +1,95 @@
+/* Configuración base del mapa */
+.leaflet-container {
+    height: 100%;
+    width: 100%;
+    border-radius: 0;
+    box-shadow: none;
+    z-index: 1; 
+    background-color: #f8f9fa; /* Color de fondo por si no carga el tile */
+}
+
+/* --- NUEVOS MARCADORES HTML (L.divIcon) --- */
+
+/* Clase contenedora que le pusimos al L.divIcon */
+.custom-div-icon {
+    background: transparent;
+    border: none;
+}
+
+/* El Wrapper mantiene todo junto (semáforo + badge) */
+.semaphore-marker-wrapper {
+    position: relative; /* CRUCIAL: Para que el badge se posicione respecto a esto */
+    width: 24px;
+    height: 24px;
+}
+
+/* El cuerpo del semáforo (El círculo de color) */
+.semaphore-marker-body {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid #ffffff; /* Borde blanco para resaltar en el mapa */
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Efecto Hover al pasar el mouse por el semáforo */
+.semaphore-marker-body:hover {
+    transform: scale(1.2);
+    cursor: pointer;
+    z-index: 100; /* Que se ponga encima de otros al hacer hover */
+}
+
+/* El núcleo (puntito blanco central) */
+.marker-core {
+    width: 8px;
+    height: 8px;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 50%;
+}
+
+/* --- EL BADGE DE TICKET PENDIENTE (Circulito Amarillo) --- */
+.ticket-badge-indicator {
+    position: absolute;
+    top: -5px;    /* Salirse un poco hacia arriba */
+    right: -5px;  /* Salirse un poco hacia la derecha */
+    
+    width: 15px;
+    height: 15px;
+    
+    background-color: #ffb703; /* Amarillo Precaución */
+    color: #000000;
+    
+    border: 2px solid #ffffff; /* Borde blanco para separarlo del semáforo */
+    border-radius: 50%;
+    
+    font-size: 10px;
+    font-weight: 900;
+    font-family: sans-serif;
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    z-index: 10; /* Siempre encima del semáforo */
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    
+    /* Animación continua */
+    animation: pulseBadge 2s infinite ease-in-out;
+}
+
+/* Animación de latido para el badge */
+@keyframes pulseBadge {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2); /* Crece un 20% */
+    }
+    100% {
+        transform: scale(1);
+    }
+}

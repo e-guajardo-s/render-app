@@ -1,0 +1,181 @@
+/* En: frontend/src/pages/LoginPage.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;600;700&display=swap');
+
+/* 1. Fondo de la página */
+.login-page-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 2rem;
+  box-sizing: border-box;
+  font-family: 'Montserrat', sans-serif;
+
+  /* Fondo con superposición oscura elegante para resaltar la caja */
+  background: linear-gradient(135deg, rgba(15, 23, 42, 0.85), rgba(30, 41, 59, 0.9)), url('/background-login.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+/* 2. La caja de login (Tarjeta Flotante) */
+.login-box {
+  background-color: #ffffff;
+  padding: 3rem 2.5rem;
+  border-radius: 16px;
+  width: 100%;
+  max-width: 420px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+  
+  /* Sombra profunda para efecto 3D */
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1);
+  
+  /* Animación de entrada */
+  animation: slideUpFade 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Decoración Superior Naranja (Marca) */
+.login-box::before {
+  content: '';
+  position: absolute; top: 0; left: 0; right: 0; height: 5px;
+  background: linear-gradient(90deg, #ff9900, #ffc107);
+}
+
+/* 3. El logo */
+.login-logo {
+  width: 140px;
+  margin-bottom: 1.5rem;
+  transition: transform 0.3s;
+}
+.login-logo:hover { transform: scale(1.05); }
+
+/* 4. Títulos */
+.login-title {
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: #0f172a;
+  margin: 0;
+  letter-spacing: -0.5px;
+}
+
+.login-subtitle {
+  font-size: 0.9rem;
+  color: #64748b;
+  margin-top: 0.5rem;
+  margin-bottom: 2rem;
+  font-weight: 500;
+}
+
+/* 5. Formulario */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.2rem;
+}
+
+/* Wrapper para iconos dentro del input */
+.input-group {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-icon {
+  position: absolute;
+  left: 16px;
+  color: #94a3b8;
+  width: 20px;
+  height: 20px;
+  pointer-events: none; /* Click atraviesa */
+  transition: color 0.2s;
+}
+
+.login-input {
+  width: 100%;
+  padding: 14px 16px 14px 48px; /* Padding izquierdo para el icono */
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  box-sizing: border-box;
+  font-size: 0.95rem;
+  font-family: inherit;
+  background-color: #f8fafc; 
+  color: #334155;
+  transition: all 0.2s ease;
+  outline: none;
+}
+
+.login-input::placeholder { color: #cbd5e1; }
+
+/* Efecto Focus (Input brilla y el icono cambia de color) */
+.input-group:focus-within .login-input {
+  background-color: #ffffff;
+  border-color: #ff9900;
+  box-shadow: 0 0 0 4px rgba(255, 153, 0, 0.1);
+}
+
+.input-group:focus-within .input-icon {
+  color: #ff9900;
+}
+
+/* 6. Botón de Ingresar */
+.login-button {
+  width: 100%;
+  padding: 14px;
+  border: none;
+  border-radius: 10px;
+  background: linear-gradient(135deg, #ff9900 0%, #ea580c 100%); /* Gradiente sutil */
+  color: white;
+  font-size: 1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  margin-top: 1rem;
+  box-shadow: 0 4px 6px -1px rgba(234, 88, 12, 0.3);
+  letter-spacing: 0.5px;
+}
+
+.login-button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 15px -3px rgba(234, 88, 12, 0.4);
+}
+
+.login-button:active {
+  transform: translateY(0);
+}
+
+/* 7. Mensajes */
+.login-error {
+  background-color: #fef2f2;
+  color: #dc2626;
+  padding: 10px;
+  border-radius: 8px;
+  font-size: 0.85rem;
+  margin-top: 1rem;
+  border: 1px solid #fee2e2;
+  animation: shake 0.3s;
+}
+
+/* 8. Pie de página */
+.login-footer {
+  margin-top: 2.5rem;
+  font-size: 0.75rem;
+  color: #94a3b8;
+  line-height: 1.5;
+  border-top: 1px solid #f1f5f9;
+  padding-top: 1.5rem;
+}
+
+/* Animaciones */
+@keyframes slideUpFade {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  75% { transform: translateX(5px); }
+}

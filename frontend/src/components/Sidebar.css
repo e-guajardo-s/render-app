@@ -1,0 +1,52 @@
+/* En: frontend/src/components/Sidebar.css */
+
+/* Fondo oscuro */
+.sidebar-backdrop {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+    z-index: 1999; /* MUY ALTO */
+}
+
+.sidebar-backdrop.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Contenedor del Menú */
+.sidebar-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 280px;
+    height: 100vh;
+    background-color: #ffffff;
+    box-shadow: 4px 0px 15px rgba(0, 0, 0, 0.1);
+    padding: 1rem 0;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 2000; /* EL MÁS ALTO DE TODOS */
+}
+
+.sidebar-container.open {
+    transform: translateX(0);
+}
+
+/* (Resto de estilos internos del sidebar: .sidebar-header, .sidebar-menu, .sidebar-link, etc.) */
+.sidebar-header { display: flex; justify-content: space-between; align-items: center; padding: 0 1rem 1rem; border-bottom: 1px solid #eee; margin-bottom: 1rem; }
+.sidebar-title { font-size: 1.2rem; font-weight: bold; }
+.sidebar-close-button { background: none; border: none; font-size: 2rem; cursor: pointer; padding: 0; }
+.sidebar-menu { list-style: none; padding: 0; margin: 0; overflow-y: auto; }
+.sidebar-link { display: block; padding: 1rem 1.5rem; text-decoration: none; color: #333; font-weight: 500; transition: background-color 0.2s ease; }
+.sidebar-link:hover { background-color: #f0f0f0; }
+.sidebar-link.active { background-color: #ff9900; color: white; font-weight: bold; }
+.sidebar-footer { margin-top: auto; padding: 1rem; border-top: 1px solid #eee; text-align: center; font-size: 0.9rem; color: #666; }

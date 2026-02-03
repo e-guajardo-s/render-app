@@ -1,0 +1,188 @@
+/* --- FONDO OSCURO CON BLUR --- */
+.report-modal-backdrop {
+    position: fixed;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(15, 23, 42, 0.65); /* Azul oscuro translúcido */
+    backdrop-filter: blur(4px); /* Efecto vidrio */
+    z-index: 9999; /* Muy alto para tapar el mapa */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: fadeIn 0.2s ease-out;
+}
+
+/* --- CONTENEDOR DEL MODAL --- */
+.report-modal-container {
+    background: #ffffff;
+    width: 90%;
+    max-width: 480px;
+    border-radius: 16px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 8px 10px -6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transform: scale(0.95);
+    animation: popIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    display: flex;
+    flex-direction: column;
+}
+
+/* --- CABECERA --- */
+.report-modal-header {
+    padding: 1.5rem;
+    background: #ffffff;
+    border-bottom: 1px solid #f1f5f9;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-title {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.icon-badge {
+    background: #fef2f2;
+    color: #ef4444;
+    width: 40px;
+    height: 40px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.header-title h3 {
+    margin: 0;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #1e293b;
+}
+
+.btn-close-icon {
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    padding: 8px;
+    border-radius: 50%;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+}
+.btn-close-icon:hover {
+    background: #f1f5f9;
+    color: #ef4444;
+}
+
+/* --- CUERPO --- */
+.report-modal-body {
+    padding: 1.5rem;
+}
+
+/* Tarjeta de Contexto (Gris) */
+.semaphore-context-card {
+    background: #f8fafc;
+    border: 1px solid #e2e8f0;
+    border-radius: 12px;
+    padding: 12px;
+    display: flex;
+    gap: 12px;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.context-icon {
+    color: #3b82f6;
+    background: #dbeafe;
+    padding: 8px;
+    border-radius: 8px;
+    display: flex;
+}
+
+.context-info {
+    display: flex;
+    flex-direction: column;
+}
+
+.context-label { font-size: 0.75rem; color: #64748b; font-weight: 600; text-transform: uppercase; }
+.context-value { font-size: 0.95rem; color: #0f172a; margin-top: 2px; }
+.context-id { font-size: 0.8rem; color: #94a3b8; font-family: monospace; }
+
+/* Formulario */
+.report-form { display: flex; flex-direction: column; gap: 1rem; }
+
+.form-group label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #475569;
+    margin-bottom: 6px;
+}
+
+.modal-input, .modal-select, .modal-textarea {
+    width: 100%;
+    padding: 10px 12px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-size: 0.95rem;
+    color: #1e293b;
+    transition: all 0.2s;
+    box-sizing: border-box;
+    font-family: inherit;
+}
+
+.modal-input:focus, .modal-select:focus, .modal-textarea:focus {
+    outline: none;
+    border-color: #ef4444; /* Rojo al enfocar porque es reporte de falla */
+    box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+}
+
+.modal-textarea { resize: vertical; min-height: 80px; }
+
+/* --- FOOTER / BOTONES --- */
+.report-modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-top: 1rem;
+    padding-top: 1rem;
+    border-top: 1px solid #f1f5f9;
+}
+
+.btn-ghost {
+    background: transparent;
+    border: 1px solid #e2e8f0;
+    color: #64748b;
+    padding: 10px 18px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+.btn-ghost:hover { background: #f8fafc; color: #334155; }
+
+.btn-primary-danger {
+    background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+    border: none;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 8px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 6px -1px rgba(239, 68, 68, 0.3);
+    transition: all 0.2s;
+}
+.btn-primary-danger:hover {
+    filter: brightness(110%);
+    transform: translateY(-1px);
+    box-shadow: 0 6px 8px -1px rgba(239, 68, 68, 0.4);
+}
+.btn-primary-danger:active { transform: translateY(0); }
+
+/* --- ANIMACIONES --- */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes popIn { 
+    from { opacity: 0; transform: scale(0.9); } 
+    to { opacity: 1; transform: scale(1); } 
+}

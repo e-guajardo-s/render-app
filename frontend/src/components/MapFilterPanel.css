@@ -1,0 +1,228 @@
+/* --- Contenedor Principal --- */
+.filter-panel-content {
+    height: 100%; 
+    width: 100%;
+    padding: 15px; /* Un poco de padding interno */
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    background-color: #fdfdfd;
+    overflow-y: auto; /* Por si la lista es muy larga */
+}
+
+/* --- Estilo Genérico de Sección --- */
+.filter-section {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #eee;
+}
+
+.filter-section:last-child {
+    border-bottom: none;
+}
+
+.panel-title {
+    font-size: 1rem;
+    font-weight: 700;
+    color: #333;
+    margin: 0 0 15px 0;
+}
+
+.section-label {
+    display: block;
+    font-size: 0.75rem; 
+    font-weight: 700;
+    color: #999;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* --- 1. UBICACIÓN (Tu estilo de select) --- */
+.select-wrapper {
+    position: relative;
+    width: 100%;
+}
+
+.modern-select {
+    width: 100%;
+    padding: 8px 10px;
+    border-radius: 6px;
+    border: 1px solid #ddd;
+    font-size: 0.9rem;
+    background-color: #fff;
+    color: #333;
+    cursor: pointer;
+    outline: none;
+    appearance: none; /* Quitamos flecha por defecto */
+    transition: border-color 0.2s;
+}
+
+.modern-select:focus {
+    border-color: #ff9900;
+}
+
+.select-arrow {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 0.7rem;
+    color: #999;
+    pointer-events: none;
+}
+
+/* --- 2. FILTROS RÁPIDOS (Ticket Switch) --- */
+/* Este estilo es NUEVO, necesario para el botón de tickets */
+.quick-filter-row {
+    display: flex;
+    align-items: center;
+    background: #fff;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    padding: 8px 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.quick-filter-row:hover {
+    background-color: #f9f9f9;
+    border-color: #ccc;
+}
+
+.quick-filter-row.active {
+    background-color: #fffbeb; /* Fondo amarillo suave */
+    border-color: #ffb703;
+}
+
+.quick-filter-icon {
+    margin-right: 10px;
+    color: #d97706;
+    display: flex;
+    align-items: center;
+}
+
+.quick-filter-label {
+    flex: 1;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #333;
+}
+
+/* Toggle Switch Compacto */
+.toggle-switch {
+    width: 32px;
+    height: 18px;
+    background-color: #e0e0e0;
+    border-radius: 99px;
+    position: relative;
+    transition: background 0.3s;
+}
+
+.toggle-knob {
+    width: 14px;
+    height: 14px;
+    background: white;
+    border-radius: 50%;
+    position: absolute;
+    top: 2px;
+    left: 2px;
+    transition: transform 0.3s;
+    box-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.quick-filter-row.active .toggle-switch {
+    background-color: #ff9900;
+}
+
+.quick-filter-row.active .toggle-knob {
+    transform: translateX(14px);
+}
+
+/* --- 3. LISTA DE ESTADOS (Adaptado a tu estilo Legend) --- */
+.filter-list {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.filter-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 6px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.1s ease;
+}
+
+.filter-row:hover {
+    background-color: #f1f1f1;
+}
+
+.filter-row.disabled {
+    opacity: 0.5;
+}
+
+/* Checkbox personalizado (Tu estilo) */
+.filter-checkbox-wrapper {
+    position: relative;
+    width: 16px;
+    height: 16px;
+    margin-right: 10px;
+}
+
+.filter-checkbox-input { 
+    opacity: 0; 
+    width: 0; 
+    height: 0; 
+    position: absolute; 
+}
+
+.filter-checkbox-custom {
+    position: absolute; top: 0; left: 0;
+    height: 16px; width: 16px;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 3px;
+    display: flex; align-items: center; justify-content: center;
+}
+
+.filter-checkbox-custom svg {
+    width: 12px; height: 12px; fill: white;
+    opacity: 0; transform: scale(0.5); transition: all 0.1s;
+}
+
+.filter-checkbox-input:checked ~ .filter-checkbox-custom {
+    background-color: #ff9900; 
+    border-color: #ff9900;
+}
+
+.filter-checkbox-input:checked ~ .filter-checkbox-custom svg {
+    opacity: 1; 
+    transform: scale(1);
+}
+
+/* Texto y Puntos */
+.filter-color-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 1px solid rgba(0,0,0,0.1);
+}
+
+.filter-name {
+    flex: 1;
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: #333;
+}
+
+.filter-count {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #999;
+    background: #eee;
+    padding: 2px 6px;
+    border-radius: 4px;
+}

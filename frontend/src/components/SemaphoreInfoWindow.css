@@ -1,0 +1,186 @@
+/* En: frontend/src/components/SemaphoreInfoWindow.css */
+
+/* ... (Estilos de .info-window-backdrop, .info-window-container, .info-window-header, .info-window-body, .info-window-status-pill sin cambios) ... */
+.info-window-backdrop {
+    position: fixed; top: -30px; left: 0; width: 100vw; height: 100vh;
+    display: flex; align-items: flex-end;     
+    justify-content: flex-start; 
+    z-index: 10000;
+    padding: 20px; box-sizing: border-box; 
+}
+.info-window-container {
+    background-color: #ffffff; border-radius: 8px; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+    width: 100%; max-width: 450px; overflow: hidden; 
+    animation: fadeInWindow 0.2s ease-out; pointer-events: auto; 
+}
+.info-window-header {
+    background-color: #f8f9fa; padding: 1rem 1.5rem; display: flex;
+    justify-content: space-between; align-items: center; border-bottom: 1px solid #dee2e6;
+}
+.info-window-header h2 { margin: 0; font-size: 1.2rem; font-weight: 600; color: #333; }
+.info-window-close { background: none; border: none; font-size: 1.8rem; font-weight: bold; color: #888; cursor: pointer; padding: 0 5px; line-height: 1; }
+.info-window-close:hover { color: #333; }
+.info-window-body {
+    padding: 1.5rem; font-size: 0.95rem; line-height: 1.6; color: #555;
+}
+.info-window-body p { margin: 0 0 0.8rem 0; }
+.info-window-body p:last-child { margin-bottom: 0; }
+.info-window-body strong { color: #333; min-width: 100px; display: inline-block; }
+@keyframes fadeInWindow { from { opacity: 0; transform: scale(0.95); } to { opacity: 1; transform: scale(1); } }
+
+
+/* --- FOOTER MODIFICADO --- */
+.info-window-footer {
+    padding: 1rem 1.5rem;
+    background-color: #f8f9fa;
+    border-top: 1px solid #dee2e6;
+    display: flex;
+    /* Botones en extremos opuestos */
+    justify-content: space-between; 
+    align-items: center;
+    gap: 10px; 
+}
+
+/* --- (Estilos del botón de reporte no cambian) --- */
+.report-failure-button {
+    background-color: #dc3545; /* Rojo */
+    color: white;
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease;
+}
+.report-failure-button:hover {
+    background-color: #c82333; /* Rojo oscuro */
+}
+
+/* --- ¡NUEVOS ESTILOS PARA EL BOTÓN DE DOCUMENTACIÓN! --- */
+.doc-button {
+    background-color: #007bff; /* Azul */
+    color: white;
+    border: none;
+    padding: 0.6rem 1rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.9rem;
+    transition: background-color 0.2s ease;
+}
+.doc-button:hover {
+    background-color: #0056b3; /* Azul oscuro */
+}
+/* ---------------------------------------------------- */
+
+
+/* ... (Estilos de .info-window-status-pill, .status-grid, etc., no cambian) ... */
+.info-window-status-pill {
+    display: inline-block; padding: 6px 14px; margin-bottom: 1.5rem;
+    color: #ffffff; font-weight: 600;
+    font-size: 0.9rem; border-radius: 50px;
+    text-align: center;
+    width: 90%; 
+    margin-left: 5%;
+    margin-right: 5%;
+    box-sizing: border-box; 
+}
+.info-window-status-pill.status-grey {
+    background-color: #6c757d; 
+}
+.info-window-status-pill.status-green {
+    background-color: #28a745;
+}
+.info-window-status-pill.status-red {
+    background-color: #dc3545; 
+}
+.info-window-status-pill.status-orange {
+    background-color: #fd7e14; 
+}
+.status-blue {
+    background-color: #004085; /* Fondo Azul Claro */
+}
+.info-window-status-grid {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+    margin-bottom: 1.5rem;
+    padding: 1rem 0;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    border: 1px solid #eee;
+}
+.status-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 90px;
+}
+.status-light {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    margin-bottom: 8px;
+    border: 2px solid rgba(0,0,0,0.1);
+}
+.status-light.green {
+    background-color: #28a745;
+}
+.status-light.red {
+    background-color: #dc3545;
+}
+.status-label {
+    font-size: 0.8rem;
+    font-weight: 500;
+    color: #555;
+}
+
+.ticket-alert-banner {
+    background-color: #fffbeb; /* Amarillo suave */
+    border: 1px solid #fcd34d;
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin-bottom: 15px; /* Espacio antes de la píldora de estado */
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    animation: slideIn 0.3s ease-out;
+}
+
+.ticket-alert-banner:hover {
+    background-color: #fef3c7;
+    transform: translateY(-1px);
+    box-shadow: 0 2px 4px rgba(245, 158, 11, 0.15);
+}
+
+.alert-content {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.alert-icon {
+    color: #d97706; /* Naranja oscuro */
+    display: flex;
+    align-items: center;
+}
+
+.alert-text {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #92400e; /* Marrón/Naranja */
+}
+
+.alert-arrow {
+    color: #d97706;
+    display: flex;
+    align-items: center;
+}
+
+@keyframes slideIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}

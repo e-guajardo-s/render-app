@@ -1,0 +1,199 @@
+/* En: frontend/src/pages/CalendarPage.css */
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+
+.calendar-page {
+    font-family: 'Montserrat', sans-serif;
+    color: #1e293b;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+/* --- ENCABEZADO DE PÁGINA --- */
+.page-header { text-align: center; margin-bottom: 2rem; }
+.page-title { 
+    font-size: 1.8rem; font-weight: 700; color: #0f172a; margin: 0; 
+    display: flex; align-items: center; justify-content: center; gap: 12px; 
+}
+.page-subtitle { font-size: 0.9rem; color: #64748b; margin-top: 0.5rem; }
+
+/* --- CONTENEDOR PRINCIPAL (TARJETA) --- */
+.calendar-card {
+    background: #ffffff; border-radius: 16px;
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+    border: 1px solid #f1f5f9;
+    padding: 1.5rem;
+    position: relative;
+    overflow: hidden;
+}
+.calendar-card::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 4px;
+    background: linear-gradient(90deg, #ff9900, #ffc107);
+}
+
+/* --- CABECERA DEL CALENDARIO (NAVEGACIÓN) --- */
+.calendar-nav-header {
+    display: flex; justify-content: space-between; align-items: center;
+    margin-bottom: 1.5rem; padding-bottom: 1rem; border-bottom: 1px solid #f1f5f9;
+}
+
+.month-display {
+    display: flex; align-items: center; gap: 1rem;
+}
+
+.btn-nav-month {
+    background: transparent; border: 1px solid #e2e8f0; border-radius: 8px;
+    width: 36px; height: 36px; display: flex; align-items: center; justify-content: center;
+    cursor: pointer; color: #64748b; transition: all 0.2s;
+}
+.btn-nav-month:hover { background: #f8fafc; color: #0f172a; border-color: #cbd5e1; }
+
+.month-label { font-size: 1.25rem; font-weight: 700; color: #334155; text-transform: uppercase; letter-spacing: 1px; min-width: 200px; text-align: center; }
+
+/* Acciones (Derecha) */
+.calendar-actions { display: flex; gap: 10px; }
+
+.btn-calendar-action {
+    border: none; border-radius: 8px; padding: 8px 16px; font-size: 0.85rem; font-weight: 600;
+    cursor: pointer; transition: all 0.2s; display: flex; align-items: center; gap: 6px; color: white;
+}
+.btn-create { background-color: #0f172a; box-shadow: 0 4px 6px rgba(15, 23, 42, 0.15); }
+.btn-create:hover { background-color: #1e293b; transform: translateY(-2px); }
+
+.btn-auto { background-color: #6366f1; box-shadow: 0 4px 6px rgba(99, 102, 241, 0.15); }
+.btn-auto:hover { background-color: #4f46e5; transform: translateY(-2px); }
+
+
+/* --- GRID DEL CALENDARIO --- */
+.calendar-grid { display: flex; flex-direction: column; border: 1px solid #e2e8f0; border-radius: 12px; overflow: hidden; }
+
+/* Días de la semana */
+.days-header-row {
+    display: grid; grid-template-columns: repeat(7, 1fr);
+    background-color: #f8fafc; border-bottom: 1px solid #e2e8f0;
+}
+.day-col-name {
+    padding: 12px; text-align: center; font-size: 0.75rem; font-weight: 700;
+    color: #64748b; text-transform: uppercase; letter-spacing: 1px;
+}
+
+/* Cuerpo (Días) */
+.calendar-body-rows { display: flex; flex-direction: column; }
+.calendar-week-row { display: grid; grid-template-columns: repeat(7, 1fr); min-height: 110px; }
+
+/* Celda Individual */
+.day-cell {
+    border-right: 1px solid #f1f5f9; border-bottom: 1px solid #f1f5f9;
+    padding: 8px; position: relative; cursor: pointer; background: white;
+    transition: background 0.1s; display: flex; flex-direction: column; justify-content: flex-start;
+}
+.day-cell:hover { background-color: #fcfcfc; }
+.day-cell:nth-child(7n) { border-right: none; } /* Quitar borde derecho al último */
+
+/* Estados de Celda */
+.day-cell.disabled { background-color: #f8fafc; opacity: 0.6; pointer-events: none; }
+.day-cell.today { background-color: #fffbeb; }
+.day-cell.selected { box-shadow: inset 0 0 0 2px #ff9900; }
+
+/* Número de día */
+.day-number {
+    font-size: 0.85rem; font-weight: 600; color: #334155; margin-bottom: 6px;
+    width: 24px; height: 24px; display: flex; align-items: center; justify-content: center; border-radius: 50%;
+}
+.day-cell.today .day-number { background-color: #ff9900; color: white; }
+
+/* Puntos de Eventos */
+.event-dots-container { display: flex; flex-wrap: wrap; gap: 4px; align-content: flex-start; }
+.event-dot { width: 8px; height: 8px; border-radius: 50%; }
+.event-dot.pending { background-color: #ef4444; }
+.event-dot.completed { background-color: #10b981; }
+
+.more-events-badge { font-size: 0.65rem; color: #64748b; background: #f1f5f9; padding: 1px 4px; border-radius: 4px; margin-left: 2px; }
+
+/* Resumen Celda */
+.cell-summary-badge {
+    margin-top: auto; font-size: 0.65rem; font-weight: 600; text-align: center;
+    padding: 2px 4px; border-radius: 4px; width: 100%;
+}
+.cell-summary-badge.has-pending { color: #b91c1c; background: #fee2e2; }
+.cell-summary-badge.all-done { color: #166534; background: #dcfce7; }
+
+
+/* --- MODALES --- */
+.modal-backdrop {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(15, 23, 42, 0.6); backdrop-filter: blur(2px);
+    display: flex; justify-content: center; align-items: center; z-index: 2000;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.modal-container {
+    background: white; padding: 2rem; border-radius: 16px; width: 90%; max-width: 500px;
+    box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+    animation: slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    display: flex; flex-direction: column; max-height: 85vh;
+}
+.modal-container.wide-modal { max-width: 800px; }
+
+.modal-title { font-size: 1.25rem; font-weight: 700; color: #1e293b; margin-top: 0; margin-bottom: 1rem; border-bottom: 1px solid #f1f5f9; padding-bottom: 10px; }
+
+/* Lista de Eventos en Modal */
+.event-list-scroll { overflow-y: auto; display: flex; flex-direction: column; gap: 12px; margin-bottom: 1rem; padding-right: 5px; }
+
+.event-card-item {
+    border: 1px solid #e2e8f0; border-radius: 10px; padding: 12px; background: #fff;
+    border-left-width: 4px; transition: transform 0.1s;
+}
+.event-card-item.pending { border-left-color: #ef4444; }
+.event-card-item.completed { border-left-color: #10b981; }
+
+.event-card-header { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 6px; }
+.event-title { font-weight: 700; color: #334155; font-size: 0.95rem; }
+.status-pill { font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 12px; text-transform: uppercase; }
+.status-pill.pending { background: #fee2e2; color: #991b1b; }
+.status-pill.completed { background: #dcfce7; color: #166534; }
+
+.event-details p { margin: 2px 0; font-size: 0.85rem; color: #64748b; }
+.event-notes { background: #f8fafc; padding: 6px; border-radius: 6px; margin-top: 6px; font-style: italic; font-size: 0.8rem; color: #475569; }
+
+/* Botones en Modal */
+.btn-complete {
+    background: #10b981; color: white; border: none; padding: 6px 12px; border-radius: 6px;
+    font-size: 0.8rem; font-weight: 600; cursor: pointer; width: 100%; margin-top: 8px;
+}
+.btn-complete:hover { background: #059669; }
+
+.btn-delete-event {
+    background: transparent; color: #ef4444; border: 1px solid #fee2e2;
+    padding: 6px 12px; border-radius: 6px; font-size: 0.8rem; font-weight: 600;
+    cursor: pointer; width: 100%; margin-top: 6px;
+}
+.btn-delete-event:hover { background: #fee2e2; }
+
+.modal-close-btn {
+    background: #f1f5f9; color: #475569; border: 1px solid #cbd5e1; padding: 10px;
+    border-radius: 8px; font-weight: 600; cursor: pointer; width: 100%; margin-top: auto;
+}
+.modal-close-btn:hover { background: #e2e8f0; }
+
+/* Formularios en Modal */
+.modal-form { display: flex; flex-direction: column; gap: 12px; }
+.form-label { font-size: 0.85rem; font-weight: 600; color: #475569; margin-bottom: 4px; display: block; }
+.form-input, .form-select {
+    width: 100%; padding: 10px; border: 1px solid #cbd5e1; border-radius: 8px;
+    font-size: 0.9rem; font-family: inherit; box-sizing: border-box;
+}
+.modal-form-actions { display: flex; justify-content: flex-end; gap: 10px; margin-top: 10px; }
+.btn-save { background: #0f172a; color: white; padding: 10px 20px; border-radius: 8px; border: none; font-weight: 600; cursor: pointer; }
+.btn-cancel { background: white; color: #64748b; border: 1px solid #cbd5e1; padding: 10px 20px; border-radius: 8px; font-weight: 600; cursor: pointer; }
+
+/* Tabla de Lotes (Programación Auto) */
+.batches-container { max-height: 400px; overflow-y: auto; }
+.batches-table { width: 100%; border-collapse: collapse; font-size: 0.85rem; margin-top: 10px; }
+.batches-table th { text-align: left; padding: 10px; background: #f8fafc; border-bottom: 2px solid #e2e8f0; font-weight: 600; color: #475569; }
+.batches-table td { padding: 10px; border-bottom: 1px solid #f1f5f9; color: #334155; }
+.btn-delete-batch { background: #fee2e2; color: #b91c1c; border: none; padding: 4px 8px; border-radius: 4px; font-weight: 600; cursor: pointer; font-size: 0.75rem; }
+
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes slideUp { from { transform: translateY(20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }

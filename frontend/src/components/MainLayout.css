@@ -1,0 +1,44 @@
+/* frontend/src/components/MainLayout.css */
+
+.main-layout-container {
+    display: grid;
+    /* FILAS: Header (60px) | Contenido (Resto) | Footer (Auto) */
+    grid-template-rows: 60px 1fr auto;
+    grid-template-columns: 100%;
+    
+    /* Mantenemos la altura fija para dar efecto de "Aplicación" */
+    height: 100vh; 
+    width: 100%;
+    overflow: hidden; /* Evita que la ventana completa tenga scroll */
+}
+
+.main-header-area {
+    grid-row: 1;
+    z-index: 100;
+    position: relative;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.main-content-area {
+    grid-row: 2;
+    position: relative; 
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+
+    /* --- CAMBIO: Permitir scroll vertical solo en esta área --- */
+    overflow-y: auto;  /* Si el contenido es largo, aparece scroll aquí */
+    overflow-x: hidden; /* Evitamos scroll horizontal accidental */
+    /* --------------------------------------------------------- */
+}
+
+.main-footer-area {
+    grid-row: 3;
+    z-index: 10;
+    padding: 10px 20px;
+    background-color: #ffffff; 
+    color: #666;
+    text-align: center;
+    font-size: 0.8rem;
+    border-top: 1px solid #ddd;
+}

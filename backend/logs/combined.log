@@ -1,0 +1,335 @@
+{"level":"info","message":"Servidor backend (con Sockets) corriendo en http://localhost:5000","service":"traffic-light-backend","timestamp":"2026-02-03 11:08:34"}
+{"level":"info","message":"Socket Conectado: Y5vqJS7P879toxPHAAAC","service":"traffic-light-backend","timestamp":"2026-02-03 11:08:34"}
+{"level":"info","message":"Socket Conectado: YA_CVcAvqq4N4w3QAAAD","service":"traffic-light-backend","timestamp":"2026-02-03 11:08:34"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"traffic-light-backend","timestamp":"2026-02-03 11:08:35"}
+{"level":"info","message":"⚙️ Iniciando MQTT con credenciales de: 1","service":"traffic-light-backend","timestamp":"2026-02-03 11:08:35"}
+{"level":"info","message":"Socket Desconectado: Y5vqJS7P879toxPHAAAC","service":"traffic-light-backend","timestamp":"2026-02-03 11:10:52"}
+{"level":"info","message":"Socket Desconectado: YA_CVcAvqq4N4w3QAAAD","service":"traffic-light-backend","timestamp":"2026-02-03 11:10:52"}
+{"level":"info","message":"Socket Conectado: SW01PrSW5xreN9KdAAAG","service":"traffic-light-backend","timestamp":"2026-02-03 11:10:53"}
+{"level":"info","message":"Socket Desconectado: SW01PrSW5xreN9KdAAAG","service":"traffic-light-backend","timestamp":"2026-02-03 11:10:54"}
+{"level":"info","message":"Socket Conectado: hKnjIzxafTZSF4C2AAAK","service":"traffic-light-backend","timestamp":"2026-02-03 11:10:54"}
+{"level":"info","message":"Socket Desconectado: hKnjIzxafTZSF4C2AAAK","service":"traffic-light-backend","timestamp":"2026-02-03 11:10:54"}
+{"level":"info","message":"Socket Conectado: lWaeAyxO288XnnHUAAAL","service":"traffic-light-backend","timestamp":"2026-02-03 11:10:54"}
+{"level":"info","message":"Socket Conectado: MXGiLiU4YzISgwvHAAAN","service":"traffic-light-backend","timestamp":"2026-02-03 11:10:54"}
+{"level":"info","message":"Socket Desconectado: lWaeAyxO288XnnHUAAAL","service":"traffic-light-backend","timestamp":"2026-02-03 11:11:32"}
+{"level":"info","message":"Socket Conectado: X5Eaxxo459jXCkd8AAAQ","service":"traffic-light-backend","timestamp":"2026-02-03 11:11:35"}
+{"level":"info","message":"Socket Desconectado: X5Eaxxo459jXCkd8AAAQ","service":"traffic-light-backend","timestamp":"2026-02-03 11:11:43"}
+{"level":"info","message":"Socket Conectado: KTnMuQttFjDO1hBuAAAT","service":"traffic-light-backend","timestamp":"2026-02-03 11:11:44"}
+{"level":"info","message":"Servidor backend (con Sockets) corriendo en http://localhost:5000","service":"traffic-light-backend","timestamp":"2026-02-03 11:15:06"}
+{"level":"info","message":"Socket Conectado: ebEiyapRw8Cq4PTUAAAC","service":"traffic-light-backend","timestamp":"2026-02-03 11:15:07"}
+{"level":"info","message":"Socket Conectado: XdNTUIsoICUA7pWWAAAD","service":"traffic-light-backend","timestamp":"2026-02-03 11:15:07"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"traffic-light-backend","timestamp":"2026-02-03 11:15:07"}
+{"level":"info","message":"⚙️ Iniciando MQTT con credenciales de: 1","service":"traffic-light-backend","timestamp":"2026-02-03 11:15:08"}
+{"level":"info","message":"🔌 Conectando a Broker MQTT: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud...","service":"traffic-light-backend","timestamp":"2026-02-03 11:15:08"}
+{"level":"info","message":"✅ MQTT Monitor: CONECTADO.","service":"traffic-light-backend","timestamp":"2026-02-03 11:15:09"}
+{"level":"info","message":"Socket Desconectado: ebEiyapRw8Cq4PTUAAAC","service":"traffic-light-backend","timestamp":"2026-02-03 11:15:37"}
+{"level":"info","message":"Socket Conectado: XSosS95SUZ2TR_toAAAF","service":"traffic-light-backend","timestamp":"2026-02-03 11:15:37"}
+{"level":"info","message":"Socket Desconectado: XdNTUIsoICUA7pWWAAAD","service":"traffic-light-backend","timestamp":"2026-02-03 11:15:39"}
+{"level":"info","message":"Socket Desconectado: XSosS95SUZ2TR_toAAAF","service":"traffic-light-backend","timestamp":"2026-02-03 11:15:39"}
+{"level":"info","message":"Socket Conectado: LWBk88SwWCZFT0hmAAAI","service":"traffic-light-backend","timestamp":"2026-02-03 11:15:39"}
+{"level":"info","message":"Socket Conectado: QzCFphjnZiVMpH2zAAAL","service":"traffic-light-backend","timestamp":"2026-02-03 11:15:39"}
+{"level":"info","message":"Socket Conectado: DhXnixG4Cso_hoRqAAAN","service":"traffic-light-backend","timestamp":"2026-02-03 11:15:39"}
+{"level":"info","message":"Socket Desconectado: LWBk88SwWCZFT0hmAAAI","service":"traffic-light-backend","timestamp":"2026-02-03 11:15:39"}
+{"level":"info","message":"Socket Conectado: SY2QhvWa1D1mP-PQAAAP","service":"traffic-light-backend","timestamp":"2026-02-03 11:15:39"}
+{"level":"info","message":"Socket Desconectado: QzCFphjnZiVMpH2zAAAL","service":"traffic-light-backend","timestamp":"2026-02-03 11:15:39"}
+{"level":"info","message":"Servidor backend (con Sockets) corriendo en http://localhost:5000","service":"traffic-light-backend","timestamp":"2026-02-03 11:19:11"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"traffic-light-backend","timestamp":"2026-02-03 11:19:12"}
+{"level":"info","message":"Socket Conectado: CEexlYjEIXfVLJWGAAAC","service":"traffic-light-backend","timestamp":"2026-02-03 11:19:13"}
+{"level":"info","message":"Socket Conectado: wmgGZrJfvYxU7n8pAAAD","service":"traffic-light-backend","timestamp":"2026-02-03 11:19:13"}
+{"level":"info","message":"⚙️ Iniciando MQTT con credenciales de: 1","service":"traffic-light-backend","timestamp":"2026-02-03 11:19:13"}
+{"level":"info","message":"🔌 Conectando a Broker MQTT: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud...","service":"traffic-light-backend","timestamp":"2026-02-03 11:19:13"}
+{"level":"info","message":"✅ MQTT Monitor: CONECTADO.","service":"traffic-light-backend","timestamp":"2026-02-03 11:19:14"}
+{"level":"info","message":"Servidor backend (con Sockets) corriendo en http://localhost:5000","service":"traffic-light-backend","timestamp":"2026-02-03 11:19:36"}
+{"level":"info","message":"Socket Conectado: 5os30rTVTXyYNDtRAAAB","service":"traffic-light-backend","timestamp":"2026-02-03 11:19:37"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"traffic-light-backend","timestamp":"2026-02-03 11:19:37"}
+{"level":"info","message":"Socket Conectado: P8zviwDgIJEsHW1jAAAD","service":"traffic-light-backend","timestamp":"2026-02-03 11:19:38"}
+{"level":"info","message":"⚙️ Iniciando MQTT con credenciales de: 1","service":"traffic-light-backend","timestamp":"2026-02-03 11:19:38"}
+{"level":"info","message":"🔌 Conectando a Broker MQTT: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud...","service":"traffic-light-backend","timestamp":"2026-02-03 11:19:38"}
+{"level":"info","message":"✅ MQTT Monitor: CONECTADO.","service":"traffic-light-backend","timestamp":"2026-02-03 11:19:39"}
+{"level":"info","message":"Servidor backend (con Sockets) corriendo en http://localhost:5000","service":"traffic-light-backend","timestamp":"2026-02-03 11:19:46"}
+{"level":"info","message":"Socket Conectado: B2RpJz6Sxv6p-RslAAAC","service":"traffic-light-backend","timestamp":"2026-02-03 11:19:47"}
+{"level":"info","message":"Socket Conectado: co2lBH1hXOignFycAAAD","service":"traffic-light-backend","timestamp":"2026-02-03 11:19:47"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"traffic-light-backend","timestamp":"2026-02-03 11:19:47"}
+{"level":"info","message":"⚙️ Iniciando MQTT con credenciales de: 1","service":"traffic-light-backend","timestamp":"2026-02-03 11:19:48"}
+{"level":"info","message":"🔌 Conectando a Broker MQTT: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud...","service":"traffic-light-backend","timestamp":"2026-02-03 11:19:48"}
+{"level":"info","message":"✅ MQTT Monitor: CONECTADO.","service":"traffic-light-backend","timestamp":"2026-02-03 11:19:49"}
+{"level":"info","message":"Servidor backend (con Sockets) corriendo en http://localhost:5000","service":"traffic-light-backend","timestamp":"2026-02-03 11:20:14"}
+{"level":"info","message":"Socket Conectado: mNAF04pL0X_PfAqeAAAB","service":"traffic-light-backend","timestamp":"2026-02-03 11:20:15"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"traffic-light-backend","timestamp":"2026-02-03 11:20:15"}
+{"level":"info","message":"Socket Conectado: eq4D3RdB44gjr8TBAAAD","service":"traffic-light-backend","timestamp":"2026-02-03 11:20:16"}
+{"level":"info","message":"⚙️ Iniciando MQTT con credenciales de: 1","service":"traffic-light-backend","timestamp":"2026-02-03 11:20:16"}
+{"level":"info","message":"🔌 Conectando a Broker MQTT: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud...","service":"traffic-light-backend","timestamp":"2026-02-03 11:20:16"}
+{"level":"info","message":"Servidor backend (con Sockets) corriendo en http://localhost:5000","service":"traffic-light-backend","timestamp":"2026-02-03 11:20:17"}
+{"level":"info","message":"Socket Conectado: 00e09D1-Y0WV4SWIAAAB","service":"traffic-light-backend","timestamp":"2026-02-03 11:20:18"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"traffic-light-backend","timestamp":"2026-02-03 11:20:18"}
+{"level":"info","message":"⚙️ Iniciando MQTT con credenciales de: 1","service":"traffic-light-backend","timestamp":"2026-02-03 11:20:19"}
+{"level":"info","message":"🔌 Conectando a Broker MQTT: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud...","service":"traffic-light-backend","timestamp":"2026-02-03 11:20:19"}
+{"level":"info","message":"Socket Conectado: fxDulmfBiBkJIeQ-AAAD","service":"traffic-light-backend","timestamp":"2026-02-03 11:20:19"}
+{"level":"info","message":"✅ MQTT Monitor: CONECTADO.","service":"traffic-light-backend","timestamp":"2026-02-03 11:20:20"}
+{"level":"info","message":"Servidor backend (con Sockets) corriendo en http://localhost:5000","service":"traffic-light-backend","timestamp":"2026-02-03 11:20:24"}
+{"level":"info","message":"Socket Conectado: gcagcYsNRvyA0jwfAAAC","service":"traffic-light-backend","timestamp":"2026-02-03 11:20:25"}
+{"level":"info","message":"Socket Conectado: PJkFVIuVcaLMbcCMAAAD","service":"traffic-light-backend","timestamp":"2026-02-03 11:20:25"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"traffic-light-backend","timestamp":"2026-02-03 11:20:25"}
+{"level":"info","message":"⚙️ Iniciando MQTT con credenciales de: 1","service":"traffic-light-backend","timestamp":"2026-02-03 11:20:26"}
+{"level":"info","message":"🔌 Conectando a Broker MQTT: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud...","service":"traffic-light-backend","timestamp":"2026-02-03 11:20:26"}
+{"level":"info","message":"✅ MQTT Monitor: CONECTADO.","service":"traffic-light-backend","timestamp":"2026-02-03 11:20:27"}
+{"level":"info","message":"Servidor backend (con Sockets) corriendo en http://localhost:5000","service":"traffic-light-backend","timestamp":"2026-02-03 11:20:48"}
+{"level":"info","message":"Socket Conectado: Z-RBoaYiHrDin5rDAAAB","service":"traffic-light-backend","timestamp":"2026-02-03 11:20:49"}
+{"level":"info","message":"Socket Conectado: Csj7lA2gXsPclryhAAAD","service":"traffic-light-backend","timestamp":"2026-02-03 11:20:49"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"traffic-light-backend","timestamp":"2026-02-03 11:20:49"}
+{"level":"info","message":"⚙️ Iniciando MQTT con credenciales de: 1","service":"traffic-light-backend","timestamp":"2026-02-03 11:20:50"}
+{"level":"info","message":"🔌 Conectando a Broker MQTT: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud...","service":"traffic-light-backend","timestamp":"2026-02-03 11:20:50"}
+{"level":"info","message":"✅ MQTT Monitor: CONECTADO.","service":"traffic-light-backend","timestamp":"2026-02-03 11:20:51"}
+{"level":"info","message":"Servidor backend (con Sockets) corriendo en http://localhost:5000","service":"traffic-light-backend","timestamp":"2026-02-03 11:20:56"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"traffic-light-backend","timestamp":"2026-02-03 11:20:57"}
+{"level":"info","message":"Socket Conectado: E5ULaYROj0WOVBp7AAAC","service":"traffic-light-backend","timestamp":"2026-02-03 11:20:57"}
+{"level":"info","message":"Socket Conectado: MzkR0k1lyMM1jpaCAAAD","service":"traffic-light-backend","timestamp":"2026-02-03 11:20:57"}
+{"level":"info","message":"⚙️ Iniciando MQTT con credenciales de: 1","service":"traffic-light-backend","timestamp":"2026-02-03 11:20:58"}
+{"level":"info","message":"🔌 Conectando a Broker MQTT: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud...","service":"traffic-light-backend","timestamp":"2026-02-03 11:20:58"}
+{"level":"info","message":"✅ MQTT Monitor: CONECTADO.","service":"traffic-light-backend","timestamp":"2026-02-03 11:20:58"}
+{"level":"info","message":"Servidor backend (con Sockets) corriendo en http://localhost:5000","service":"traffic-light-backend","timestamp":"2026-02-03 11:23:20"}
+{"level":"info","message":"Socket Conectado: s9ds2MB-QcKyVIp5AAAB","service":"traffic-light-backend","timestamp":"2026-02-03 11:23:20"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"traffic-light-backend","timestamp":"2026-02-03 11:23:21"}
+{"level":"info","message":"⚙️ Iniciando MQTT con credenciales de: 1","service":"traffic-light-backend","timestamp":"2026-02-03 11:23:22"}
+{"level":"info","message":"🔌 Conectando a Broker MQTT: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud...","service":"traffic-light-backend","timestamp":"2026-02-03 11:23:22"}
+{"level":"info","message":"✅ MQTT Monitor: CONECTADO.","service":"traffic-light-backend","timestamp":"2026-02-03 11:23:23"}
+{"level":"info","message":"Socket Desconectado: s9ds2MB-QcKyVIp5AAAB","service":"traffic-light-backend","timestamp":"2026-02-03 11:23:23"}
+{"level":"info","message":"Socket Conectado: DT50JA-JWtjgste7AAAE","service":"traffic-light-backend","timestamp":"2026-02-03 11:23:23"}
+{"level":"info","message":"Socket Desconectado: DT50JA-JWtjgste7AAAE","service":"traffic-light-backend","timestamp":"2026-02-03 11:23:24"}
+{"level":"info","message":"Socket Conectado: Rhkl17qTcO9YQcN3AAAH","service":"traffic-light-backend","timestamp":"2026-02-03 11:23:24"}
+{"level":"info","message":"Socket Conectado: N8y-NmtX701kZ63iAAAJ","service":"traffic-light-backend","timestamp":"2026-02-03 11:23:24"}
+{"level":"info","message":"Socket Conectado: MTVRRtKOOKVnCyENAAAL","service":"traffic-light-backend","timestamp":"2026-02-03 11:23:24"}
+{"level":"info","message":"Socket Desconectado: Rhkl17qTcO9YQcN3AAAH","service":"traffic-light-backend","timestamp":"2026-02-03 11:23:24"}
+{"level":"info","message":"Socket Desconectado: N8y-NmtX701kZ63iAAAJ","service":"traffic-light-backend","timestamp":"2026-02-03 11:23:25"}
+{"level":"info","message":"Socket Conectado: 603jeuTht-0cyJS9AAAO","service":"traffic-light-backend","timestamp":"2026-02-03 11:23:26"}
+{"level":"info","message":"Servidor backend (con Sockets) corriendo en http://localhost:5000","service":"traffic-light-backend","timestamp":"2026-02-03 11:23:35"}
+{"level":"info","message":"Socket Conectado: 0cwJA2gJsN7ezRcTAAAB","service":"traffic-light-backend","timestamp":"2026-02-03 11:23:36"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"traffic-light-backend","timestamp":"2026-02-03 11:23:36"}
+{"level":"info","message":"Socket Conectado: xYIZQYGMTulZAynJAAAD","service":"traffic-light-backend","timestamp":"2026-02-03 11:23:37"}
+{"level":"info","message":"⚙️ Iniciando MQTT con credenciales de: 1","service":"traffic-light-backend","timestamp":"2026-02-03 11:23:37"}
+{"level":"info","message":"🔌 Conectando a Broker MQTT: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud...","service":"traffic-light-backend","timestamp":"2026-02-03 11:23:37"}
+{"level":"info","message":"✅ MQTT Monitor: CONECTADO.","service":"traffic-light-backend","timestamp":"2026-02-03 11:23:38"}
+{"level":"info","message":"Servidor backend (con Sockets) corriendo en http://localhost:5000","service":"traffic-light-backend","timestamp":"2026-02-03 11:25:38"}
+{"level":"info","message":"Socket Conectado: xQu8lfvRa9DwxKNcAAAC","service":"traffic-light-backend","timestamp":"2026-02-03 11:25:39"}
+{"level":"info","message":"Socket Conectado: _NjqYO3XB8a4OCo_AAAD","service":"traffic-light-backend","timestamp":"2026-02-03 11:25:39"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"traffic-light-backend","timestamp":"2026-02-03 11:25:39"}
+{"level":"info","message":"⚙️ Iniciando MQTT con credenciales de: 1","service":"traffic-light-backend","timestamp":"2026-02-03 11:25:39"}
+{"level":"info","message":"🔌 Conectando a Broker MQTT: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud...","service":"traffic-light-backend","timestamp":"2026-02-03 11:25:39"}
+{"level":"info","message":"✅ MQTT Monitor: CONECTADO.","service":"traffic-light-backend","timestamp":"2026-02-03 11:25:40"}
+{"level":"info","message":"Socket Desconectado: _NjqYO3XB8a4OCo_AAAD","service":"traffic-light-backend","timestamp":"2026-02-03 11:26:27"}
+{"level":"info","message":"Socket Desconectado: xQu8lfvRa9DwxKNcAAAC","service":"traffic-light-backend","timestamp":"2026-02-03 11:26:27"}
+{"level":"info","message":"Socket Conectado: 66MDWLHaCP2Dbeq0AAAG","service":"traffic-light-backend","timestamp":"2026-02-03 11:26:29"}
+{"level":"info","message":"Socket Conectado: -cvDJ7z9Pibl7rqAAAAK","service":"traffic-light-backend","timestamp":"2026-02-03 11:26:29"}
+{"level":"info","message":"Socket Conectado: yGsGmti5FlxAcaSuAAAL","service":"traffic-light-backend","timestamp":"2026-02-03 11:26:29"}
+{"level":"info","message":"Socket Desconectado: 66MDWLHaCP2Dbeq0AAAG","service":"traffic-light-backend","timestamp":"2026-02-03 11:26:29"}
+{"level":"info","message":"Socket Conectado: Hk3-dc_8K2jGGv9mAAAN","service":"traffic-light-backend","timestamp":"2026-02-03 11:26:29"}
+{"level":"info","message":"Socket Desconectado: -cvDJ7z9Pibl7rqAAAAK","service":"traffic-light-backend","timestamp":"2026-02-03 11:26:29"}
+{"level":"info","message":"Socket Desconectado: yGsGmti5FlxAcaSuAAAL","service":"traffic-light-backend","timestamp":"2026-02-03 11:26:31"}
+{"level":"info","message":"Socket Desconectado: Hk3-dc_8K2jGGv9mAAAN","service":"traffic-light-backend","timestamp":"2026-02-03 11:26:31"}
+{"level":"info","message":"Usuario logueado: e.guajardo","service":"traffic-light-backend","timestamp":"2026-02-03 11:29:10"}
+{"level":"info","message":"Socket Conectado: NwslxSrzIgt0Q6JfAAAT","service":"traffic-light-backend","timestamp":"2026-02-03 11:29:10"}
+{"level":"info","message":"Socket Conectado: oeRJ59xSgleIOl6ZAAAU","service":"traffic-light-backend","timestamp":"2026-02-03 11:29:10"}
+{"level":"info","message":"Socket Desconectado: oeRJ59xSgleIOl6ZAAAU","service":"traffic-light-backend","timestamp":"2026-02-03 11:31:59"}
+{"level":"info","message":"Socket Conectado: brI9fumGxEKXa1nyAAAX","service":"traffic-light-backend","timestamp":"2026-02-03 11:33:09"}
+{"level":"info","message":"Socket Desconectado: brI9fumGxEKXa1nyAAAX","service":"traffic-light-backend","timestamp":"2026-02-03 11:33:11"}
+{"level":"info","message":"Socket Conectado: m84J2_h_aVn_RZSpAAAa","service":"traffic-light-backend","timestamp":"2026-02-03 11:38:58"}
+{"level":"info","message":"Socket Desconectado: m84J2_h_aVn_RZSpAAAa","service":"traffic-light-backend","timestamp":"2026-02-03 11:39:13"}
+{"level":"info","message":"Socket Conectado: m53k5IqTkXG9zu5NAAAd","service":"traffic-light-backend","timestamp":"2026-02-03 11:39:15"}
+{"level":"info","message":"Socket Desconectado: m53k5IqTkXG9zu5NAAAd","service":"traffic-light-backend","timestamp":"2026-02-03 11:39:32"}
+{"level":"info","message":"Socket Conectado: b6qE6AiEeMSQ36LlAAAg","service":"traffic-light-backend","timestamp":"2026-02-03 11:40:29"}
+{"level":"info","message":"Socket Desconectado: b6qE6AiEeMSQ36LlAAAg","service":"traffic-light-backend","timestamp":"2026-02-03 11:42:46"}
+{"level":"info","message":"Socket Conectado: NR-gg9gSSlxZtlgyAAAj","service":"traffic-light-backend","timestamp":"2026-02-03 11:42:46"}
+{"level":"info","message":"Socket Conectado: zS7y8PLTRxfhIpQSAAAk","service":"traffic-light-backend","timestamp":"2026-02-03 11:42:46"}
+{"level":"info","message":"Socket Desconectado: NwslxSrzIgt0Q6JfAAAT","service":"traffic-light-backend","timestamp":"2026-02-03 11:43:03"}
+{"level":"info","message":"Socket Desconectado: zS7y8PLTRxfhIpQSAAAk","service":"traffic-light-backend","timestamp":"2026-02-03 11:43:03"}
+{"level":"info","message":"Socket Desconectado: NR-gg9gSSlxZtlgyAAAj","service":"traffic-light-backend","timestamp":"2026-02-03 11:43:03"}
+{"level":"info","message":"Socket Conectado: yWGfnok-zJudcgELAAAs","service":"traffic-light-backend","timestamp":"2026-02-03 11:43:03"}
+{"level":"info","message":"Socket Conectado: w5v30E24tAo8i824AAAt","service":"traffic-light-backend","timestamp":"2026-02-03 11:43:03"}
+{"level":"info","message":"Socket Conectado: -o9ftsADbTvq_4KfAAAu","service":"traffic-light-backend","timestamp":"2026-02-03 11:43:03"}
+{"level":"info","message":"Socket Conectado: WeE8giteXJ-MHimeAAAw","service":"traffic-light-backend","timestamp":"2026-02-03 11:43:03"}
+{"level":"info","message":"Socket Desconectado: w5v30E24tAo8i824AAAt","service":"traffic-light-backend","timestamp":"2026-02-03 11:43:22"}
+{"level":"info","message":"Socket Conectado: CvBI_vumJtcl1QnbAAAz","service":"traffic-light-backend","timestamp":"2026-02-03 11:43:25"}
+{"level":"info","message":"Socket Desconectado: WeE8giteXJ-MHimeAAAw","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:02"}
+{"level":"info","message":"Socket Desconectado: yWGfnok-zJudcgELAAAs","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:02"}
+{"level":"info","message":"Socket Desconectado: -o9ftsADbTvq_4KfAAAu","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:02"}
+{"level":"info","message":"Socket Desconectado: CvBI_vumJtcl1QnbAAAz","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:02"}
+{"level":"info","message":"Socket Conectado: 2CBPpfWIFkpJe0Y1AAA2","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:02"}
+{"level":"info","message":"Socket Conectado: _c6izGU41nc2mgBOAAA6","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:02"}
+{"level":"info","message":"Socket Desconectado: 2CBPpfWIFkpJe0Y1AAA2","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:02"}
+{"level":"info","message":"Socket Conectado: INn_qmSOSURA5x18AAA8","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:02"}
+{"level":"info","message":"Socket Desconectado: _c6izGU41nc2mgBOAAA6","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:02"}
+{"level":"info","message":"Socket Desconectado: INn_qmSOSURA5x18AAA8","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:02"}
+{"level":"info","message":"Socket Conectado: EDGvCbS53Apbj8jaAAA_","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:02"}
+{"level":"info","message":"Socket Conectado: 5xSdH3soU7OTrc3PAABA","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:03"}
+{"level":"info","message":"Socket Conectado: NpEUXZlfUnv8d-x2AABC","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:03"}
+{"level":"info","message":"Socket Conectado: 8jDqfKjYmpDjCs9EAABE","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:03"}
+{"level":"info","message":"Socket Desconectado: 5xSdH3soU7OTrc3PAABA","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:19"}
+{"level":"info","message":"Socket Desconectado: EDGvCbS53Apbj8jaAAA_","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:19"}
+{"level":"info","message":"Socket Desconectado: 8jDqfKjYmpDjCs9EAABE","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:19"}
+{"level":"info","message":"Socket Desconectado: NpEUXZlfUnv8d-x2AABC","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:19"}
+{"level":"info","message":"Socket Conectado: 4hpGhkokrId72BhwAABH","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:19"}
+{"level":"info","message":"Socket Conectado: Yi3c4ewDJ9x4enzTAABK","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:19"}
+{"level":"info","message":"Socket Desconectado: 4hpGhkokrId72BhwAABH","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:19"}
+{"level":"info","message":"Socket Conectado: PtutRODJrGxi31p2AABM","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:19"}
+{"level":"info","message":"Socket Conectado: nr5ULzqrV4kx4gdfAABO","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:19"}
+{"level":"info","message":"Socket Desconectado: PtutRODJrGxi31p2AABM","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:19"}
+{"level":"info","message":"Socket Desconectado: Yi3c4ewDJ9x4enzTAABK","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:19"}
+{"level":"info","message":"Socket Conectado: E9ev-_S7rrC-a2LbAABR","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:19"}
+{"level":"info","message":"Socket Conectado: FCY02JcXcNgRLsVQAABT","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:19"}
+{"level":"info","message":"Socket Conectado: hlFt8OMA2xuOEmDUAABV","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:19"}
+{"level":"info","message":"[IOT CHANGE] 1: ⚫ Sin Conexión (Apagado Total) (V: 0)","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:27"}
+{"level":"info","message":"Socket Desconectado: nr5ULzqrV4kx4gdfAABO","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:30"}
+{"level":"info","message":"Socket Conectado: OxlAUlbKxpJ2X0KEAABY","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:30"}
+{"level":"info","message":"Socket Desconectado: OxlAUlbKxpJ2X0KEAABY","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:32"}
+{"level":"info","message":"Socket Conectado: Pm--L8mYkdscxUWiAABb","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:32"}
+{"level":"info","message":"Socket Desconectado: Pm--L8mYkdscxUWiAABb","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:35"}
+{"level":"info","message":"Socket Conectado: zKUcgIIFZXZlYdctAABe","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:35"}
+{"level":"info","message":"Socket Desconectado: zKUcgIIFZXZlYdctAABe","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:41"}
+{"level":"info","message":"Socket Conectado: CRpfj0vYvNDl8l0sAABh","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:41"}
+{"level":"info","message":"Socket Desconectado: FCY02JcXcNgRLsVQAABT","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:43"}
+{"level":"info","message":"Socket Desconectado: CRpfj0vYvNDl8l0sAABh","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:43"}
+{"level":"info","message":"Socket Desconectado: E9ev-_S7rrC-a2LbAABR","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:43"}
+{"level":"info","message":"Socket Desconectado: hlFt8OMA2xuOEmDUAABV","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:43"}
+{"level":"info","message":"Socket Conectado: RCTlAYZxlFUkZQkbAABk","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:44"}
+{"level":"info","message":"Socket Desconectado: RCTlAYZxlFUkZQkbAABk","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:44"}
+{"level":"info","message":"Socket Conectado: VEIU06PczvpGhA3-AABo","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:44"}
+{"level":"info","message":"Socket Desconectado: VEIU06PczvpGhA3-AABo","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:44"}
+{"level":"info","message":"Socket Conectado: yw2r2pisu0vReIhvAABs","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:44"}
+{"level":"info","message":"Socket Conectado: yiO-IiFhTp0XrXayAABt","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:44"}
+{"level":"info","message":"Socket Conectado: n3QD3hSuUKRu6DZzAABv","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:44"}
+{"level":"info","message":"Socket Conectado: qbWV3vcTDuxP3QJ6AABx","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:44"}
+{"level":"info","message":"Socket Desconectado: yiO-IiFhTp0XrXayAABt","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:46"}
+{"level":"info","message":"Socket Desconectado: qbWV3vcTDuxP3QJ6AABx","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:46"}
+{"level":"info","message":"Socket Desconectado: n3QD3hSuUKRu6DZzAABv","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:46"}
+{"level":"info","message":"Socket Desconectado: yw2r2pisu0vReIhvAABs","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:46"}
+{"level":"info","message":"Socket Conectado: o1vGUeWaq_K9yq9dAAB0","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:47"}
+{"level":"info","message":"Socket Conectado: jSclsT9AIwtDm6tIAAB3","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:47"}
+{"level":"info","message":"Socket Conectado: 5IE2QYUn1CGq5vgIAAB5","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:47"}
+{"level":"info","message":"Socket Desconectado: o1vGUeWaq_K9yq9dAAB0","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:47"}
+{"level":"info","message":"Socket Conectado: BjYRP4z_HBOynkeeAAB7","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:47"}
+{"level":"info","message":"Socket Conectado: MwxXicZQq0wFpFR0AAB9","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:47"}
+{"level":"info","message":"Socket Desconectado: MwxXicZQq0wFpFR0AAB9","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:47"}
+{"level":"info","message":"Socket Desconectado: 5IE2QYUn1CGq5vgIAAB5","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:47"}
+{"level":"info","message":"Socket Desconectado: jSclsT9AIwtDm6tIAAB3","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:47"}
+{"level":"info","message":"Socket Conectado: NKtZzHemjrNEDBGNAAB_","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:47"}
+{"level":"info","message":"Socket Conectado: doWo3qeXPvJusTdtAACB","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:47"}
+{"level":"info","message":"Socket Conectado: lIlQLmTYi-lr0sI3AACD","service":"traffic-light-backend","timestamp":"2026-02-03 11:44:47"}
+{"level":"info","message":"[IOT CHANGE] 1: Operación Normal (V: 24.080717)","service":"traffic-light-backend","timestamp":"2026-02-03 11:46:45"}
+{"level":"info","message":"Socket Desconectado: lIlQLmTYi-lr0sI3AACD","service":"traffic-light-backend","timestamp":"2026-02-03 11:47:35"}
+{"level":"info","message":"Socket Desconectado: NKtZzHemjrNEDBGNAAB_","service":"traffic-light-backend","timestamp":"2026-02-03 11:47:35"}
+{"level":"info","message":"Socket Desconectado: doWo3qeXPvJusTdtAACB","service":"traffic-light-backend","timestamp":"2026-02-03 11:47:35"}
+{"level":"info","message":"Socket Desconectado: BjYRP4z_HBOynkeeAAB7","service":"traffic-light-backend","timestamp":"2026-02-03 11:47:35"}
+{"level":"info","message":"Socket Conectado: vk4phn9b5AAEIwNJAACK","service":"traffic-light-backend","timestamp":"2026-02-03 11:47:35"}
+{"level":"info","message":"Socket Conectado: gmCiE4gtMbDwrzlwAACL","service":"traffic-light-backend","timestamp":"2026-02-03 11:47:35"}
+{"level":"info","message":"Socket Conectado: Sa607CsFOlf-aTr2AACM","service":"traffic-light-backend","timestamp":"2026-02-03 11:47:35"}
+{"level":"info","message":"Socket Desconectado: Sa607CsFOlf-aTr2AACM","service":"traffic-light-backend","timestamp":"2026-02-03 11:48:10"}
+{"level":"info","message":"Socket Desconectado: gmCiE4gtMbDwrzlwAACL","service":"traffic-light-backend","timestamp":"2026-02-03 11:48:10"}
+{"level":"info","message":"Socket Conectado: haP9n5mTpkW7UILeAACO","service":"traffic-light-backend","timestamp":"2026-02-03 11:48:10"}
+{"level":"info","message":"Socket Desconectado: vk4phn9b5AAEIwNJAACK","service":"traffic-light-backend","timestamp":"2026-02-03 11:48:17"}
+{"level":"info","message":"Socket Desconectado: haP9n5mTpkW7UILeAACO","service":"traffic-light-backend","timestamp":"2026-02-03 11:48:17"}
+{"level":"info","message":"Socket Conectado: 62Mn0wAE94nSdniUAACR","service":"traffic-light-backend","timestamp":"2026-02-03 11:48:17"}
+{"level":"info","message":"Socket Desconectado: 62Mn0wAE94nSdniUAACR","service":"traffic-light-backend","timestamp":"2026-02-03 11:48:17"}
+{"level":"info","message":"Socket Conectado: v331sCVyPBM72i9HAACU","service":"traffic-light-backend","timestamp":"2026-02-03 11:48:17"}
+{"level":"info","message":"Socket Conectado: r1ph_YIJXXRue3WZAACW","service":"traffic-light-backend","timestamp":"2026-02-03 11:48:17"}
+{"level":"info","message":"Socket Conectado: ahsWSAMeGJIEAgRsAACY","service":"traffic-light-backend","timestamp":"2026-02-03 11:48:17"}
+{"level":"info","message":"Socket Desconectado: v331sCVyPBM72i9HAACU","service":"traffic-light-backend","timestamp":"2026-02-03 11:48:17"}
+{"level":"info","message":"[IOT CHANGE] 1: ⚫ Sin Conexión (Apagado Total) (V: 0)","service":"traffic-light-backend","timestamp":"2026-02-03 11:48:21"}
+{"level":"info","message":"Socket Desconectado: r1ph_YIJXXRue3WZAACW","service":"traffic-light-backend","timestamp":"2026-02-03 11:48:24"}
+{"level":"info","message":"Socket Desconectado: ahsWSAMeGJIEAgRsAACY","service":"traffic-light-backend","timestamp":"2026-02-03 11:48:24"}
+{"level":"info","message":"Socket Conectado: lL-zgFlQsedVaLluAACb","service":"traffic-light-backend","timestamp":"2026-02-03 11:48:24"}
+{"level":"info","message":"Socket Conectado: R2vXKVPkpNIG2RgdAACe","service":"traffic-light-backend","timestamp":"2026-02-03 11:48:24"}
+{"level":"info","message":"Socket Conectado: P4WKTcPTnF2oW46ZAACg","service":"traffic-light-backend","timestamp":"2026-02-03 11:48:24"}
+{"level":"info","message":"Socket Desconectado: lL-zgFlQsedVaLluAACb","service":"traffic-light-backend","timestamp":"2026-02-03 11:48:24"}
+{"level":"info","message":"Socket Desconectado: R2vXKVPkpNIG2RgdAACe","service":"traffic-light-backend","timestamp":"2026-02-03 11:48:24"}
+{"level":"info","message":"Socket Conectado: hyeFU5oMttn2FuUGAACi","service":"traffic-light-backend","timestamp":"2026-02-03 11:48:24"}
+{"level":"info","message":"Socket Desconectado: P4WKTcPTnF2oW46ZAACg","service":"traffic-light-backend","timestamp":"2026-02-03 11:48:29"}
+{"level":"info","message":"Socket Conectado: I5NFc7t1zP2XrpwHAACl","service":"traffic-light-backend","timestamp":"2026-02-03 11:48:43"}
+{"level":"info","message":"Socket Desconectado: hyeFU5oMttn2FuUGAACi","service":"traffic-light-backend","timestamp":"2026-02-03 11:51:06"}
+{"level":"info","message":"Socket Desconectado: I5NFc7t1zP2XrpwHAACl","service":"traffic-light-backend","timestamp":"2026-02-03 11:51:06"}
+{"level":"info","message":"Socket Conectado: D0o9BKCFJRdORO4MAACq","service":"traffic-light-backend","timestamp":"2026-02-03 11:51:06"}
+{"level":"info","message":"Socket Conectado: KVnvpJmJF1-4eafNAACr","service":"traffic-light-backend","timestamp":"2026-02-03 11:51:06"}
+{"level":"info","message":"Socket Desconectado: D0o9BKCFJRdORO4MAACq","service":"traffic-light-backend","timestamp":"2026-02-03 11:52:35"}
+{"level":"info","message":"Socket Desconectado: KVnvpJmJF1-4eafNAACr","service":"traffic-light-backend","timestamp":"2026-02-03 11:52:35"}
+{"level":"info","message":"Socket Conectado: E3SwRZlPTh3Eimt5AACw","service":"traffic-light-backend","timestamp":"2026-02-03 11:52:35"}
+{"level":"info","message":"Socket Conectado: 9AB8HWk01JFHMMs9AACx","service":"traffic-light-backend","timestamp":"2026-02-03 11:52:35"}
+{"level":"info","message":"Socket Conectado: Qdm1Q4md7whAqWh2AACy","service":"traffic-light-backend","timestamp":"2026-02-03 11:52:35"}
+{"level":"info","message":"Socket Conectado: kKv48O08zf_h0gCdAACz","service":"traffic-light-backend","timestamp":"2026-02-03 11:52:35"}
+{"level":"info","message":"Socket Desconectado: kKv48O08zf_h0gCdAACz","service":"traffic-light-backend","timestamp":"2026-02-03 11:52:54"}
+{"level":"info","message":"Socket Desconectado: E3SwRZlPTh3Eimt5AACw","service":"traffic-light-backend","timestamp":"2026-02-03 11:52:54"}
+{"level":"info","message":"Socket Desconectado: Qdm1Q4md7whAqWh2AACy","service":"traffic-light-backend","timestamp":"2026-02-03 11:52:54"}
+{"level":"info","message":"Socket Desconectado: 9AB8HWk01JFHMMs9AACx","service":"traffic-light-backend","timestamp":"2026-02-03 11:52:54"}
+{"level":"info","message":"Socket Conectado: 3wQeZzo5d7nTDI67AAC2","service":"traffic-light-backend","timestamp":"2026-02-03 11:52:54"}
+{"level":"info","message":"Socket Conectado: Bbvn6xlYQ_AR_816AAC6","service":"traffic-light-backend","timestamp":"2026-02-03 11:52:54"}
+{"level":"info","message":"Socket Desconectado: 3wQeZzo5d7nTDI67AAC2","service":"traffic-light-backend","timestamp":"2026-02-03 11:52:54"}
+{"level":"info","message":"Socket Conectado: wNGNzguT0Q_7sbctAAC8","service":"traffic-light-backend","timestamp":"2026-02-03 11:52:54"}
+{"level":"info","message":"Socket Desconectado: wNGNzguT0Q_7sbctAAC8","service":"traffic-light-backend","timestamp":"2026-02-03 11:52:54"}
+{"level":"info","message":"Socket Desconectado: Bbvn6xlYQ_AR_816AAC6","service":"traffic-light-backend","timestamp":"2026-02-03 11:52:54"}
+{"level":"info","message":"Socket Conectado: m5pqDj8v-xqZ45c0AAC_","service":"traffic-light-backend","timestamp":"2026-02-03 11:52:54"}
+{"level":"info","message":"Socket Conectado: sr8MQwS84mCy_9ncAADA","service":"traffic-light-backend","timestamp":"2026-02-03 11:52:54"}
+{"level":"info","message":"Socket Conectado: K5SonOWudMu93eAYAADC","service":"traffic-light-backend","timestamp":"2026-02-03 11:52:54"}
+{"level":"info","message":"Socket Conectado: QtQBYYl8sSA4SMxXAADE","service":"traffic-light-backend","timestamp":"2026-02-03 11:52:54"}
+{"level":"info","message":"[IOT CHANGE] 1: Operación Normal (V: 23.811659)","service":"traffic-light-backend","timestamp":"2026-02-03 11:53:04"}
+{"level":"info","message":"Socket Desconectado: sr8MQwS84mCy_9ncAADA","service":"traffic-light-backend","timestamp":"2026-02-03 11:53:06"}
+{"level":"info","message":"Socket Desconectado: m5pqDj8v-xqZ45c0AAC_","service":"traffic-light-backend","timestamp":"2026-02-03 11:53:06"}
+{"level":"info","message":"Socket Desconectado: QtQBYYl8sSA4SMxXAADE","service":"traffic-light-backend","timestamp":"2026-02-03 11:53:06"}
+{"level":"info","message":"Socket Desconectado: K5SonOWudMu93eAYAADC","service":"traffic-light-backend","timestamp":"2026-02-03 11:53:06"}
+{"level":"info","message":"Socket Conectado: 6t1643n_EVXv01z2AADH","service":"traffic-light-backend","timestamp":"2026-02-03 11:53:06"}
+{"level":"info","message":"Socket Conectado: OuYBf82AMcJ-YBm3AADL","service":"traffic-light-backend","timestamp":"2026-02-03 11:53:06"}
+{"level":"info","message":"Socket Desconectado: 6t1643n_EVXv01z2AADH","service":"traffic-light-backend","timestamp":"2026-02-03 11:53:06"}
+{"level":"info","message":"Socket Conectado: wxZwxCYTJYZNdCXsAADM","service":"traffic-light-backend","timestamp":"2026-02-03 11:53:06"}
+{"level":"info","message":"Socket Desconectado: OuYBf82AMcJ-YBm3AADL","service":"traffic-light-backend","timestamp":"2026-02-03 11:53:06"}
+{"level":"info","message":"Socket Desconectado: wxZwxCYTJYZNdCXsAADM","service":"traffic-light-backend","timestamp":"2026-02-03 11:53:06"}
+{"level":"info","message":"Socket Conectado: fHI_0XoMy8zqEkwXAADP","service":"traffic-light-backend","timestamp":"2026-02-03 11:53:06"}
+{"level":"info","message":"Socket Conectado: 2nVMcuFo1R4EJfsFAADQ","service":"traffic-light-backend","timestamp":"2026-02-03 11:53:06"}
+{"level":"info","message":"Socket Conectado: -aSMWNpeIQ_KVTqHAADS","service":"traffic-light-backend","timestamp":"2026-02-03 11:53:06"}
+{"level":"info","message":"Socket Conectado: 1XE8cXotobGsI8m4AADU","service":"traffic-light-backend","timestamp":"2026-02-03 11:53:06"}
+{"level":"info","message":"[IOT CHANGE] 1: ⚫ Sin Conexión (Apagado Total) (V: 0)","service":"traffic-light-backend","timestamp":"2026-02-03 11:53:12"}
+{"level":"info","message":"Socket Desconectado: fHI_0XoMy8zqEkwXAADP","service":"traffic-light-backend","timestamp":"2026-02-03 11:53:14"}
+{"level":"info","message":"Socket Desconectado: 2nVMcuFo1R4EJfsFAADQ","service":"traffic-light-backend","timestamp":"2026-02-03 11:53:14"}
+{"level":"info","message":"Socket Desconectado: 1XE8cXotobGsI8m4AADU","service":"traffic-light-backend","timestamp":"2026-02-03 11:53:14"}
+{"level":"info","message":"Socket Desconectado: -aSMWNpeIQ_KVTqHAADS","service":"traffic-light-backend","timestamp":"2026-02-03 11:53:14"}
+{"level":"info","message":"Socket Conectado: vafctPltXoF7H13PAADX","service":"traffic-light-backend","timestamp":"2026-02-03 11:53:14"}
+{"level":"info","message":"Socket Conectado: vceLyKvn1GQ5Qd0rAADb","service":"traffic-light-backend","timestamp":"2026-02-03 11:53:14"}
+{"level":"info","message":"Socket Desconectado: vafctPltXoF7H13PAADX","service":"traffic-light-backend","timestamp":"2026-02-03 11:53:14"}
+{"level":"info","message":"Socket Conectado: MJRxCkzQv1m7_dcCAADc","service":"traffic-light-backend","timestamp":"2026-02-03 11:53:14"}
+{"level":"info","message":"Socket Conectado: 8Te2_5FijCoZ-6mQAADe","service":"traffic-light-backend","timestamp":"2026-02-03 11:53:14"}
+{"level":"info","message":"Socket Desconectado: MJRxCkzQv1m7_dcCAADc","service":"traffic-light-backend","timestamp":"2026-02-03 11:53:14"}
+{"level":"info","message":"Socket Desconectado: vceLyKvn1GQ5Qd0rAADb","service":"traffic-light-backend","timestamp":"2026-02-03 11:53:14"}
+{"level":"info","message":"Socket Conectado: Kt9WxrJQPsOytOvpAADh","service":"traffic-light-backend","timestamp":"2026-02-03 11:53:14"}
+{"level":"info","message":"Socket Conectado: rpkb8T0oYRRmja41AADj","service":"traffic-light-backend","timestamp":"2026-02-03 11:53:14"}
+{"level":"info","message":"Socket Conectado: M8Ge7XeOonz6YLqvAADl","service":"traffic-light-backend","timestamp":"2026-02-03 11:53:14"}
+{"level":"info","message":"Socket Desconectado: 8Te2_5FijCoZ-6mQAADe","service":"traffic-light-backend","timestamp":"2026-02-03 11:53:15"}
+{"level":"info","message":"Socket Desconectado: Kt9WxrJQPsOytOvpAADh","service":"traffic-light-backend","timestamp":"2026-02-03 11:53:15"}
+{"level":"info","message":"Socket Desconectado: M8Ge7XeOonz6YLqvAADl","service":"traffic-light-backend","timestamp":"2026-02-03 11:53:15"}
+{"level":"info","message":"Socket Desconectado: rpkb8T0oYRRmja41AADj","service":"traffic-light-backend","timestamp":"2026-02-03 11:53:15"}
+{"level":"info","message":"Socket Conectado: eHtAI2zT5LMa30ytAADo","service":"traffic-light-backend","timestamp":"2026-02-03 11:53:15"}
+{"level":"info","message":"Socket Desconectado: eHtAI2zT5LMa30ytAADo","service":"traffic-light-backend","timestamp":"2026-02-03 11:53:16"}
+{"level":"info","message":"Socket Conectado: bkwgt2aWPpUHOHN9AADs","service":"traffic-light-backend","timestamp":"2026-02-03 11:53:16"}
+{"level":"info","message":"Socket Desconectado: bkwgt2aWPpUHOHN9AADs","service":"traffic-light-backend","timestamp":"2026-02-03 11:53:16"}
+{"level":"info","message":"Socket Conectado: aCR-tplQUlCPX-qzAADw","service":"traffic-light-backend","timestamp":"2026-02-03 11:53:16"}
+{"level":"info","message":"Socket Conectado: S9NC8GLQNx7abw-_AADx","service":"traffic-light-backend","timestamp":"2026-02-03 11:53:16"}
+{"level":"info","message":"Socket Conectado: 2te9-OVvz7HxuHtTAADz","service":"traffic-light-backend","timestamp":"2026-02-03 11:53:16"}
+{"level":"info","message":"Socket Conectado: 7DrhILcw4qrBXd9kAAD1","service":"traffic-light-backend","timestamp":"2026-02-03 11:53:16"}
+{"level":"info","message":"[IOT CHANGE] 1: Operación Normal (V: 24.080717)","service":"traffic-light-backend","timestamp":"2026-02-03 11:56:45"}
+{"level":"info","message":"Servidor backend (con Sockets) corriendo en http://localhost:5000","service":"traffic-light-backend","timestamp":"2026-02-03 11:57:04"}
+{"level":"info","message":"Socket Conectado: HG752RU-K6VCqehVAAAC","service":"traffic-light-backend","timestamp":"2026-02-03 11:57:05"}
+{"level":"info","message":"Socket Conectado: P8XKJMb9QM8inH3EAAAD","service":"traffic-light-backend","timestamp":"2026-02-03 11:57:05"}
+{"level":"info","message":"Socket Conectado: I2rMTv0-PkVbkcqtAAAF","service":"traffic-light-backend","timestamp":"2026-02-03 11:57:05"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"traffic-light-backend","timestamp":"2026-02-03 11:57:05"}
+{"level":"info","message":"Socket Conectado: CVLGGBSibzTGwtJkAAAH","service":"traffic-light-backend","timestamp":"2026-02-03 11:57:05"}
+{"level":"info","message":"⚙️ Iniciando MQTT con credenciales de: 1","service":"traffic-light-backend","timestamp":"2026-02-03 11:57:06"}
+{"level":"info","message":"Socket Desconectado: CVLGGBSibzTGwtJkAAAH","service":"traffic-light-backend","timestamp":"2026-02-03 11:57:06"}
+{"level":"info","message":"Socket Desconectado: P8XKJMb9QM8inH3EAAAD","service":"traffic-light-backend","timestamp":"2026-02-03 11:57:06"}
+{"level":"info","message":"Socket Desconectado: HG752RU-K6VCqehVAAAC","service":"traffic-light-backend","timestamp":"2026-02-03 11:57:06"}
+{"level":"info","message":"Socket Desconectado: I2rMTv0-PkVbkcqtAAAF","service":"traffic-light-backend","timestamp":"2026-02-03 11:57:06"}
+{"level":"info","message":"Socket Conectado: f3Dm0f0oZt9u0cULAAAK","service":"traffic-light-backend","timestamp":"2026-02-03 11:57:06"}
+{"level":"info","message":"Socket Conectado: bOMc5ddT_CxD4JtTAAAO","service":"traffic-light-backend","timestamp":"2026-02-03 11:57:06"}
+{"level":"info","message":"Socket Conectado: aKIeMbzJm1w0_O-DAAAP","service":"traffic-light-backend","timestamp":"2026-02-03 11:57:06"}
+{"level":"info","message":"Socket Desconectado: f3Dm0f0oZt9u0cULAAAK","service":"traffic-light-backend","timestamp":"2026-02-03 11:57:06"}
+{"level":"info","message":"Socket Desconectado: bOMc5ddT_CxD4JtTAAAO","service":"traffic-light-backend","timestamp":"2026-02-03 11:57:06"}
+{"level":"info","message":"Socket Desconectado: aKIeMbzJm1w0_O-DAAAP","service":"traffic-light-backend","timestamp":"2026-02-03 11:57:06"}
+{"level":"info","message":"Socket Conectado: smP-FkPu17V7M7C2AAAS","service":"traffic-light-backend","timestamp":"2026-02-03 11:57:06"}
+{"level":"info","message":"Socket Conectado: zJWUb4Cy4XAWVaG4AAAT","service":"traffic-light-backend","timestamp":"2026-02-03 11:57:06"}
+{"level":"info","message":"Socket Conectado: 49ii-wF5jN_9MDpZAAAV","service":"traffic-light-backend","timestamp":"2026-02-03 11:57:06"}
+{"level":"info","message":"Socket Conectado: 6U-ypmvUvlQh3YZJAAAX","service":"traffic-light-backend","timestamp":"2026-02-03 11:57:06"}
+{"level":"info","message":"Socket Desconectado: smP-FkPu17V7M7C2AAAS","service":"traffic-light-backend","timestamp":"2026-02-03 11:57:41"}
