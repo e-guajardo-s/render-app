@@ -5,7 +5,7 @@ const cors = require('cors');
 const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
-const path = require('path');
+const path = require('path'); // <--- IMPORTANTE: Asegúrate de que esto esté aquí
 const { createServer } = require('http');
 const { Server } = require("socket.io");
 
@@ -23,7 +23,9 @@ const invitationRoutes = require('./routes/invitation.routes');
 // --- Servicios y Modelos ---
 const mqttService = require('./services/mqttService');
 const User = require('./models/User.model');
-const Semaphore = require('./models/Semaphore.model');
+const Semaphore = require('./models/Semaphore.model'); 
+const StatusLog = require('./models/StatusLog.model');
+const Notification = require('./models/Notification.model');
 
 // --- Middlewares Personalizados ---
 const { verifyToken, verifyTokenAndAdmin } = require('./authMiddleware'); 
@@ -42,41 +44,36 @@ app.use(express.json());
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
     cors: {
-        origin: "http://localhost:5173", // URL del frontend (Vite)
+        // En producción permitimos el mismo origen, en desarrollo localhost
+        origin: process.env.NODE_ENV === 'production' ? false : "http://localhost:5173",
         methods: ["GET", "POST"]
     }
 });
 
 io.on('connection', (socket) => {
     console.log(`Socket Conectado: ${socket.id}`);
-    
     socket.on('join_room', (topic) => {
         socket.join(topic);
+        console.log(`Socket ${socket.id} se unió a: ${topic}`);
     });
-
     socket.on('disconnect', () => {
         console.log(`Socket Desconectado: ${socket.id}`);
     });
 });
 
-// Guardar 'io' en la app
 app.set('socketio', io);
 
 // --- Conexión a MongoDB Atlas ---
 mongoose.connect(MONGO_URI)
   .then(async () => {
       console.log("MongoDB conectado exitosamente");
-
-      // --- INICIO AUTOMÁTICO DE MQTT ---
       try {
           const setupDevice = await Semaphore.findOne({ 'mqtt_config.host': { $ne: '' } });
-          
           if (setupDevice && setupDevice.mqtt_config) {
               console.log(`⚙️ Iniciando MQTT con credenciales de: ${setupDevice.cruceId}`);
-              // Pasamos 'io' para que el servicio pueda emitir eventos al frontend
               mqttService.connectToBroker(setupDevice.mqtt_config, io);
           } else {
-              console.log("⚠️ Sistema iniciado sin conexión MQTT (Esperando configuración en DB).");
+              console.log("⚠️ Sistema iniciado sin conexión MQTT.");
           }
       } catch (error) {
           console.error("Error al intentar iniciar MQTT:", error);
@@ -89,7 +86,7 @@ app.get('/api', (req, res) => {
   res.json({ message: "Hola desde el Backend!" });
 });
 
-// Autenticación - LOGIN
+// Autenticación (Login)
 app.post('/api/auth/login', async (req, res) => {
   try {
     const { username, password } = req.body;
@@ -114,97 +111,51 @@ app.post('/api/auth/login', async (req, res) => {
   }
 });
 
-// REGISTRAR (Crear Usuario - Solo Admin)
+// Registrar (Solo Admin)
 app.post('/api/auth/register', verifyTokenAndAdmin, async (req, res) => {
     try {
         const { username, password, role, comuna } = req.body; 
         const actor = req.user; 
-
         if (actor.role === 'admin' && (role === 'admin' || role === 'superadmin')) {
-            return res.status(403).json({ message: "Un Admin solo puede crear usuarios con rol 'user'." });
+            return res.status(403).json({ message: "No autorizado." });
         }
-
         const existingUser = await User.findOne({ username: username });
-        if (existingUser) {
-            return res.status(400).json({ message: "El nombre de usuario ya existe." });
-        }
+        if (existingUser) return res.status(400).json({ message: "Usuario existe." });
+        
         const salt = await bcrypt.genSalt(10);
         const hashedPassword = await bcrypt.hash(password, salt);
-        
-        const newUser = new User({
-            username: username,
-            password: hashedPassword,
-            role: role || 'user',
-            comuna: comuna 
-        });
+        const newUser = new User({ username, password: hashedPassword, role: role || 'user', comuna });
         
         await newUser.save();
-        res.status(201).json({ message: "Usuario creado exitosamente." });
+        res.status(201).json({ message: "Usuario creado." });
     } catch (error) {
-        console.error("Error POST /api/auth/register:", error); 
-        res.status(500).json({ message: "Error interno al crear el usuario" });
+        res.status(500).json({ message: "Error interno" });
     }
 });
 
-// OBTENER USUARIOS
+// Rutas de Usuario
 app.get('/api/users', verifyTokenAndAdmin, async (req, res) => {
   try {
     const users = await User.find({}).select('-password');
     res.status(200).json(users);
-  } catch (error) {
-    res.status(500).json({ message: "Error en el servidor al obtener usuarios"});
-  }
+  } catch (error) { res.status(500).json({ message: "Error al obtener usuarios"}); }
 });
 
-// ACTUALIZAR ROL
 app.put('/api/users/:id/role', verifyTokenAndAdmin, async (req, res) => {
     try {
-        const actor = req.user; 
-        const targetId = req.params.id;
         const { role: newRole } = req.body;
-
-        if (actor.id === targetId) return res.status(403).json({ message: "No puedes modificar tu propio rol." });
-        const targetUser = await User.findById(targetId);
-        if (!targetUser) return res.status(404).json({ message: "Usuario objetivo no encontrado." });
-        
-        if (actor.role === 'admin') {
-            if (targetUser.role === 'admin' || targetUser.role === 'superadmin') {
-                return res.status(403).json({ message: "Un Admin no puede modificar a otro Admin o Super Admin." });
-            }
-            if (newRole === 'admin' || newRole === 'superadmin') {
-                 return res.status(403).json({ message: "No tienes permisos para asignar este rol." });
-            }
-        }
-
-        const updatedUser = await User.findByIdAndUpdate(targetId, { role: newRole }, { new: true }).select('-password');
+        const updatedUser = await User.findByIdAndUpdate(req.params.id, { role: newRole }, { new: true }).select('-password');
         res.status(200).json(updatedUser);
-    } catch (error) {
-        res.status(500).json({ message: "Error al actualizar rol"});
-    }
+    } catch (error) { res.status(500).json({ message: "Error actualizando rol"}); }
 });
 
-// ELIMINAR USUARIO
 app.delete('/api/users/:id', verifyTokenAndAdmin, async (req, res) => {
     try {
-        const actor = req.user; 
-        const targetId = req.params.id;
-        if (actor.id === targetId) return res.status(403).json({ message: "No puedes eliminarte a ti mismo." });
-        
-        const targetUser = await User.findById(targetId);
-        if (!targetUser) return res.status(404).json({ message: "Usuario objetivo no encontrado." });
-
-        if (actor.role === 'admin' && (targetUser.role === 'admin' || targetUser.role === 'superadmin')) {
-             return res.status(403).json({ message: "Un Admin solo puede eliminar usuarios normales." });
-        }
-
-        await User.findByIdAndDelete(targetId);
-        res.status(200).json({ message: "Usuario eliminado exitosamente." });
-    } catch (error) {
-        res.status(500).json({ message: "Error al eliminar usuario"});
-    }
+        await User.findByIdAndDelete(req.params.id);
+        res.status(200).json({ message: "Usuario eliminado." });
+    } catch (error) { res.status(500).json({ message: "Error eliminando usuario"}); }
 });
 
-// VALIDAR TOKEN
 app.get('/api/auth/me', verifyToken, (req, res) => {
     res.status(200).json(req.user);
 });
@@ -219,12 +170,18 @@ app.use('/api/notifications', notificationRoutes);
 app.use('/api/invitations', invitationRoutes);
 app.use('/api/mqtt-logs', mqttLogRoutes);
 app.use('/api/settings', settingsRoutes);
+
+// --- DEPLOYMENT CONFIG (Servir Frontend) ---
+// 1. Decirle a Express dónde están los archivos estáticos del build de React
 app.use(express.static(path.join(__dirname, '../frontend/dist')));
+
+// 2. Ruta "Catch-All" para React Router (SOLUCIÓN EXPRESS 5)
+// Cualquier ruta que no sea API, devuelve el index.html
 app.get(/.*/, (req, res) => {
-  res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'));
+    res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'));
 });
 
 // --- Iniciar Servidor ---
 httpServer.listen(PORT, () => {
-  console.log(`Servidor backend (con Sockets) corriendo en http://localhost:${PORT}`);
+  console.log(`Servidor backend (con Sockets) corriendo en puerto ${PORT}`);
 });
