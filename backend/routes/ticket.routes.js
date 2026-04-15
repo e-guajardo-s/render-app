@@ -4,7 +4,9 @@ const router = express.Router();
 const Ticket = require('../models/Ticket.model');
 const User = require('../models/User.model');
 const Notification = require('../models/Notification.model');
+const TicketComment = require('../models/TicketComment.model');
 const { verifyToken, verifyTokenAndAdmin } = require('../authMiddleware');
+const audit = require('../middlewares/audit');
 
 // 1. CREAR TICKET (Sin cambios)
 router.post('/', verifyToken, async (req, res) => {
@@ -157,13 +159,21 @@ router.get('/technicians', verifyTokenAndAdmin, async (req, res) => {
     }
 });
 
-// 6. ELIMINAR TICKET (Sin cambios)
+// 6. ELIMINAR TICKET
 router.delete('/:id', verifyTokenAndAdmin, async (req, res) => {
     try {
         const ticket = await Ticket.findByIdAndDelete(req.params.id);
         if (!ticket) {
             return res.status(404).json({ message: "Ticket no encontrado" });
         }
+
+        // Eliminar notificaciones y comentarios relacionados
+        await Promise.all([
+            Notification.deleteMany({ relatedEntity: ticket._id }),
+            TicketComment.deleteMany({ ticket: ticket._id })
+        ]);
+
+        audit(req, { action: 'DELETE_TICKET', target: ticket.title, targetId: ticket._id });
         res.json({ message: "Ticket eliminado exitosamente" });
     } catch (error) {
         console.error("Error DELETE /api/tickets/:id:", error);

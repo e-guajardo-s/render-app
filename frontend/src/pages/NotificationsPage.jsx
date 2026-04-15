@@ -1,8 +1,8 @@
 // En: frontend/src/pages/NotificationsPage.jsx
 
-import React, { useMemo } from 'react';
+import React, { useMemo, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import { useNotifications } from '../context/NotificationContext.jsx';
-import { useAuth } from '../context/AuthContext.jsx';
 import { format } from 'date-fns';
 import { es } from 'date-fns/locale'; // Asegúrate de tener date-fns instalado
 import './NotificationsPage.css';
@@ -37,9 +37,11 @@ function NotificationsPage() {
         notifications, 
         loading, 
         markAsRead, 
+        markAllAsRead,
         clearReadNotifications 
     } = useNotifications();
-    const { user } = useAuth();
+    const [activeFilter, setActiveFilter] = useState('all');
+    const navigate = useNavigate();
 
     // Ordenar: No leídas primero, luego por fecha
     const sortedNotifications = useMemo(() => {
@@ -52,8 +54,38 @@ function NotificationsPage() {
     const readCount = notifications.filter(n => n.isRead).length;
     const unreadCount = notifications.length - readCount;
 
-    const handleMarkAllAsRead = () => {
-        notifications.filter(n => !n.isRead).forEach(n => markAsRead(n._id));
+    const filteredNotifications = useMemo(() => {
+        if (activeFilter === 'unread') {
+            return sortedNotifications.filter(n => !n.isRead);
+        }
+
+        if (activeFilter === 'system') {
+            return sortedNotifications.filter(n => ['status_change', 'event_due'].includes(n.type));
+        }
+
+        return sortedNotifications;
+    }, [activeFilter, sortedNotifications]);
+
+    const getNotificationTargetPath = (notification) => {
+        if (notification?.relatedEntityType === 'Ticket') return '/tickets';
+        if (notification?.relatedEntityType === 'Event') return '/calendar';
+        if (notification?.relatedEntityType === 'Semaphore') return '/semaphores';
+
+        if (notification?.type === 'new_ticket' || notification?.type === 'ticket_update') return '/tickets';
+        if (notification?.type === 'event_due') return '/calendar';
+        if (notification?.type === 'status_change') return '/status';
+
+        return '/notifications';
+    };
+
+    const handleNotificationClick = async (notification) => {
+        if (!notification) return;
+
+        if (!notification.isRead) {
+            await markAsRead(notification._id);
+        }
+
+        navigate(getNotificationTargetPath(notification));
     };
 
     return (
@@ -80,7 +112,7 @@ function NotificationsPage() {
                     <div className="actions-group">
                         <button 
                             className="btn-action btn-mark-all"
-                            onClick={handleMarkAllAsRead}
+                            onClick={markAllAsRead}
                             disabled={unreadCount === 0}
                             title="Marcar todas como leídas"
                         >
@@ -104,22 +136,46 @@ function NotificationsPage() {
                     </div>
                 </div>
 
+                <div className="notifications-filters">
+                    <button
+                        className={`filter-tab ${activeFilter === 'all' ? 'active' : ''}`}
+                        onClick={() => setActiveFilter('all')}
+                        type="button"
+                    >
+                        Todas
+                    </button>
+                    <button
+                        className={`filter-tab ${activeFilter === 'unread' ? 'active' : ''}`}
+                        onClick={() => setActiveFilter('unread')}
+                        type="button"
+                    >
+                        No leídas
+                    </button>
+                    <button
+                        className={`filter-tab ${activeFilter === 'system' ? 'active' : ''}`}
+                        onClick={() => setActiveFilter('system')}
+                        type="button"
+                    >
+                        Alertas de Sistema
+                    </button>
+                </div>
+
                 {/* LISTA DE ITEMS */}
                 <div className="notification-list-container">
                     {loading && <p className="loading-message">Cargando notificaciones...</p>}
                     
-                    {!loading && notifications.length === 0 && (
+                    {!loading && filteredNotifications.length === 0 && (
                         <div className="empty-state">
                             <div className="empty-icon">🎉</div>
                             <span className="empty-text">¡Estás al día! No hay notificaciones recientes.</span>
                         </div>
                     )}
                     
-                    {!loading && sortedNotifications.map(n => (
+                    {!loading && filteredNotifications.map(n => (
                         <div 
                             key={n._id} 
                             className={`notification-item ${n.isRead ? 'read' : 'unread'}`}
-                            onClick={() => !n.isRead && markAsRead(n._id)}
+                            onClick={() => handleNotificationClick(n)}
                         >
                             <NotificationIcon type={n.type} />
                             

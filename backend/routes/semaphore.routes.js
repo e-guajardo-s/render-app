@@ -3,7 +3,9 @@ const express = require('express');
 const router = express.Router();
 const Semaphore = require('../models/Semaphore.model');
 const { verifyToken, verifyTokenAndAdmin } = require('../authMiddleware'); 
-const mqttService = require('../services/mqttService'); // <--- Importamos el servicio
+const mqttService = require('../services/mqttService');
+const { updateDeviceCache } = mqttService;
+const audit = require('../middlewares/audit');
 
 // GET /api/semaphores - Obtener TODOS
 router.get('/', verifyToken, async (req, res) => {
@@ -13,7 +15,14 @@ router.get('/', verifyToken, async (req, res) => {
         if (req.user && req.user.role === 'municipalidad' && req.user.comuna) {
             query.comuna = { $regex: new RegExp(`^${req.user.comuna}$`, 'i') };
         }
-        const semaphores = await Semaphore.find(query).sort({ cruce: 1 });
+        const semaphores = await Semaphore.find(query).sort({ cruceId: 1 });
+        // Orden numérico real en memoria (1, 2, 3... en lugar de '1','10','2')
+        semaphores.sort((a, b) => {
+            const nA = parseInt(a.cruceId, 10);
+            const nB = parseInt(b.cruceId, 10);
+            if (!isNaN(nA) && !isNaN(nB)) return nA - nB;
+            return String(a.cruceId).localeCompare(String(b.cruceId), undefined, { numeric: true });
+        });
         res.status(200).json(semaphores);
     } catch (error) {
         console.error("Error GET /api/semaphores:", error);
@@ -56,6 +65,55 @@ router.get('/search', verifyToken, async (req, res) => {
     }
 });
 
+// GET /api/semaphores/stats/summary — debe estar ANTES de /:id para que Express no confunda 'stats' con un ObjectId
+router.get('/stats/summary', verifyToken, async (req, res) => {
+    try {
+        const StatusLog = require('../models/StatusLog.model');
+        const Ticket    = require('../models/Ticket.model');
+
+        const [semaphores, openTickets, recentLogs] = await Promise.all([
+            Semaphore.find({}, 'monitoreando enMantencion status cruceId cruce').lean(),
+            Ticket.countDocuments({ status: { $in: ['pending', 'in_progress'] } }),
+            StatusLog.find({ timestamp: { $gte: new Date(Date.now() - 24*60*60*1000) } })
+                .sort({ timestamp: -1 }).limit(500).lean()
+        ]);
+
+        let operativo = 0, offline = 0, anomalia = 0, aislado = 0, ups = 0, sinMonitoreo = 0, mantencion = 0;
+        for (const s of semaphores) {
+            if (s.enMantencion) { mantencion++; continue; }
+            if (!s.monitoreando) { sinMonitoreo++; continue; }
+            const st = s.status || {};
+            const ctrl  = (st.controlador  || '').toLowerCase();
+            const alim  = (st.alimentacion || '').toLowerCase();
+            const luces = (st.luces        || '').toLowerCase();
+            const upsEst = (st.ups_estado || '').toLowerCase();
+            if (ctrl !== 'prendido' && alim !== 'prendido' && upsEst !== 'prendido') offline++;
+            else if (ctrl !== 'prendido') aislado++;
+            else if (alim !== 'prendido' && upsEst === 'prendido') ups++;
+            else if (luces !== 'prendido') anomalia++;
+            else operativo++;
+        }
+
+        const failMap = {};
+        for (const l of recentLogs) {
+            if (l.type === 'error' || l.type === 'offline') {
+                failMap[l.cruceId] = (failMap[l.cruceId] || 0) + 1;
+            }
+        }
+        const topFallas = Object.entries(failMap)
+            .sort((a, b) => b[1] - a[1]).slice(0, 5)
+            .map(([cruceId, count]) => {
+                const sem = semaphores.find(s => s.cruceId === cruceId);
+                return { cruceId, cruce: sem?.cruce || cruceId, count };
+            });
+
+        res.json({ total: semaphores.length, operativo, offline, anomalia, aislado, ups, sinMonitoreo, mantencion, openTickets, topFallas });
+    } catch (e) {
+        console.error('Error stats/summary:', e);
+        res.status(500).json({ message: 'Error calculando resumen' });
+    }
+});
+
 // GET /api/semaphores/:id
 router.get('/:id', verifyToken, async (req, res) => {
     try {
@@ -71,7 +129,7 @@ router.get('/:id', verifyToken, async (req, res) => {
 router.post('/', verifyTokenAndAdmin, async (req, res) => {
     const { 
         cruce, cruceId, comuna, red, controlador, UOCT, coordenadas,
-        ip_gateway, mqtt_topic, mqtt_config // <--- Campos Nuevos
+        ip_gateway, mqtt_topic, mqtt_config, tieneUPS
     } = req.body; 
     
     try {
@@ -91,9 +149,10 @@ router.post('/', verifyTokenAndAdmin, async (req, res) => {
 
         const newSemaphore = new Semaphore({
             cruce, cruceId, comuna, red, controlador, UOCT,
-            ip_gateway, mqtt_topic, mqtt_config, // Guardamos la config
+            ip_gateway, mqtt_topic, mqtt_config,
+            tieneUPS: tieneUPS !== undefined ? tieneUPS : true,
             coordenadas: (coords.lat !== undefined) ? coords : undefined,
-            status: { controlador: false, alimentacion: false, ups: false, luces: false }
+            status: { controlador: 'Desconocido', alimentacion: 'Desconocido', luces: 'Desconocido', ups_estado: 'Apagado' }
         });
 
         const savedSemaphore = await newSemaphore.save(); 
@@ -110,14 +169,16 @@ router.put('/:id', verifyTokenAndAdmin, async (req, res) => {
     const { id } = req.params;
     const { 
         cruce, cruceId, comuna, red, controlador, UOCT, coordenadas,
-        ip_gateway, mqtt_topic, mqtt_config // <--- Campos Nuevos
+        ip_gateway, mqtt_topic, mqtt_config, tieneUPS
     } = req.body; 
     
     try {
         let updateData = { 
             cruce, cruceId, comuna, red, controlador, UOCT,
-            ip_gateway, mqtt_topic, mqtt_config // Actualizamos la config
-        }; 
+            ip_gateway, mqtt_topic, mqtt_config
+        };
+
+        if (tieneUPS !== undefined) updateData.tieneUPS = tieneUPS; 
          
         if (coordenadas !== undefined) { 
              if (coordenadas && typeof coordenadas === 'string' && coordenadas.trim() !== '') {
@@ -158,15 +219,52 @@ router.put('/:id/status', verifyTokenAndAdmin, async (req, res) => {
     const { id } = req.params;
     const { action } = req.body;
     let updateData;
-    if (action === 'set_offline') updateData = { $set: { status: null } };
-    else if (action === 'set_online') updateData = { $set: { status: { controlador: true, alimentacion: false, ups: false, luces: false } } };
-    else return res.status(400).json({ message: "Acción no válida." });
+    // set_offline = pausar monitoreo (blanco en mapa)
+    if (action === 'set_offline') {
+        updateData = { $set: { monitoreando: false, status: { controlador: 'Desconocido', alimentacion: 'Desconocido', luces: 'Desconocido', ups_estado: 'Apagado' } } };
+    // set_online = activar monitoreo (esperar mensajes MQTT)
+    } else if (action === 'set_online') {
+        updateData = { $set: { monitoreando: true, status: { controlador: 'Desconocido', alimentacion: 'Desconocido', luces: 'Desconocido', ups_estado: 'Apagado' } } };
+    } else {
+        return res.status(400).json({ message: 'Acción no válida.' });
+    }
 
     try {
         const updated = await Semaphore.findByIdAndUpdate(id, updateData, { new: true });
-        if (!updated) return res.status(404).json({ message: "No encontrado" });
+        if (!updated) return res.status(404).json({ message: 'No encontrado' });
+        // Sincronizar caché del mqttService
+        if (updated.mqtt_topic) {
+            updateDeviceCache(updated.mqtt_topic, { monitoreando: updated.monitoreando });
+        }
         res.status(200).json(updated);
-    } catch (error) { res.status(500).json({ message: "Error status" }); }
+    } catch (error) { res.status(500).json({ message: 'Error status' }); }
+});
+
+// PUT /api/semaphores/:id/maintenance — activar/desactivar mantención
+router.put('/:id/maintenance', verifyTokenAndAdmin, async (req, res) => {
+    const { action, motivo } = req.body;
+    let updateData;
+    if (action === 'start') {
+        updateData = { $set: { enMantencion: true, mantencionInicio: new Date(), mantencionMotivo: motivo || '' } };
+    } else if (action === 'end') {
+        updateData = { $set: { enMantencion: false }, $unset: { mantencionInicio: '', mantencionMotivo: '' } };
+    } else {
+        return res.status(400).json({ message: 'Acción no válida. Usa start o end.' });
+    }
+    try {
+        const updated = await Semaphore.findByIdAndUpdate(req.params.id, updateData, { new: true });
+        if (!updated) return res.status(404).json({ message: 'No encontrado' });
+        // Sincronizar caché del mqttService para que las alertas se inhiban inmediatamente
+        if (updated.mqtt_topic) {
+            updateDeviceCache(updated.mqtt_topic, { enMantencion: updated.enMantencion });
+        }
+        audit(req, {
+            action: action === 'start' ? 'MAINTENANCE_START' : 'MAINTENANCE_END',
+            target: updated.cruce, targetId: updated._id,
+            meta: action === 'start' ? { motivo: motivo || '' } : undefined
+        });
+        res.json(updated);
+    } catch (e) { res.status(500).json({ message: 'Error mantención' }); }
 });
 
 // DELETE

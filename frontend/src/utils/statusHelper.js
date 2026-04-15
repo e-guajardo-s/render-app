@@ -1,61 +1,77 @@
 // En: frontend/src/utils/statusHelper.js
 
-// 1. Colores (AGREGADO: Azul para UPS)
+// 1. Colores
 export const STATUS_COLORS = {
-    OPERATIVO: '#28a745', // Verde
-    ANOMALIA: '#fd7e14',  // Naranja/Amarillo
-    FALLA: '#dc3545',     // Rojo
-    UPS: '#3b82f6',       // Azul (NUEVO)
-    OFFLINE: '#6c757d',   // Gris
+    OPERATIVO:     '#28a745', // Verde
+    ANOMALIA:      '#fd7e14', // Naranja
+    AISLADO:       '#7c3aed', // Morado (UTC apagado pero con señal)
+    UPS:           '#3b82f6', // Azul
+    OFFLINE:       '#dc3545', // Rojo (monitorado pero sin conexión)
+    NO_MONITORADO: '#6c757d', // Gris (no se monitorea)
+    MANTENCION:    '#f59e0b', // Amarillo — técnico trabajando en el cruce
 };
 
-// 2. Información de la Leyenda (AGREGADO: Respaldo UPS)
+// 2. Información de la Leyenda
 export const STATUS_LEGEND = [
-    { key: 'OPERATIVO', text: 'Operativo', color: STATUS_COLORS.OPERATIVO },
-    { key: 'UPS', text: 'Respaldo UPS', color: STATUS_COLORS.UPS }, // NUEVO
-    { key: 'ANOMALIA', text: 'Con Anomalía', color: STATUS_COLORS.ANOMALIA },
-    { key: 'FALLA', text: 'Falla', color: STATUS_COLORS.FALLA },
-    { key: 'OFFLINE', text: 'Sin Conexión', color: STATUS_COLORS.OFFLINE },
+    { key: 'OPERATIVO',     text: 'Operativo',       color: STATUS_COLORS.OPERATIVO },
+    { key: 'UPS',           text: 'Respaldo UPS',    color: STATUS_COLORS.UPS },
+    { key: 'ANOMALIA',      text: 'Con Anomalía',    color: STATUS_COLORS.ANOMALIA },
+    { key: 'AISLADO',       text: 'Aislado',         color: STATUS_COLORS.AISLADO },
+    { key: 'OFFLINE',       text: 'Sin Conexión',    color: STATUS_COLORS.OFFLINE },
+    { key: 'MANTENCION',    text: 'En Mantención',   color: STATUS_COLORS.MANTENCION },
+    { key: 'NO_MONITORADO', text: 'Sin Monitoreo',   color: STATUS_COLORS.NO_MONITORADO },
 ];
 
 // 3. Función para obtener el estado (Clave y Texto)
-export const getOverallStatus = (status) => {
-    // Regla Base: Si no hay objeto status, es Offline
+// monitoreando y enMantencion son campos independientes del status de telemetría
+export const getOverallStatus = (status, monitoreando, enMantencion) => {
+    // Rama 0 — MANTENCIÓN (amarillo): técnico trabajando, inhibe alertas
+    if (enMantencion === true) {
+        return { key: 'MANTENCION', text: 'En Mantención' };
+    }
+
+    // Rama A — SIN MONITOREO (gris): campo no es explícitamente true
+    if (monitoreando !== true) {
+        return { key: 'NO_MONITORADO', text: 'Sin Monitoreo' };
+    }
+
+    // Rama B — CON MONITOREO: a partir de aquí se evalúa la telemetría
+    // Sin datos de telemetría = perdió conexión
     if (!status) {
         return { key: 'OFFLINE', text: 'Sin Conexión' };
     }
 
-    // --- NORMALIZACIÓN DE DATOS ---
-    const ctrlOn = status.controlador === 'Prendido' || status.controlador === true;
-    const alimOn = status.alimentacion === 'Prendido' || status.alimentacion === true;
-    const lucesOn = status.luces === 'Prendido' || status.luces === true;
+// --- NORMALIZACIÓN DE DATOS (A Prueba de Balas) ---
+    const isTrue = (val) => String(val).toLowerCase().trim() === 'prendido' || val === true;
+    
+    const ctrlOn = isTrue(status.controlador);
+    const alimOn = isTrue(status.alimentacion);
+    const lucesOn = isTrue(status.luces);
 
     // --- CORRECCIÓN UPS ---
-    const rawUps = status.ups_voltaje ?? status.ups ?? status.UPS?.value ?? 0;
-    const upsVal = parseFloat(rawUps);
-
+    // UPS es ahora un relé binario: Prendido/Apagado (no voltaje analógico)
+    const rawUps = status.ups_estado ?? status.ups ?? 'Apagado';
+    const upsOn = String(rawUps).toLowerCase().trim() === 'prendido' || rawUps === true;
+    
     // --- TABLA DE PRIORIDADES ---
 
     // 1. OFFLINE (Gris): Todo apagado (0,0,0)
-    if (!ctrlOn && !alimOn && upsVal <= 0) {
+    if (!ctrlOn && !alimOn && !upsOn) {
         return { key: 'OFFLINE', text: 'Sin Conexión' };
     }
 
-    // 2. FALLA (Rojo): El cerebro (Controlador) está apagado
+    // 2. AISLADO (Gris): El UTC está apagado pero hay señal
     if (!ctrlOn) {
-        return { key: 'FALLA', text: 'Falla (Controlador)' };
+        return { key: 'AISLADO', text: 'Aislado' };
     }
 
-    // 3. RESPALDO UPS (Azul): Corte de luz + UPS Aguantando (>20V)
-    // ESTA ERA LA REGLA QUE FALTABA
-    if (!alimOn && upsVal > 20) {
+    // 3. RESPALDO UPS (Azul): Corte de luz + UPS Activo (relé encendido)
+    if (!alimOn && upsOn) {
         return { key: 'UPS', text: 'Respaldo UPS' };
     }
 
-    // 4. ANOMALÍA (Naranja):
-    //    a) Luces apagadas
-    //    b) Batería baja o muerta (<= 20V)
-    if (!lucesOn || upsVal <= 20) {
+    // 4. ANOMALÍA (Naranja): Luces apagadas
+    if (!lucesOn) {
         return { key: 'ANOMALIA', text: 'Con Anomalía' };
     }
 
@@ -71,12 +87,13 @@ export const getStatusColor = (statusKey) => {
 // 5. Función para la clase CSS de la pastilla (Pill)
 export const getStatusPillClass = (statusKey) => {
     switch (statusKey) {
-        case 'OPERATIVO': return 'status-green';
-        case 'ANOMALIA': return 'status-orange';
-        case 'FALLA': return 'status-red';
-        case 'UPS': return 'status-blue'; // NUEVO CASE PARA AZUL
+        case 'OPERATIVO':     return 'status-green';
+        case 'ANOMALIA':      return 'status-orange';
+        case 'AISLADO':       return 'status-purple';
+        case 'UPS':           return 'status-blue';
+        case 'MANTENCION':    return 'status-yellow';
+        case 'NO_MONITORADO': return 'status-grey';
         case 'OFFLINE':
-        default:
-            return 'status-grey';
+        default:              return 'status-red';
     }
 };

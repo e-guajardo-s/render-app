@@ -7,33 +7,37 @@ import './Sidebar.css';
 const LOGO_URL = '/logo.png'; 
 
 function Sidebar({ isOpen, onClose, user }) {
+  const normalizedRole = (user?.role || '').toLowerCase();
   
   const navItems = [
-    { name: 'Inicio', path: '/dashboard', requiredRole: 'user' }, 
-    { name: 'Semáforos', path: '/semaphores', requiredRole: 'user' }, 
-    { name: 'Estados', path: '/status', requiredRole: 'user' },
-    { name: 'Documentación', path: '/documentacion', requiredRole: 'user' },
-    { name: 'Tickets', path: '/tickets', requiredRole: 'user' },
-    { name: 'Notificaciones', path: '/notifications', requiredRole: 'user' }, // <-- ¡NUEVO!
-    { name: 'Redes IoT', path: '/networks', requiredRole: 'admin' }, 
-    { name: 'Administración', path: '/admin', requiredRole: 'admin' }, 
-    { name: 'Calendario', path: '/calendar', requiredRole: 'user' },
+    { name: 'Inicio',         path: '/dashboard',     requiredRole: 'user' },
+    { name: 'Semáforos',      path: '/semaphores',    requiredRole: 'user' },
+    { name: 'Estados',        path: '/status',        requiredRole: 'user' },
+    { name: 'Tickets',        path: '/tickets',       requiredRole: 'user' },
+    { name: 'Notificaciones', path: '/notifications', requiredRole: 'user' },
+    { name: 'Calendario',     path: '/calendar',      requiredRole: 'user' },
+    { name: 'Documentación',  path: '/documentacion', requiredRole: 'user' },
+    { name: 'Redes IoT',      path: '/networks',      requiredRole: 'admin' },
+    { name: 'Administración', path: '/admin',         requiredRole: 'admin' },
+    { name: 'Comparativa',    path: '/compare',       requiredRole: 'user' },
+    { name: 'Auditoría',      path: '/audit',         requiredRole: 'admin' },
+    { name: 'Mi Perfil',      path: '/profile',       requiredRole: 'user' },
   ];
   
   // --- LÓGICA DE FILTRADO MODIFICADA ---
   const visibleNavItems = navItems.filter(item => {
     // 1. Super Admin ve TODO
-    if (user.role === 'superadmin') return true; 
+    if (normalizedRole === 'superadmin') return true; 
     
     // 2. Admin ve 'admin' y 'user'
-    if (user.role === 'admin') {
+    if (normalizedRole === 'admin') {
       return item.requiredRole === 'user' || item.requiredRole === 'admin';
     }
     
     // 3. EXCEPCIÓN: Municipalidad (Ve 'user' PERO NO estados)
-    if (user.role === 'municipalidad') {
+    if (normalizedRole === 'municipalidad') {
         // Si es una de las páginas restringidas, devolvemos false
-        if (item.path === item.path === '/status' || item.path === '/networks' || item.path === '/admin') {
+      if (['/status', '/networks', '/admin', '/audit', '/compare'].includes(item.path)) {
             return false;
         }
         // Para el resto (Inicio, Semáforos, Documentación, Tickets, Notificaciones, Calendario), verifica si requiere 'user'
@@ -41,7 +45,7 @@ function Sidebar({ isOpen, onClose, user }) {
     }
 
     // 4. Usuario normal (Técnico - Ve todo lo que sea 'user')
-    if (user.role === 'user') {
+    if (normalizedRole === 'user') {
         return item.requiredRole === 'user';
     }
 
@@ -68,8 +72,13 @@ function Sidebar({ isOpen, onClose, user }) {
       <div className={isOpen ? 'sidebar-container open' : 'sidebar-container'}>
         
         <div className="sidebar-header">
-          <img src={LOGO_URL} alt="Logo" style={{ height: '35px', marginRight: '10px' }} />
-          <span className="sidebar-title">Menú Principal</span>
+          <div className="sidebar-brand">
+            <img src={LOGO_URL} alt="CJ Traffic SMART" className="sidebar-logo" />
+            <div className="sidebar-brand-text">
+              <span className="sidebar-brand-name">CJ Traffic</span>
+              <span className="sidebar-brand-smart">SMART</span>
+            </div>
+          </div>
           <button onClick={onClose} className="sidebar-close-button">×</button>
         </div>
 
@@ -95,7 +104,7 @@ function Sidebar({ isOpen, onClose, user }) {
         
         <div style={{ marginTop: 'auto', padding: '1rem', borderTop: '1px solid #eee', textAlign: 'center' }}>
             <span style={{ fontSize: '0.9rem', color: '#666' }}>
-                Rol: {getDisplayRole(user.role)}
+                Rol: {getDisplayRole(normalizedRole)}
             </span>
         </div>
 

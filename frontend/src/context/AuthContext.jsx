@@ -29,11 +29,23 @@ export const AuthProvider = ({ children }) => {
 
             // Sincroniza el usuario con datos frescos del backend
             const userData = response.data;
-            setUser({ username: userData.username, role: userData.role });
+            setUser({
+              id: userData._id || userData.id,
+              username: userData.username,
+              role: userData.role,
+              comuna: userData.comuna || '',
+              createdAt: userData.createdAt
+            });
             setToken(storedToken);
 
             // Actualiza localStorage por si el rol cambió
-            localStorage.setItem('user', JSON.stringify({ username: userData.username, role: userData.role }));
+            localStorage.setItem('user', JSON.stringify({
+              id: userData._id || userData.id,
+              username: userData.username,
+              role: userData.role,
+              comuna: userData.comuna || '',
+              createdAt: userData.createdAt
+            }));
 
         } catch (error) {
             // El interceptor (error 401) ya limpia el storage y redirige
@@ -54,8 +66,14 @@ export const AuthProvider = ({ children }) => {
 
   // 4. Función de Login: guarda el token y usuario en el estado Y en localStorage
   const loginContext = (data) => {
-    const { token, username, role } = data;
-    const userData = { username, role };
+    const { token, id, username, role, comuna, createdAt } = data;
+    const userData = {
+      id,
+      username,
+      role,
+      comuna: comuna || '',
+      createdAt
+    };
     
     setToken(token);
     setUser(userData);

@@ -1,187 +1,240 @@
 // backend/index.js
 const express = require('express');
-require('dotenv').config(); 
+require('dotenv').config();
 const cors = require('cors');
+const helmet = require('helmet');
+const rateLimit = require('express-rate-limit');
 const mongoose = require('mongoose');
-const bcrypt = require('bcryptjs');
-const jwt = require('jsonwebtoken');
-const path = require('path'); // <--- IMPORTANTE: Asegúrate de que esto esté aquí
+const path = require('path');
 const { createServer } = require('http');
-const { Server } = require("socket.io");
+const { Server } = require('socket.io');
+const logger = require('./utils/logger');
 
 // --- Importar Rutas ---
-const settingsRoutes = require('./routes/settings.routes');
-const mqttLogRoutes = require('./routes/mqttLog.routes');
-const semaphoreRoutes = require('./routes/semaphore.routes');
-const statusLogRoutes = require('./routes/statuslog.routes');
-const documentRoutes = require('./routes/document.routes.js');
-const ticketRoutes = require('./routes/ticket.routes');
-const eventRoutes = require('./routes/event.routes');
+const authRoutes        = require('./routes/auth.routes');
+const userRoutes        = require('./routes/user.routes');
+const settingsRoutes    = require('./routes/settings.routes');
+const mqttLogRoutes     = require('./routes/mqttLog.routes');
+const semaphoreRoutes   = require('./routes/semaphore.routes');
+const statusLogRoutes   = require('./routes/statuslog.routes');
+const documentRoutes    = require('./routes/document.routes.js');
+const ticketRoutes      = require('./routes/ticket.routes');
+const eventRoutes       = require('./routes/event.routes');
 const notificationRoutes = require('./routes/notification.routes');
-const invitationRoutes = require('./routes/invitation.routes');
+const invitationRoutes      = require('./routes/invitation.routes');
+const auditRoutes           = require('./routes/audit.routes');
+const ticketCommentRoutes   = require('./routes/ticketComment.routes');
+const systemNoticeRoutes    = require('./routes/systemNotice.routes');
 
 // --- Servicios y Modelos ---
 const mqttService = require('./services/mqttService');
-const User = require('./models/User.model');
-const Semaphore = require('./models/Semaphore.model'); 
-const StatusLog = require('./models/StatusLog.model');
-const Notification = require('./models/Notification.model');
+const MqttLog = require('./models/MqttLog.model');
 
-// --- Middlewares Personalizados ---
-const { verifyToken, verifyTokenAndAdmin } = require('./authMiddleware'); 
+// ─────────────────────────────────────────────────────────────────
+// CONFIGURACIÓN INICIAL
+// ─────────────────────────────────────────────────────────────────
+const app        = express();
+const PORT       = process.env.PORT || 5000;
+const MONGO_URI  = process.env.MONGO_URI;
+const IS_PROD    = process.env.NODE_ENV === 'production';
 
-// --- Configuración Inicial ---
-const app = express();
-const PORT = process.env.PORT || 5000; 
-const JWT_SECRET = process.env.JWT_SECRET;
-const MONGO_URI = process.env.MONGO_URI;
+// ─────────────────────────────────────────────────────────────────
+// SEGURIDAD: HELMET
+// ─────────────────────────────────────────────────────────────────
+app.use(helmet({ contentSecurityPolicy: false }));
 
-// --- Middlewares Express ---
-app.use(cors());
-app.use(express.json());
+// ─────────────────────────────────────────────────────────────────
+// SEGURIDAD: CORS
+// En producción acepta solo el dominio de CloudFront.
+// En desarrollo acepta localhost:5173 (Vite dev server).
+// ─────────────────────────────────────────────────────────────────
+const ALLOWED_ORIGINS = IS_PROD
+  ? [process.env.FRONTEND_URL].filter(Boolean)
+  : ['http://localhost:5173', 'http://localhost:4173'];
 
-// --- Configuración de Servidor HTTP y Socket.IO ---
+app.use(cors({
+  origin: (origin, callback) => {
+    if (!origin) return callback(null, true); // mobile/Postman/curl
+    if (ALLOWED_ORIGINS.includes(origin)) return callback(null, true);
+    logger.warn(`CORS bloqueado para origen: ${origin}`);
+    callback(new Error(`Origen ${origin} no permitido por CORS`));
+  },
+  credentials: true,
+}));
+
+// ─────────────────────────────────────────────────────────────────
+// RATE LIMITING
+// ─────────────────────────────────────────────────────────────────
+
+// Limiter estricto solo para login (evita fuerza bruta)
+const authLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000, // 15 min
+  max: 20,                   // 20 intentos de login por ventana
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { message: 'Demasiados intentos. Espera 15 minutos.' },
+  skipSuccessfulRequests: true, // No cuenta los intentos exitosos
+});
+
+// Limiter para la API general (consultas normales de la app)
+// 2000 requests por 15 min es suficiente para uso normal multi-tab
+const generalLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  max: 2000,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: { message: 'Demasiadas peticiones. Inténtalo en 15 minutos.' },
+  skip: (req) => {
+    // No aplicar rate limit a rutas de socket.io
+    return req.path.startsWith('/socket.io');
+  }
+});
+
+app.use('/api/auth/login', authLimiter);  // Estricto solo en login
+app.use('/api/', generalLimiter);          // General para todo lo demás
+
+// ─────────────────────────────────────────────────────────────────
+// MIDDLEWARES GENERALES
+// ─────────────────────────────────────────────────────────────────
+app.use(express.json({ limit: '10mb' }));
+app.use(express.urlencoded({ extended: true, limit: '10mb' }));
+app.set('trust proxy', 1); // confiar en proxy ALB para IP real
+
+// ─────────────────────────────────────────────────────────────────
+// SERVIDOR HTTP + SOCKET.IO
+// ─────────────────────────────────────────────────────────────────
 const httpServer = createServer(app);
 const io = new Server(httpServer, {
-    cors: {
-        // En producción permitimos el mismo origen, en desarrollo localhost
-        origin: process.env.NODE_ENV === 'production' ? false : "http://localhost:5173",
-        methods: ["GET", "POST"]
-    }
+  cors: {
+    origin: IS_PROD ? ALLOWED_ORIGINS : ['http://localhost:5173'],
+    methods: ['GET', 'POST'],
+    credentials: true,
+  },
+  transports: IS_PROD ? ['websocket'] : ['polling', 'websocket'],
 });
 
 io.on('connection', (socket) => {
-    console.log(`Socket Conectado: ${socket.id}`);
-    socket.on('join_room', (topic) => {
-        socket.join(topic);
-        console.log(`Socket ${socket.id} se unió a: ${topic}`);
-    });
-    socket.on('disconnect', () => {
-        console.log(`Socket Desconectado: ${socket.id}`);
-    });
+  // Solo loguear en desarrollo para no generar I/O innecesario en prod
+  if (!IS_PROD) logger.info(`Socket conectado: ${socket.id}`);
+  socket.on('join_room', (topic) => {
+    socket.join(topic);
+  });
+  socket.on('disconnect', () => {
+    if (!IS_PROD) logger.info(`Socket desconectado: ${socket.id}`);
+  });
 });
 
 app.set('socketio', io);
 
-// --- Conexión a MongoDB Atlas ---
-mongoose.connect(MONGO_URI)
+// ─────────────────────────────────────────────────────────────────
+// CONEXIÓN MONGODB ATLAS
+// ─────────────────────────────────────────────────────────────────
+mongoose.connect(MONGO_URI, { serverSelectionTimeoutMS: 10000 })
   .then(async () => {
-      console.log("MongoDB conectado exitosamente");
-      try {
-          const setupDevice = await Semaphore.findOne({ 'mqtt_config.host': { $ne: '' } });
-          if (setupDevice && setupDevice.mqtt_config) {
-              console.log(`⚙️ Iniciando MQTT con credenciales de: ${setupDevice.cruceId}`);
-              mqttService.connectToBroker(setupDevice.mqtt_config, io);
-          } else {
-              console.log("⚠️ Sistema iniciado sin conexión MQTT.");
-          }
-      } catch (error) {
-          console.error("Error al intentar iniciar MQTT:", error);
+    logger.info('MongoDB conectado exitosamente');
+    try {
+      const mqttConfig = {
+        host:     process.env.MQTT_HOST,
+        port:     process.env.MQTT_PORT || 1883,
+        username: process.env.MQTT_USERNAME,
+        password: process.env.MQTT_PASSWORD,
+      };
+      if (mqttConfig.host) {
+        logger.info(`Iniciando conexión MQTT hacia: ${mqttConfig.host}`);
+        mqttService.connectToBroker(mqttConfig, io);
+      } else {
+        logger.warn('Sistema iniciado sin MQTT. Falta MQTT_HOST en variables de entorno.');
       }
-  })
-  .catch(err => console.error("Error al conectar a MongoDB:", err));
-
-// --- RUTAS API (HTTP) ---
-app.get('/api', (req, res) => {
-  res.json({ message: "Hola desde el Backend!" });
-});
-
-// Autenticación (Login)
-app.post('/api/auth/login', async (req, res) => {
-  try {
-    const { username, password } = req.body;
-    const user = await User.findOne({ username: username });
-    if (!user) return res.status(400).json({ message: "Usuario o contraseña incorrectos." });
-    
-    const isMatch = await bcrypt.compare(password, user.password);
-    if (!isMatch) return res.status(400).json({ message: "Usuario o contraseña incorrectos." });
-    
-    const payload = { id: user.id, username: user.username, role: user.role, comuna: user.comuna };
-    const token = jwt.sign(payload, JWT_SECRET, { expiresIn: '8h' });
-    
-    res.status(200).json({
-      message: "Login exitoso",
-      token: token,
-      username: user.username,
-      role: user.role,
-      comuna: user.comuna
-    });
-  } catch (error) {
-    res.status(500).json({ message: "Error interno en el servidor"});
-  }
-});
-
-// Registrar (Solo Admin)
-app.post('/api/auth/register', verifyTokenAndAdmin, async (req, res) => {
-    try {
-        const { username, password, role, comuna } = req.body; 
-        const actor = req.user; 
-        if (actor.role === 'admin' && (role === 'admin' || role === 'superadmin')) {
-            return res.status(403).json({ message: "No autorizado." });
-        }
-        const existingUser = await User.findOne({ username: username });
-        if (existingUser) return res.status(400).json({ message: "Usuario existe." });
-        
-        const salt = await bcrypt.genSalt(10);
-        const hashedPassword = await bcrypt.hash(password, salt);
-        const newUser = new User({ username, password: hashedPassword, role: role || 'user', comuna });
-        
-        await newUser.save();
-        res.status(201).json({ message: "Usuario creado." });
     } catch (error) {
-        res.status(500).json({ message: "Error interno" });
+      logger.error('Error al iniciar MQTT:', error);
     }
-});
+  })
+  .catch(err => logger.error('Error al conectar a MongoDB:', err));
 
-// Rutas de Usuario
-app.get('/api/users', verifyTokenAndAdmin, async (req, res) => {
-  try {
-    const users = await User.find({}).select('-password');
-    res.status(200).json(users);
-  } catch (error) { res.status(500).json({ message: "Error al obtener usuarios"}); }
-});
+// ─────────────────────────────────────────────────────────────────
+// JOB NOCTURNO: LIMPIEZA DE MQTT LOGS A LAS 00:00
+// Borra todos los registros del día anterior a medianoche exacta.
+// ─────────────────────────────────────────────────────────────────
+function scheduleNightlyMqttCleanup() {
+  const now = new Date();
+  // Calcular milisegundos hasta la próxima medianoche local
+  const nextMidnight = new Date(
+    now.getFullYear(),
+    now.getMonth(),
+    now.getDate() + 1, // mañana
+    0, 0, 0, 0         // 00:00:00.000
+  );
+  const msUntilMidnight = nextMidnight.getTime() - now.getTime();
 
-app.put('/api/users/:id/role', verifyTokenAndAdmin, async (req, res) => {
+  setTimeout(async () => {
     try {
-        const { role: newRole } = req.body;
-        const updatedUser = await User.findByIdAndUpdate(req.params.id, { role: newRole }, { new: true }).select('-password');
-        res.status(200).json(updatedUser);
-    } catch (error) { res.status(500).json({ message: "Error actualizando rol"}); }
+      const result = await MqttLog.deleteMany({});
+      logger.info(`[MQTT Cleanup] Limpieza nocturna ejecutada. ${result.deletedCount} registros eliminados.`);
+    } catch (err) {
+      logger.error('[MQTT Cleanup] Error en limpieza nocturna:', err);
+    }
+    // Reprogramar para la próxima medianoche (bucle diario)
+    scheduleNightlyMqttCleanup();
+  }, msUntilMidnight);
+
+  const horasRestantes = (msUntilMidnight / 1000 / 60 / 60).toFixed(2);
+  logger.info(`[MQTT Cleanup] Próxima limpieza en ${horasRestantes}h (medianoche local).`);
+}
+
+scheduleNightlyMqttCleanup();
+
+// ─────────────────────────────────────────────────────────────────
+// RUTAS API
+// ─────────────────────────────────────────────────────────────────
+app.get('/api', (req, res) => {
+  res.json({ message: 'render-app API online', env: process.env.NODE_ENV });
 });
 
-app.delete('/api/users/:id', verifyTokenAndAdmin, async (req, res) => {
-    try {
-        await User.findByIdAndDelete(req.params.id);
-        res.status(200).json({ message: "Usuario eliminado." });
-    } catch (error) { res.status(500).json({ message: "Error eliminando usuario"}); }
-});
-
-app.get('/api/auth/me', verifyToken, (req, res) => {
-    res.status(200).json(req.user);
-});
-
-// --- Usar Rutas de la App ---
-app.use('/api/semaphores', semaphoreRoutes);
-app.use('/api/statuslog', statusLogRoutes);
-app.use('/api/docs', documentRoutes);
-app.use('/api/tickets', ticketRoutes);
-app.use('/api/events', eventRoutes);
+// Usar routers dedicados (sin duplicar lógica en este archivo)
+app.use('/api/auth',         authRoutes);
+app.use('/api/users',        userRoutes);
+app.use('/api/semaphores',   semaphoreRoutes);
+app.use('/api/statuslog',    statusLogRoutes);
+app.use('/api/docs',         documentRoutes);
+app.use('/api/tickets/:ticketId/comments', ticketCommentRoutes);
+app.use('/api/tickets',      ticketRoutes);
+app.use('/api/events',       eventRoutes);
 app.use('/api/notifications', notificationRoutes);
-app.use('/api/invitations', invitationRoutes);
-app.use('/api/mqtt-logs', mqttLogRoutes);
-app.use('/api/settings', settingsRoutes);
+app.use('/api/invitations',  invitationRoutes);
+app.use('/api/mqtt-logs',    mqttLogRoutes);
+app.use('/api/settings',     settingsRoutes);
+app.use('/api/audit',        auditRoutes);
 
-// --- DEPLOYMENT CONFIG (Servir Frontend) ---
-// 1. Decirle a Express dónde están los archivos estáticos del build de React
-app.use(express.static(path.join(__dirname, '../frontend/dist')));
-
-// 2. Ruta "Catch-All" para React Router (SOLUCIÓN EXPRESS 5)
-// Cualquier ruta que no sea API, devuelve el index.html
-app.get(/.*/, (req, res) => {
+// ─────────────────────────────────────────────────────────────────
+// SERVIR FRONTEND (solo en desarrollo local)
+// En producción el frontend vive en S3/CloudFront.
+// ─────────────────────────────────────────────────────────────────
+if (!IS_PROD) {
+  app.use(express.static(path.join(__dirname, '../frontend/dist')));
+  app.get(/^(?!\/api).*/, (req, res) => {
     res.sendFile(path.join(__dirname, '../frontend/dist', 'index.html'));
+  });
+}
+
+// ─────────────────────────────────────────────────────────────────
+// MANEJO DE ERRORES
+// ─────────────────────────────────────────────────────────────────
+app.use('/api/notices',      systemNoticeRoutes);
+app.use('/api', (req, res) => {
+  res.status(404).json({ message: 'Ruta de API no encontrada' });
 });
 
-// --- Iniciar Servidor ---
+// eslint-disable-next-line no-unused-vars
+app.use((err, req, res, next) => {
+  logger.error('Error crítico no capturado:', { message: err.message, stack: err.stack });
+  res.status(500).json({
+    message: IS_PROD ? 'Error interno del servidor.' : err.message,
+  });
+});
+
+// ─────────────────────────────────────────────────────────────────
+// ARRANQUE
+// ─────────────────────────────────────────────────────────────────
 httpServer.listen(PORT, () => {
-  console.log(`Servidor backend (con Sockets) corriendo en puerto ${PORT}`);
+  logger.info(`Servidor corriendo en puerto ${PORT} [${process.env.NODE_ENV || 'development'}]`);
 });

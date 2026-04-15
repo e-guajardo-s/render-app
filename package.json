@@ -12,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "concurrently": "^9.2.1",
+    "leaflet.markercluster": "^1.5.3",
     "mongodb": "^6.20.0",
     "mqtt": "^5.14.1"
   }

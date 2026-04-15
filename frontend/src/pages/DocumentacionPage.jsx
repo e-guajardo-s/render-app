@@ -151,14 +151,25 @@ function DocumentacionPage() {
 
     const filteredSemaphores = useMemo(() => {
         const normalizedSearchTerm = normalizeString(searchTerm.trim());
-        if (!normalizedSearchTerm) return semaphores;
-        return semaphores.filter(sem => {
-            const normalizedCruce = normalizeString(sem.cruce);
-            const normalizedCruceId = normalizeString(sem.cruceId);
-            return (
-                (normalizedCruce && normalizedCruce.includes(normalizedSearchTerm)) ||
-                (normalizedCruceId && normalizedCruceId.includes(normalizedSearchTerm))
-            );
+        
+        // 1. Filtrar
+        let results = semaphores;
+        if (normalizedSearchTerm) {
+            results = semaphores.filter(sem => {
+                const normalizedCruce = normalizeString(sem.cruce);
+                const normalizedCruceId = normalizeString(sem.cruceId);
+                return (
+                    (normalizedCruce && normalizedCruce.includes(normalizedSearchTerm)) ||
+                    (normalizedCruceId && normalizedCruceId.includes(normalizedSearchTerm))
+                );
+            });
+        }
+
+        // 2. Ordenar por cruceId (Alfanumérico: ST-1, ST-2, ST-10...)
+        return [...results].sort((a, b) => {
+            const idA = a.cruceId || "";
+            const idB = b.cruceId || "";
+            return idA.localeCompare(idB, undefined, { numeric: true, sensitivity: 'base' });
         });
     }, [semaphores, searchTerm]);
 

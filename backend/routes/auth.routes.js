@@ -75,4 +75,19 @@ router.get('/me', verifyToken, (req, res) => {
     res.status(200).json(req.user);
 });
 
+// CAMBIAR CONTRASEÑA PROPIA
+router.put('/change-password', verifyToken, async (req, res, next) => {
+    const { currentPassword, newPassword } = req.body;
+    if (!currentPassword || !newPassword) return res.status(400).json({ message: 'Faltan campos.' });
+    if (newPassword.length < 8) return res.status(400).json({ message: 'Mínimo 8 caracteres.' });
+    try {
+        const user = await User.findById(req.user._id);
+        const match = await bcrypt.compare(currentPassword, user.password);
+        if (!match) return res.status(401).json({ message: 'Contraseña actual incorrecta.' });
+        user.password = await bcrypt.hash(newPassword, 10);
+        await user.save();
+        res.json({ message: 'Contraseña actualizada correctamente.' });
+    } catch (e) { next(e); }
+});
+
 module.exports = router;

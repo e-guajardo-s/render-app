@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import api from '../api';
-import { io } from 'socket.io-client';
+import { useSocket } from '../context/SocketContext';
 import './NetworksPage.css';
 
 // --- ICONOS SVG ---
@@ -46,9 +46,15 @@ function NetworksPage() {
   const [showPass, setShowPass] = useState(false);
 
   // --- Estados Sniffer ---
-  const [logs, setLogs] = useState([]);
+  const [logs, setLogs] = useState(() => {
+    try {
+      const saved = sessionStorage.getItem('mqtt_sniffer_logs');
+      return saved ? JSON.parse(saved) : [];
+    } catch { return []; }
+  });
   const terminalEndRef = useRef(null);
-  const socketRef = useRef(null);
+  const midnightTimerRef = useRef(null);
+  const socket = useSocket(); // Socket compartido
 
   // 1. CARGA INICIAL
   useEffect(() => {
@@ -74,23 +80,73 @@ function NetworksPage() {
     // ---------------------------------
 
     fetchDevices();
-    const baseUrl = import.meta.env.VITE_API_BASE_URL || 'http://localhost:5000';
-    const socketUrl = baseUrl.replace('/api', ''); 
-    
-    socketRef.current = io(socketUrl);
-    socketRef.current.on('mqtt_message', (data) => addLog(data.topic, data.message));
-    return () => { if (socketRef.current) socketRef.current.disconnect(); };
+
+    // Limpiar logs en memoria a las 00:00
+    const scheduleMidnightClear = () => {
+      const now = new Date();
+      const nextMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1, 0, 0, 0, 0);
+      const msUntilMidnight = nextMidnight.getTime() - now.getTime();
+      return setTimeout(() => {
+        try { sessionStorage.removeItem('mqtt_sniffer_logs'); } catch {}
+        setLogs([]);
+        addLog('SYSTEM', 'Logs limpiados automáticamente (nueva jornada 00:00)');
+        midnightTimerRef.current = scheduleMidnightClear();
+      }, msUntilMidnight);
+    };
+    midnightTimerRef.current = scheduleMidnightClear();
+
+    return () => {
+      if (midnightTimerRef.current) clearTimeout(midnightTimerRef.current);
+    };
   }, []);
 
+  // Listeners del socket compartido
+  useEffect(() => {
+    if (!socket) return;
+
+    const handleMqttMessage = (data) => addLog(data.topic, data.message);
+    const handleStatusUpdate = (updatedData) => {
+      setDevices(prev => prev.map(d =>
+        d.cruceId === updatedData.cruceId
+          ? {
+              ...d,
+              status: updatedData.fullStatus,
+              ...(updatedData.monitoreando !== undefined && { monitoreando: updatedData.monitoreando })
+            }
+          : d
+      ));
+    };
+
+    socket.on('mqtt_message', handleMqttMessage);
+    socket.on('status_update', handleStatusUpdate);
+    return () => {
+      socket.off('mqtt_message', handleMqttMessage);
+      socket.off('status_update', handleStatusUpdate);
+    };
+  }, [socket]);
+
   const addLog = (topic, msg) => {
-    const time = new Date().toLocaleTimeString('es-CL', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
-    setLogs(prev => [...prev, { time, topic, msg }]);
+    const now = new Date();
+    const time = now.toLocaleTimeString('es-CL', { hour: '2-digit', minute: '2-digit', second: '2-digit' });
+    const date = now.toLocaleDateString('es-CL', { day: '2-digit', month: '2-digit', year: 'numeric' });
+    setLogs(prev => {
+      const next = [...prev, { time, date, topic, msg }];
+      // Persistir en sessionStorage (máx 500 entradas para no saturar)
+      try { sessionStorage.setItem('mqtt_sniffer_logs', JSON.stringify(next.slice(-500))); } catch {}
+      return next;
+    });
   };
 
   const fetchDevices = async () => {
     try {
       const res = await api.get('/api/semaphores');
-      setDevices(res.data);
+      const sorted = [...res.data].sort((a, b) => {
+          const nA = parseInt(a.cruceId, 10);
+          const nB = parseInt(b.cruceId, 10);
+          if (!isNaN(nA) && !isNaN(nB)) return nA - nB;
+          return String(a.cruceId).localeCompare(String(b.cruceId), undefined, { numeric: true });
+      });
+      setDevices(sorted);
       setLoading(false);
     } catch (e) { setLoading(false); }
   };
@@ -105,7 +161,7 @@ function NetworksPage() {
 
       if (selectedDevice.mqtt_topic) {
           fetchHistory(selectedDevice.mqtt_topic);
-          if (socketRef.current) socketRef.current.emit('join_room', selectedDevice.mqtt_topic);
+          if (socket) socket.emit('join_room', selectedDevice.mqtt_topic);
       } else {
           addLog('SYSTEM', 'No hay Tópico configurado.');
       }
@@ -116,7 +172,11 @@ function NetworksPage() {
     if (!selectedDevice) return;
     setEditIp(selectedDevice.ip_gateway || '');
     setEditTopic(selectedDevice.mqtt_topic || '');
-    setBrokerConfig(selectedDevice.mqtt_config || { host: '', port: 1883, username: '', password: '' });
+    // Broker propio del semáforo, o campos vacíos si no tiene configurado
+    setBrokerConfig(selectedDevice.mqtt_config?.host
+        ? selectedDevice.mqtt_config
+        : { host: '', port: 8883, username: '', password: '' }
+    );
   };
 
   const fetchHistory = async (topic) => {
@@ -125,6 +185,7 @@ function NetworksPage() {
        if (res.data && res.data.length > 0) {
            const history = res.data.map(log => ({
                time: new Date(log.timestamp).toLocaleTimeString('es-CL', { hour: '2-digit', minute: '2-digit', second: '2-digit' }),
+               date: new Date(log.timestamp).toLocaleDateString('es-CL', { day: '2-digit', month: '2-digit', year: 'numeric' }),
                topic: log.topic, msg: log.message
            }));
            setLogs(prev => [...prev, ...history, { time: '--:--', topic: '---', msg: '--- FIN HISTORIAL ---' }]);
@@ -137,6 +198,7 @@ function NetworksPage() {
     if (window.confirm("¿Confirmas eliminar todo el historial de la BD?")) {
       try {
         await api.delete(`/api/mqtt-logs?topic=${encodeURIComponent(selectedDevice.mqtt_topic)}`);
+        try { sessionStorage.removeItem('mqtt_sniffer_logs'); } catch {}
         setLogs([]);
         addLog('SYSTEM', 'Base de datos limpiada.');
       } catch (e) { alert("Error al borrar."); }
@@ -153,12 +215,18 @@ function NetworksPage() {
         await api.post('/api/settings/verify-network-pass', { password });
         setIsUnlocked(true); // Si no lanza error, es correcta
     } catch (error) {
-        if (error.response?.status === 401) {
-            setAuthError('Credencial inválida.');
-        } else if (error.response?.status === 404) {
-            setAuthError('Error: Backend no configurado (Ruta /api/settings no existe).');
+        const status = error.response?.status;
+        const code = error.response?.data?.code;
+        if (status === 401) {
+            setAuthError('Contraseña incorrecta.');
+        } else if (status === 503 || code === 'NOT_INITIALIZED') {
+            setAuthError('La contraseña maestra no ha sido configurada. Contacta al superadmin.');
+        } else if (status === 404) {
+            setAuthError('Error: Ruta /api/settings no encontrada en el backend.');
+        } else if (status === 500) {
+            setAuthError('Error interno del servidor. Revisa los logs del backend.');
         } else {
-            setAuthError('Error de conexión.');
+            setAuthError(`Error de conexión (${status || 'sin respuesta'}). Verifica que el backend esté corriendo.`);
         }
         setPassword('');
     }
@@ -185,16 +253,45 @@ function NetworksPage() {
       }
   };
 
-  // --- GUARDAR CONFIGURACIÓN DISPOSITIVO ---
+  // --- UMBRALES ---
+  const [thresholds, setThresholds]     = useState({ watchdogMinutes: 20, upsThreshold: 12, inactivityLimit: 20 });
+  const [thresholdsLoaded, setTLoaded]  = useState(false);
+  const [savingThr, setSavingThr]       = useState(false);
+  const [thrMsg, setThrMsg]             = useState('');
+
+  useEffect(() => {
+    api.get('/api/settings/thresholds').then(r => { setThresholds(r.data); setTLoaded(true); }).catch(() => {});
+  }, []);
+
+  const handleSaveThresholds = async () => {
+    setSavingThr(true); setThrMsg('');
+    try {
+      await api.put('/api/settings/thresholds', thresholds);
+      setThrMsg('Umbrales guardados correctamente.');
+      setTimeout(() => setThrMsg(''), 3000);
+    } catch { setThrMsg('Error al guardar.'); }
+    finally { setSavingThr(false); }
+  };
+
+  // --- GUARDAR CONFIGURACIÓN DISPOSITIVO (solo IP, tópico y broker) ---
+  // La página es SOLO LECTURA para el sniffer.
+  // La configuración del broker se guarda aquí y el backend la usa al conectar.
   const handleSaveConfig = async () => {
     if (!selectedDevice) return;
     setIsSaving(true);
     try {
-      const res = await api.put(`/api/semaphores/${selectedDevice._id}`, { ip_gateway: editIp, mqtt_topic: editTopic, mqtt_config: brokerConfig });
+      const res = await api.put(`/api/semaphores/${selectedDevice._id}`, {
+        ip_gateway:  editIp,
+        mqtt_topic:  editTopic,
+        mqtt_config: brokerConfig   // broker propio por semáforo
+      });
       const updated = devices.map(d => d._id === selectedDevice._id ? res.data : d);
-      setDevices(updated); setSelectedDevice(res.data);
-      setIsEditing(false); alert('Configuración guardada.');
-    } catch (e) { alert('Error al guardar.'); } finally { setIsSaving(false); }
+      setDevices(updated);
+      setSelectedDevice(res.data);
+      setIsEditing(false);
+      alert('Configuración guardada. El broker se usará la próxima vez que el backend reinicie.');
+    } catch { alert('Error al guardar.'); }
+    finally { setIsSaving(false); }
   };
 
   const filtered = devices.filter(d => d.cruce.toLowerCase().includes(searchTerm.toLowerCase()) || d.cruceId.toLowerCase().includes(searchTerm.toLowerCase()));
@@ -205,54 +302,73 @@ function NetworksPage() {
   // --- VISTA BLOQUEADA ---
   if (!isUnlocked) {
     return (
-      <div className="page-content center-lock">
-        <div className="card lock-card">
-          <div className="lock-icon-container"><Icons.Lock /></div>
-          
-          {/* MODO NORMAL: DESBLOQUEAR */}
-          {!isChangingPass ? (
-            <>
-                <h2>Acceso Restringido</h2>
-                <p style={{marginBottom:'20px', color:'#64748b'}}>Ingrese credenciales de Ingeniería</p>
-                <form onSubmit={handleUnlock}>
-                    <input type="password" placeholder="••••••••" className="form-input" style={{textAlign:'center', marginBottom:'1rem'}}
-                    value={password} onChange={(e) => setPassword(e.target.value)} autoFocus />
-                    {authError && <p style={{color:'#ef4444', fontSize:'0.9rem', marginTop:'-10px', marginBottom:'10px'}}>{authError}</p>}
-                    <button type="submit" className="btn-primary">Desbloquear Panel</button>
-                </form>
+      <div className="iot-page-wrapper center-lock">
+      <div className="lock-card">
+        <div className="lock-icon-container">
+        {/* Icono de candado Modern Pro */}
+        <svg width="35" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+          <path d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
+        </svg>
+        </div>
 
-                {/* ENLACE CAMBIAR CLAVE (SOLO SUPERADMIN) */}
-                {userRole === 'superadmin' && (
-                    <div style={{marginTop: '20px', borderTop: '1px solid #f1f5f9', paddingTop: '15px'}}>
-                        <button 
-                            type="button" 
-                            onClick={() => setIsChangingPass(true)}
-                            style={{background:'none', border:'none', color:'#64748b', fontSize:'0.8rem', cursor:'pointer', display:'flex', alignItems:'center', justifyContent:'center', width:'100%', gap:'5px', padding:'5px'}}
-                        >
-                            <Icons.Settings /> Administrar Clave Maestra
-                        </button>
-                    </div>
-                )}
-            </>
-          ) : (
-            /* MODO SUPERADMIN: CAMBIAR CLAVE */
-            <>
-                <h2>Nueva Clave Maestra</h2>
-                <p style={{marginBottom:'20px', color:'#64748b'}}>Establezca la nueva contraseña global</p>
-                <form onSubmit={handleUpdateMasterPass}>
-                    <input type="password" placeholder="Nueva Contraseña" className="form-input" style={{textAlign:'center', marginBottom:'1rem'}}
-                    value={newMasterPass} onChange={(e) => setNewMasterPass(e.target.value)} autoFocus />
-                    
-                    <div style={{display:'flex', gap:'10px'}}>
-                        <button type="button" className="btn-secondary" onClick={() => setIsChangingPass(false)}>Cancelar</button>
-                        <button type="submit" className="btn-primary" disabled={savePassLoading}>
-                            {savePassLoading ? 'Guardando...' : 'Actualizar'}
-                        </button>
-                    </div>
-                </form>
-            </>
+        {!isChangingPass ? (
+        <>
+          <h2>Panel de Ingeniería</h2>
+          <p>Acceso restringido para configuración de red e IoT</p>
+          <form onSubmit={handleUnlock}>
+            <input
+              type="password"
+              placeholder="Ingrese clave maestra"
+              className="form-input-pro"
+              style={{marginBottom: '1.5rem'}}
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              autoFocus
+            />
+            {authError && <p style={{color:'#ef4444', fontSize:'0.85rem', marginTop:'-1rem', marginBottom:'1rem'}}>{authError}</p>}
+            <button type="submit" className="btn-pro-dark">
+              Desbloquear Sistema
+            </button>
+          </form>
+
+          {userRole === 'superadmin' && (
+            <div style={{marginTop: '2rem', borderTop: '1px solid #f1f5f9', paddingTop: '1rem'}}>
+              <button
+                type="button"
+                onClick={() => setIsChangingPass(true)}
+                style={{background:'none', border:'none', color:'#ff9900', fontSize:'0.8rem', cursor:'pointer', fontWeight: '600'}}
+              >
+                ⚙️ Administrar Clave Maestra
+              </button>
+            </div>
           )}
+        </>
+        ) : (
+        <>
+          <h2>Nueva Clave Maestra</h2>
+          <p>Establezca la nueva contraseña global de ingeniería</p>
+          <form onSubmit={handleUpdateMasterPass}>
+            <input
+              type="password"
+              placeholder="Nueva Contraseña"
+              className="form-input-pro"
+              style={{marginBottom: '1rem'}}
+              value={newMasterPass}
+              onChange={(e) => setNewMasterPass(e.target.value)}
+              autoFocus
+            />
 
+            <div style={{display:'flex', gap:'10px'}}>
+              <button type="button" className="btn-pro-dark" style={{background: '#f1f5f9', color: '#475569'}} onClick={() => setIsChangingPass(false)}>
+                Cancelar
+              </button>
+              <button type="submit" className="btn-pro-dark" style={{background: '#ff9900'}} disabled={savePassLoading}>
+                {savePassLoading ? '...' : 'Actualizar'}
+              </button>
+            </div>
+          </form>
+        </>
+        )}
         </div>
       </div>
     );
@@ -307,7 +423,7 @@ function NetworksPage() {
               {logs.length === 0 && <div style={{textAlign:'center', color:'#475569', marginTop:'2rem'}}>Esperando datos...</div>}
               {logs.map((l, i) => (
                 <div key={i} className="log-entry">
-                  <span className="log-time">{l.time}</span>
+                  <span className="log-time">{l.date && <span className="log-date">{l.date} </span>}{l.time}</span>
                   <span className="log-topic">{l.topic}</span>
                   <span className="log-msg">{l.msg}</span>
                 </div>
@@ -390,9 +506,36 @@ function NetworksPage() {
               </div>
             </>
           ) : (
-            <div className="empty-state">
-              <div style={{color:'#cbd5e1', marginBottom:'1rem'}}><Icons.Cpu /></div>
-              <p style={{color:'#64748b'}}>Selecciona un dispositivo para ver detalles</p>
+            <div className="config-form">
+              <div className="empty-state" style={{marginBottom:'1.5rem'}}>
+                <div style={{color:'#cbd5e1', marginBottom:'0.5rem'}}><Icons.Cpu /></div>
+                <p style={{color:'#64748b',margin:0}}>Selecciona un dispositivo</p>
+              </div>
+
+              {/* Umbrales del sistema */}
+              {thresholdsLoaded && (
+                <>
+                  <div className="section-label"><Icons.Settings /> <span className="ml-2">Umbrales del Sistema</span> <div className="section-line"></div></div>
+                  <div className="form-group">
+                    <label>Watchdog (minutos sin señal)</label>
+                    <input type="number" className="form-input" min={1} max={120}
+                      value={thresholds.watchdogMinutes}
+                      onChange={e => setThresholds(p => ({...p, watchdogMinutes: Number(e.target.value)}))}
+                    />
+                  </div>
+                  <div className="form-group">
+                    <label>Umbral UPS (voltios = activo)</label>
+                    <input type="number" className="form-input" min={1} max={24}
+                      value={thresholds.upsThreshold}
+                      onChange={e => setThresholds(p => ({...p, upsThreshold: Number(e.target.value)}))}
+                    />
+                  </div>
+                  {thrMsg && <p style={{fontSize:'0.8rem',color: thrMsg.includes('Error') ? '#ef4444' : '#22c55e',margin:'4px 0'}}>{thrMsg}</p>}
+                  <button className="btn-primary" onClick={handleSaveThresholds} disabled={savingThr} style={{width:'100%',justifyContent:'center',marginTop:'0.5rem'}}>
+                    {savingThr ? 'Guardando...' : 'Guardar Umbrales'}
+                  </button>
+                </>
+              )}
             </div>
           )}
         </div>

@@ -10,7 +10,7 @@ const mqttLogSchema = new Schema({
 });
 
 // IMPORTANTE: Índice TTL (Time To Live)
-// Esto hace que Mongo borre automáticamente los logs más viejos de 7 días (604800 segundos)
-mqttLogSchema.index({ timestamp: 1 }, { expireAfterSeconds: 604800 });
+// Borra automáticamente los logs con más de 24 horas (86400 segundos)
+mqttLogSchema.index({ timestamp: 1 }, { expireAfterSeconds: 86400 });
 
 module.exports = mongoose.model('MqttLog', mqttLogSchema);

@@ -2,43 +2,91 @@
 const express = require('express');
 const router = express.Router();
 const Notification = require('../models/Notification.model');
-const { verifyToken, verifyTokenAndAdmin } = require('../authMiddleware');
+const { verifyToken } = require('../authMiddleware');
+
+const getRoleTargets = (role) => {
+    switch (role) {
+        case 'superadmin':
+            return ['superadmin', 'admin', 'municipalidad', 'user', 'all', 'global'];
+        case 'admin':
+            return ['admin', 'municipalidad', 'user', 'all', 'global'];
+        case 'municipalidad':
+            return ['municipalidad', 'all', 'global'];
+        case 'user':
+        default:
+            return ['user', 'all', 'global'];
+    }
+};
+
+const buildNotificationVisibilityQuery = ({ userId, userRole, userComuna, userCreatedAt }) => {
+    const roleTargets = getRoleTargets(userRole);
+
+    const createdAfterSignup = {
+        $or: [
+            { timestamp: { $gte: userCreatedAt } },
+            {
+                $and: [
+                    { timestamp: { $exists: false } },
+                    { createdAt: { $gte: userCreatedAt } }
+                ]
+            }
+        ]
+    };
+
+    const globalComunaFilter = userRole === 'municipalidad'
+        ? {
+            $or: [
+                { targetComuna: null },
+                { targetComuna: '' },
+                ...(userComuna ? [{ targetComuna: { $regex: new RegExp(`^${userComuna}$`, 'i') } }] : [])
+            ]
+        }
+        : {};
+
+    return {
+        deletedBy: { $ne: userId },
+        $or: [
+            // Notificaciones personales directas
+            { user: userId },
+            { recipient: userId },
+
+            // Notificaciones globales creadas después del registro
+            {
+                $and: [
+                    { $or: [{ user: null }, { user: { $exists: false } }] },
+                    { $or: [{ recipient: null }, { recipient: { $exists: false } }] },
+                    {
+                        $or: [
+                            { targetRole: { $in: roleTargets } },
+                            { targetRole: { $exists: false } }
+                        ]
+                    },
+                    createdAfterSignup,
+                    globalComunaFilter
+                ]
+            }
+        ]
+    };
+};
 
 // 1. OBTENER NOTIFICACIONES
 router.get('/', verifyToken, async (req, res) => {
     try {
-        const userId = req.user.id;
+        const userId = String(req.user._id || req.user.id);
         const userRole = req.user.role;
         const userComuna = req.user.comuna;
+        const userCreatedAt = req.user.createdAt || new Date(0);
 
-        let query = {
-            $or: [
-                { user: userId }, 
-                { targetRole: 'global' }
-            ],
-            // FILTRO CLAVE: No mostrar si yo (userId) estoy en la lista de 'deletedBy'
-            deletedBy: { $ne: userId } 
-        };
-
-        // Filtros por Rol
-        if (userRole === 'user') {
-            query.$or.push({ targetRole: 'user' });
-        } else if (userRole === 'admin' || userRole === 'superadmin') {
-            query.$or.push({ targetRole: 'admin' }, { targetRole: 'superadmin' }, { targetRole: 'user' });
-        }
-        // Filtro por Comuna
-        if (userRole === 'municipalidad' && userComuna) {
-            query.$or.push({ targetComuna: { $regex: new RegExp(`^${userComuna}$`, 'i') } });
-        }
+        const query = buildNotificationVisibilityQuery({ userId, userRole, userComuna, userCreatedAt });
 
         const rawNotifications = await Notification.find(query)
-            .sort({ createdAt: -1 })
+            .sort({ timestamp: -1, createdAt: -1 })
             .limit(50);
 
-        // Mapeamos para el frontend: 'isRead' es true si MI ID está en 'readBy'
+        // Mapeo robusto para ObjectId/string.
         const notifications = rawNotifications.map(n => ({
             ...n.toObject(),
-            isRead: n.readBy.includes(userId)
+            isRead: (n.readBy || []).some(id => String(id) === userId)
         }));
 
         res.json(notifications);
@@ -64,7 +112,35 @@ router.put('/:id/read', verifyToken, async (req, res) => {
     }
 });
 
-// 3. LIMPIAR LEÍDAS (Acción del botón que fallaba)
+// 3. MARCAR TODAS COMO LEÍDAS
+router.put('/read-all', verifyToken, async (req, res) => {
+    try {
+        const userId = String(req.user._id || req.user.id);
+        const visibilityQuery = buildNotificationVisibilityQuery({
+            userId,
+            userRole: req.user.role,
+            userComuna: req.user.comuna,
+            userCreatedAt: req.user.createdAt || new Date(0)
+        });
+
+        const result = await Notification.updateMany(
+            {
+                ...visibilityQuery,
+                readBy: { $ne: userId }
+            },
+            {
+                $addToSet: { readBy: userId }
+            }
+        );
+
+        res.json({ message: `Se marcaron ${result.modifiedCount} notificaciones.` });
+    } catch (error) {
+        console.error("Error PUT /read-all:", error);
+        res.status(500).json({ message: "Error al marcar notificaciones" });
+    }
+});
+
+// 4. LIMPIAR LEÍDAS (Acción del botón que fallaba)
 router.delete('/clear-read', verifyToken, async (req, res) => {
     try {
         const userId = req.user.id; // Usamos .id (string) que es más seguro con Mongoose

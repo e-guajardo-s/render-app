@@ -1,25 +1,28 @@
+/* --- frontend/src/pages/NetworksPage.css --- */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap');
+
 /* --- VARIABLES & BASE --- */
 :root {
-  --primary-color: #2563eb; /* Azul Royal */
-  --primary-hover: #1d4ed8;
-  --bg-color: #f1f5f9;      /* Slate 100 */
+  --primary-color: #ff9900; /* Naranja Pro */
+  --primary-hover: #e68a00;
+  --bg-color: #f8fafc;
   --panel-bg: #ffffff;
-  --text-main: #0f172a;     /* Slate 900 */
-  --text-muted: #64748b;    /* Slate 500 */
-  --border-radius: 12px;
+  --text-main: #0f172a;
+  --text-muted: #64748b;
+  --border-radius: 16px;
   --shadow-sm: 0 1px 2px 0 rgb(0 0 0 / 0.05);
-  --shadow-md: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
-  --terminal-bg: #0f172a;   /* Slate 900 */
+  --shadow-md: 0 10px 25px -5px rgba(0, 0, 0, 0.05);
+  --terminal-bg: #0f172a;
   --terminal-header: #1e293b;
   --danger: #ef4444;
   --success: #22c55e;
 }
 
 .iot-dashboard-container {
+  font-family: 'Montserrat', sans-serif !important;
   height: calc(100vh - 64px);
   padding: 1.5rem;
   background-color: var(--bg-color);
-  font-family: 'Inter', system-ui, -apple-system, sans-serif;
   color: var(--text-main);
   box-sizing: border-box;
   overflow: hidden; 
@@ -151,11 +154,12 @@
 .log-entry {
   margin-bottom: 6px; padding-bottom: 4px;
   border-bottom: 1px dashed #334155;
-  display: grid; grid-template-columns: 80px auto 1fr;
+  display: grid; grid-template-columns: 160px auto 1fr;
   gap: 12px;
 }
 
-.log-time { color: #64748b; font-size: 0.75rem; }
+.log-time { color: #64748b; font-size: 0.75rem; white-space: nowrap; }
+.log-date { color: #475569; font-size: 0.75rem; margin-right: 4px; }
 .log-topic { color: #60a5fa; font-weight: 600; }
 .log-msg { color: #cbd5e1; word-break: break-all; }
 
@@ -246,7 +250,93 @@
 
 .edit-actions { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 2rem; }
 
-/* --- BLOQUEO --- */
-.center-lock { height: 80vh; display: flex; align-items: center; justify-content: center; background: var(--bg-color); }
-.lock-card { background: white; padding: 2.5rem; border-radius: 20px; box-shadow: var(--shadow-md); text-align: center; width: 320px; }
-.lock-icon-container { width: 64px; height: 64px; background: #eff6ff; color: var(--primary-color); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1.5rem auto; }
+/* --- VISTA DE BLOQUEO MODERN PRO --- */
+.center-lock {
+  height: 80vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #f1f5f9;
+}
+
+.lock-card {
+  background: white;
+  padding: 3rem;
+  border-radius: 24px;
+  box-shadow: var(--shadow-md);
+  text-align: center;
+  width: 380px;
+  border-top: 5px solid var(--primary-color);
+}
+
+.lock-icon-container {
+  width: 70px;
+  height: 70px;
+  background: rgba(255, 153, 0, 0.1);
+  color: var(--primary-color);
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1.5rem auto;
+}
+
+.lock-card h2 {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #0f172a;
+  margin-bottom: 0.5rem;
+}
+
+.lock-card p {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  margin-bottom: 1.5rem;
+}
+
+/* Inputs y Botones Estilo Modern Pro */
+.form-input-pro {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #e2e8f0;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-family: inherit;
+  text-align: center;
+  transition: all 0.2s;
+  box-sizing: border-box;
+}
+
+.form-input-pro:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 4px 12px rgba(255, 153, 0, 0.1);
+  outline: none;
+}
+
+.btn-pro-dark {
+  background: #0f172a;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 24px;
+  font-weight: 700;
+  font-family: inherit;
+  cursor: pointer;
+  width: 100%;
+  transition: transform 0.2s, background 0.2s;
+}
+
+.btn-pro-dark:hover {
+  background: #1e293b;
+  transform: translateY(-2px);
+}
+
+.btn-pro-orange {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 24px;
+  font-weight: 700;
+  cursor: pointer;
+}

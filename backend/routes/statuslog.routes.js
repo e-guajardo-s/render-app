@@ -50,6 +50,44 @@ router.get('/', verifyToken, async (req, res) => {
     }
 });
 
+// GET /api/statuslog/history/:cruceId
+router.get('/history/:cruceId', verifyToken, async (req, res) => {
+    try {
+        const { cruceId } = req.params;
+        const { days = 7 } = req.query;
+        const since = new Date(Date.now() - Number(days) * 24 * 60 * 60 * 1000);
+        const logs = await StatusLog.find({ cruceId, timestamp: { $gte: since } })
+            .sort({ timestamp: -1 }).limit(200).lean();
+        res.json(logs);
+    } catch (e) {
+        res.status(500).json({ message: 'Error historial' });
+    }
+});
+
+// GET /api/statuslog/compare?ids=ID1,ID2&days=7
+router.get('/compare', verifyToken, async (req, res) => {
+    try {
+        const ids = (req.query.ids || '').split(',').filter(Boolean).slice(0, 5);
+        const days = Number(req.query.days || 7);
+        if (!ids.length) return res.status(400).json({ message: 'ids requerido' });
+        const since = new Date(Date.now() - days * 24 * 60 * 60 * 1000);
+
+        const results = {};
+        await Promise.all(ids.map(async (cruceId) => {
+            const logs = await StatusLog.find({ cruceId, timestamp: { $gte: since } })
+                .sort({ timestamp: 1 }).limit(300).lean();
+            const failures = logs.filter(l => l.type === 'error' || l.type === 'offline').length;
+            const uptime = logs.length
+                ? Math.round((logs.filter(l => l.type === 'info').length / logs.length) * 100)
+                : null;
+            results[cruceId] = { logs, failures, uptime, total: logs.length };
+        }));
+        res.json(results);
+    } catch (e) {
+        res.status(500).json({ message: 'Error comparativa' });
+    }
+});
+
 router.delete('/', verifyTokenAndAdmin, async (req, res) => {
     try {
         const { startDate, endDate } = req.query;

@@ -1,0 +1,44 @@
+# render-app/.gitignore (raíz del monorepo)
+
+# ─── Dependencias ───────────────────────────────────────────
+node_modules/
+frontend/node_modules/
+backend/node_modules/
+
+# ─── Builds ─────────────────────────────────────────────────
+frontend/dist/
+frontend/dist-ssr/
+
+# ─── Variables de entorno (NUNCA al repo) ───────────────────
+.env
+.env.*
+backend/.env
+frontend/.env
+frontend/.env.*
+# Excepción: el template sin valores reales sí puede subir
+!frontend/.env.example
+!backend/.env.example
+# El secreto real de AWS NUNCA sube
+infra/secrets_REAL.json
+
+# ─── Logs ───────────────────────────────────────────────────
+logs/
+*.log
+npm-debug.log*
+
+# ─── Uploads de usuarios (almacenar en S3, no en el repo) ───
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# ─── Artefactos de deploy ───────────────────────────────────
+deploy.zip
+*.zip
+
+# ─── OS / Editor ────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+.vscode/*
+!.vscode/extensions.json
+.idea/
+*.suo
+*.sw?

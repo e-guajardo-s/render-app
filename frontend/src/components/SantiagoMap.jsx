@@ -1,41 +1,81 @@
 import React, { useState, useEffect } from 'react';
-import { MapContainer, TileLayer, Marker, useMap } from 'react-leaflet'; // Usamos Marker en vez de CircleMarker
-import L from 'leaflet'; // Necesario para crear el icono personalizado
+import { MapContainer, TileLayer, Marker, useMap } from 'react-leaflet';
+import MarkerClusterGroup from './MarkerClusterGroup'; 
+import L from 'leaflet';
 import SemaphoreInfoWindow from './SemaphoreInfoWindow';
 import ReportFailureModal from './ReportFailureModal'; 
-import { getOverallStatus, getStatusColor } from '../utils/statusHelper';
+import { getOverallStatus, getStatusColor, STATUS_COLORS } from '../utils/statusHelper'; // <-- Añadido STATUS_COLORS
 import 'leaflet/dist/leaflet.css';
 import './SantiagoMap.css'; 
 
 const CARTODB_POSITRON_URL = 'https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png';
 
-// --- FUNCIÓN PARA CREAR EL ICONO PERSONALIZADO (CSS) ---
+// --- 1. ICONO PERSONALIZADO (Ahora guarda el statusKey internamente) ---
 const createCustomIcon = (statusKey, hasActiveTicket) => {
     const color = getStatusColor(statusKey);
-    
-    // Si hay ticket, inyectamos el HTML del puntito amarillo
+    // Todos los pins usan el mismo estilo base con su color
+    const bodyStyle = `background-color: ${color}; box-shadow: 0 0 8px ${color}80;`;
     const ticketBadgeHTML = hasActiveTicket 
         ? `<div class="ticket-badge-indicator" title="Ticket Pendiente">!</div>` 
         : '';
 
-    // Creamos un DivIcon de Leaflet
     return L.divIcon({
-        className: 'custom-div-icon', // Clase base vacía para no heredar estilos feos de Leaflet
+        className: 'custom-div-icon', 
         html: `
             <div class="semaphore-marker-wrapper">
-                <div class="semaphore-marker-body" style="background-color: ${color}; box-shadow: 0 0 8px ${color}80;">
+                <div class="semaphore-marker-body" style="${bodyStyle}">
                     <div class="marker-core"></div>
                 </div>
                 ${ticketBadgeHTML}
             </div>
         `,
-        iconSize: [24, 24],   // Tamaño del contenedor
-        iconAnchor: [12, 12], // Punto de anclaje (centro)
-        popupAnchor: [0, -12] // Donde sale el popup si lo hubiera
+        iconSize: [24, 24],   
+        iconAnchor: [12, 12], 
+        popupAnchor: [0, -12],
+        statusKey: statusKey // <-- TRUCO CLAVE: Guardamos el estado en el objeto del ícono
     });
 };
 
-// --- CONTROLADOR DEL MAPA ---
+// --- 2. LÓGICA DE JERARQUÍA PARA LOS CLÚSTERES ---
+const createClusterCustomIcon = function (cluster) {
+    const markers = cluster.getAllChildMarkers();
+
+    // Definimos la jerarquía real de monitoreo (menor número = mayor prioridad)
+    const priorityMap = {
+        'OFFLINE':       1,
+        'ANOMALIA':      2,
+        'UPS':           3,
+        'AISLADO':       4,
+        'OPERATIVO':     5,
+        'MANTENCION':    6,
+        'NO_MONITORADO': 7,
+    };
+
+    let highestPriority = 99;
+    let dominantStatus = 'OPERATIVO';
+
+    // Recorremos todos los marcadores dentro de este clúster
+    markers.forEach(marker => {
+        // Leemos el statusKey que inyectamos al crear el divIcon
+        const statusKey = marker.options.icon.options.statusKey || 'OFFLINE';
+        
+        if (priorityMap[statusKey] < highestPriority) {
+            highestPriority = priorityMap[statusKey];
+            dominantStatus = statusKey;
+        }
+    });
+
+    const bgColor = getStatusColor(dominantStatus);
+    const count = cluster.getChildCount();
+
+    // Retornamos el ícono circular del clúster con el color predominante
+    return L.divIcon({
+        html: `<div style="background-color: ${bgColor}e6; color: white; width: 40px; height: 40px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: bold; border: 3px solid white; box-shadow: 0 0 10px ${bgColor}; font-size: 14px;">${count}</div>`,
+        className: 'custom-cluster-icon',
+        iconSize: L.point(40, 40, true),
+    });
+};
+// --- CONTROLADOR DEL MAPA Y CLUSTERS ---
 function MapController({ onMapSet, onMapReady, onMarkerClick, semaphores }) {
     const map = useMap(); 
 
@@ -49,36 +89,36 @@ function MapController({ onMapSet, onMapReady, onMarkerClick, semaphores }) {
     const semaphoresWithCoords = semaphores.filter(sem => sem.coordenadas && typeof sem.coordenadas.lat === 'number');
     
     return (
-        <>
+        <MarkerClusterGroup 
+            chunkedLoading 
+            maxClusterRadius={20} 
+            disableClusteringAtZoom={12} // <-- NUEVO: A partir del zoom 12 (vista de ciudad), desarma los clústeres y muestra los pines.
+            spiderfyOnMaxZoom={true} 
+            iconCreateFunction={createClusterCustomIcon} // <-- NUEVO: Le pasamos nuestra lógica de colores
+        >
             {semaphoresWithCoords.map(sem => {
-                // 1. Obtener estado
-                const { key: statusKey } = getOverallStatus(sem.status);
-                
-                // 2. Verificar si tiene ticket (propiedad inyectada por el Dashboard)
-                const hasTicket = sem.hasActiveTicket === true;
-
-                // 3. Crear icono
-                const icon = createCustomIcon(statusKey, hasTicket);
-
-                return (
+                 const { key: statusKey } = getOverallStatus(sem.status, sem.monitoreando, sem.enMantencion);
+                 const hasTicket = sem.hasActiveTicket === true;
+                 const icon = createCustomIcon(statusKey, hasTicket);
+                 return (
                     <Marker
                         key={sem._id || sem.cruceId}
                         position={[sem.coordenadas.lat, sem.coordenadas.lng]}
-                        icon={icon} // Usamos el icono HTML personalizado
+                        icon={icon}
                         eventHandlers={{
                             click: (e) => {
-                                L.DomEvent.stopPropagation(e); // Detener click del mapa
+                                L.DomEvent.stopPropagation(e);
                                 onMarkerClick(sem); 
                             },
                         }}
                     />
                 );
             })}
-        </>
+        </MarkerClusterGroup>
     );
 }
 
-// --- COMPONENTE PRINCIPAL ---
+// --- COMPONENTE PRINCIPAL (Se mantiene la lógica original) ---
 function SantiagoMap({ center, zoom, semaphores = [], onMapReady }) { 
     const [mapInstance, setMapInstance] = useState(null); 
     const [selectedSemaphore, setSelectedSemaphore] = useState(null);
@@ -112,8 +152,6 @@ function SantiagoMap({ center, zoom, semaphores = [], onMapReady }) {
     
     const handleCloseReportModal = () => {
         setIsReportModalOpen(false);
-        // No limpiamos selectedSemaphore para que al cerrar no se pierda el contexto si quisiéramos volver
-        // pero en este flujo está bien.
     };
 
     return (
@@ -122,7 +160,7 @@ function SantiagoMap({ center, zoom, semaphores = [], onMapReady }) {
                 center={center} 
                 zoom={zoom} 
                 scrollWheelZoom={true}
-                className="leaflet-container-custom" // Clase para asegurar z-index correcto
+                className="leaflet-container-custom" 
             >
                 <TileLayer
                     attribution='&copy; <a href="https://carto.com/attributions">CARTO</a> contributors'

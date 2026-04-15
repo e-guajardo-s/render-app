@@ -10,11 +10,18 @@ const notificationSchema = new Schema({
         default: null,
         index: true 
     },
+    // Alias explícito para receptor directo (compatibilidad con lógica nueva)
+    recipient: {
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        default: null,
+        index: true
+    },
     // Rol objetivo
     targetRole: {
         type: String,
-        enum: ['user', 'admin', 'superadmin', 'municipalidad', 'global'],
-        default: 'global'
+        enum: ['user', 'admin', 'superadmin', 'municipalidad', 'all', 'global'],
+        default: 'all'
     },
     // Comuna objetivo (para municipalidades)
     targetComuna: { type: String, default: null },
@@ -33,6 +40,9 @@ const notificationSchema = new Schema({
     readBy: [{ type: Schema.Types.ObjectId, ref: 'User' }],     // Quiénes la leyeron
     deletedBy: [{ type: Schema.Types.ObjectId, ref: 'User' }],  // Quiénes la borraron
     // -----------------------------------
+
+    // Fecha de referencia de visibilidad para filtros por alta de usuario.
+    timestamp: { type: Date, default: Date.now, index: true },
     
     relatedEntity: { type: Schema.Types.ObjectId, default: null },
     relatedEntityType: { 

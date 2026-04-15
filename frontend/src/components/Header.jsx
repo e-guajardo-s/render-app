@@ -51,6 +51,9 @@ function Header({ user, onLogout, onMenuClick, map }) {
       case '/calendar': return 'CALENDARIO';
       case '/networks': return 'REDES IOT';
       case '/notifications': return 'NOTIFICACIONES';
+      case '/audit':         return 'AUDITORÍA';
+      case '/profile':       return 'MI PERFIL';
+      case '/compare':       return 'COMPARATIVA';
       default: return 'SISTEMA';
     }
   };
@@ -100,7 +103,7 @@ function Header({ user, onLogout, onMenuClick, map }) {
   };
 
   const displayNotifs = (notifications && notifications.length > 0) ? notifications : [
-      { _id: 'sys', title: 'Sistema Listo', message: 'Bienvenido a CJ Traffic Control.', type: 'info' }
+      { _id: 'sys', title: 'Sistema Listo', message: 'Bienvenido a CJ Traffic SMART.', type: 'info' }
   ];
 
   return (
@@ -115,7 +118,7 @@ function Header({ user, onLogout, onMenuClick, map }) {
         <Link to="/dashboard" className="brand-link">
             <img src={LOGO_URL} alt="CJ Traffic" className="brand-logo" />
             <div className="brand-text-block">
-                <div className="brand-main">CJ Traffic <span className="brand-accent">CONTROL</span></div>
+                <div className="brand-main">CJ Traffic <span className="brand-accent">SMART</span></div>
                 <div className="brand-subtitle">{getPageTitle()}</div>
             </div>
         </Link>

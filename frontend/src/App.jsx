@@ -1,143 +1,156 @@
-// En: frontend/src/App.jsx
-
+// frontend/src/App.jsx
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import { AuthProvider, useAuth } from './context/AuthContext.jsx';
-import { NotificationProvider } from './context/NotificationContext.jsx'; // <--- IMPORTANTE: El "Cerebro" de las notificaciones
+import { SocketProvider } from './context/SocketContext.jsx';
+import { NotificationProvider } from './context/NotificationContext.jsx';
 
-// Páginas y Componentes
-import LoginPage from './pages/LoginPage.jsx';
-import DashboardPage from './pages/DashboardPage.jsx';
-import AdminPanelPage from './pages/AdminPanelPage.jsx';
-import SemaphorePage from './pages/SemaphorePage.jsx';
-import StatusPage from './pages/StatusPage.jsx';
+// Páginas
+import LoginPage         from './pages/LoginPage.jsx';
+import DashboardPage     from './pages/DashboardPage.jsx';
+import AdminPanelPage    from './pages/AdminPanelPage.jsx';
+import SemaphorePage     from './pages/SemaphorePage.jsx';
+import StatusPage        from './pages/StatusPage.jsx';
 import DocumentacionPage from './pages/DocumentacionPage.jsx';
-import MainLayout from './components/MainLayout.jsx';
-import NetworksPage from './pages/NetworksPage.jsx';
-import TicketsPage from './pages/TicketsPage.jsx';
-import CalendarPage from './pages/CalendarPage.jsx';
+import MainLayout        from './components/MainLayout.jsx';
+import NetworksPage      from './pages/NetworksPage.jsx';
+import TicketsPage       from './pages/TicketsPage.jsx';
+import CalendarPage      from './pages/CalendarPage.jsx';
 import NotificationsPage from './pages/NotificationsPage.jsx';
-import RegisterPage from './pages/RegisterPage';
+import RegisterPage      from './pages/RegisterPage';
+import AuditPage        from './pages/AuditPage.jsx';
+import ProfilePage      from './pages/ProfilePage.jsx';
+import ComparePage      from './pages/ComparePage.jsx';
 
-// Componente de Ruta Privada 
+// ─── Ruta Privada ────────────────────────────────────────────────
 const PrivateRoute = ({ children, roles }) => {
   const { user, isLoading } = useAuth();
-  
+
   if (isLoading) {
     return (
-        <div style={{height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: '1rem'}}>
-            <div className="spinner-orange" style={{width: '40px', height: '40px'}}></div>
-            <span style={{color: '#64748b', fontWeight: 500}}>Cargando Sistema...</span>
-        </div>
+      <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center', flexDirection: 'column', gap: '1rem' }}>
+        <div className="spinner-orange" style={{ width: '40px', height: '40px' }} />
+        <span style={{ color: '#64748b', fontWeight: 500 }}>Cargando Sistema...</span>
+      </div>
     );
   }
-  
-  if (!user) {
-    return <Navigate to="/login" replace />;
-  }
-  
-  if (roles && !roles.includes(user.role)) {
-    return <Navigate to="/dashboard" replace />; 
-  }
-  
+
+  if (!user) return <Navigate to="/login" replace />;
+  if (roles && !roles.includes(user.role)) return <Navigate to="/dashboard" replace />;
   return children;
 };
 
-// Componente que contiene la lógica de todas las rutas
+// ─── Rutas ───────────────────────────────────────────────────────
 function AppRoutes() {
+  const { user } = useAuth();
+  const IS_PROD = import.meta.env.PROD;
+
   return (
     <Routes>
-      {/* --- Rutas Públicas --- */}
+      {/* Públicas */}
       <Route path="/login" element={<LoginPage />} />
       <Route path="/registro/:token" element={<RegisterPage />} />
-      <Route path="/" element={<Navigate to="/dashboard" replace />} />
-      {/* La ruta /register pública a veces es necesaria para el primer admin, 
-          pero idealmente debería estar protegida o eliminada en producción si usas AdminPanel */}
-      <Route path="/register" element={<RegisterPage />} />
-      
-      {/* --- Rutas Protegidas --- */}
-      <Route element={<MainLayout />}>
-        
-        <Route path="/dashboard" element={<PrivateRoute><DashboardPage /></PrivateRoute>} />
-        
-        {/* SEMÁFOROS */}
-        <Route path="/semaphores" element={
-          <PrivateRoute roles={['admin', 'user', 'superadmin', 'municipalidad']}> 
-            <SemaphorePage />
-          </PrivateRoute>} 
-        />
+      <Route path="/" element={<Navigate to={IS_PROD ? '/login' : '/dashboard'} replace />} />
 
-        {/* TICKETS */}
+      {/* Registro público: solo disponible en desarrollo.
+          En producción se usa AdminPanel para crear usuarios. */}
+      {!IS_PROD && (
+        <Route path="/register" element={<RegisterPage />} />
+      )}
+
+      {/* Protegidas */}
+      <Route element={<MainLayout />}>
+        <Route path="/dashboard" element={<PrivateRoute><DashboardPage /></PrivateRoute>} />
+
+        <Route path="/semaphores" element={
+          <PrivateRoute roles={['admin', 'user', 'superadmin', 'municipalidad']}>
+            <SemaphorePage />
+          </PrivateRoute>
+        } />
+
         <Route path="/tickets" element={
           <PrivateRoute roles={['admin', 'user', 'superadmin', 'municipalidad']}>
             <TicketsPage />
-          </PrivateRoute>} 
-        />
-        
-        {/* NOTIFICACIONES */}
+          </PrivateRoute>
+        } />
+
         <Route path="/notifications" element={
           <PrivateRoute roles={['admin', 'user', 'superadmin', 'municipalidad']}>
             <NotificationsPage />
-          </PrivateRoute>} 
-        />
+          </PrivateRoute>
+        } />
 
-        {/* ESTADOS */}
         <Route path="/status" element={
           <PrivateRoute roles={['admin', 'user', 'superadmin']}>
             <StatusPage />
-          </PrivateRoute>} 
-        />
+          </PrivateRoute>
+        } />
 
-        {/* DOCUMENTACIÓN */}
         <Route path="/documentacion" element={
           <PrivateRoute roles={['admin', 'user', 'superadmin', 'municipalidad']}>
             <DocumentacionPage />
-          </PrivateRoute>} 
-        />
+          </PrivateRoute>
+        } />
 
-        {/* CALENDARIO */}
         <Route path="/calendar" element={
           <PrivateRoute roles={['admin', 'user', 'superadmin', 'municipalidad']}>
             <CalendarPage />
-          </PrivateRoute>} 
-        />
+          </PrivateRoute>
+        } />
 
-        {/* REDES IOT */}
         <Route path="/networks" element={
           <PrivateRoute roles={['admin', 'superadmin']}>
             <NetworksPage />
           </PrivateRoute>
         } />
 
-        {/* ADMINISTRACIÓN */}
         <Route path="/admin" element={
-            <PrivateRoute roles={['admin', 'superadmin']}>
-                <AdminPanelPage />
-            </PrivateRoute>
+          <PrivateRoute roles={['admin', 'superadmin']}>
+            <AdminPanelPage />
+          </PrivateRoute>
         } />
 
+        <Route path="/audit" element={
+          <PrivateRoute roles={['admin', 'superadmin']}>
+            <AuditPage />
+          </PrivateRoute>
+        } />
+
+        <Route path="/compare" element={
+          <PrivateRoute roles={['admin', 'user', 'superadmin']}>
+            <ComparePage />
+          </PrivateRoute>
+        } />
+
+        <Route path="/profile" element={
+          <PrivateRoute roles={['admin', 'user', 'superadmin', 'municipalidad']}>
+            <ProfilePage />
+          </PrivateRoute>
+        } />
       </Route>
 
       <Route path="*" element={
-        <div style={{textAlign: 'center', padding: '4rem'}}>
-            <h2>404: Página no encontrada</h2>
-            <p>La ruta que buscas no existe.</p>
+        <div style={{ textAlign: 'center', padding: '4rem' }}>
+          <h2>404 — Página no encontrada</h2>
+          <p>La ruta que buscas no existe.</p>
         </div>
       } />
     </Routes>
   );
 }
 
-// Componente principal App
+// ─── App ─────────────────────────────────────────────────────────
 function App() {
   return (
     <Router>
       <AuthProvider>
-        {/* 🔥 AQUÍ ESTÁ LA CLAVE: NotificationProvider DEBE estar DENTRO de AuthProvider */}
-        {/* Esto permite que useAuth() funcione dentro de NotificationContext para saber quién es el usuario */}
-        <NotificationProvider>
+        {/* SocketProvider crea UN solo socket para toda la app.
+            NotificationProvider y las pages lo consumen via useSocket(). */}
+        <SocketProvider>
+          <NotificationProvider>
             <AppRoutes />
-        </NotificationProvider>
+          </NotificationProvider>
+        </SocketProvider>
       </AuthProvider>
     </Router>
   );

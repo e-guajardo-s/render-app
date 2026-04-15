@@ -10,263 +10,489 @@ const User = require('../models/User.model');
 let client = null;
 let ioInstance = null;
 
-// Configuración de tiempos
-const CHECK_INTERVAL = 60 * 1000;        // Revisar inactividad cada 1 min
-const INACTIVITY_LIMIT = 20 * 60 * 1000; // 20 min sin señal = Offline
-const HEARTBEAT_INTERVAL = 5 * 60 * 1000; // Actualizar 'last_seen' al menos cada 5 min
+const deviceCache = new Map();
 
-// --- HELPER 1: BUSCAR USUARIO "sistema" ---
+const CHECK_INTERVAL    = 60 * 1000;
+const INACTIVITY_LIMIT  = 20 * 60 * 1000;
+const HEARTBEAT_INTERVAL = 5 * 60 * 1000;
+
+async function loadDeviceCache() {
+    try {
+        console.log("Cargando semaforos en cache de memoria...");
+        const devices = await Semaphore.find({}, '_id cruceId mqtt_topic mqtt_config status comuna monitoreando enMantencion tieneUPS');
+        devices.forEach(dev => {
+            if (dev.mqtt_topic) {
+                deviceCache.set(dev.mqtt_topic, {
+                    _id:          dev._id,
+                    cruceId:      dev.cruceId,
+                    comuna:       dev.comuna,
+                    monitoreando: dev.monitoreando ?? false,
+                    enMantencion: dev.enMantencion ?? false,
+                    tieneUPS:     dev.tieneUPS !== false,
+                    mqttConfig:   dev.mqtt_config || null,
+                    status:       dev.status || {}
+                });
+            }
+        });
+        console.log(`Cache lista: ${deviceCache.size} dispositivos cargados.`);
+    } catch (error) {
+        console.error("Error cargando cache:", error);
+    }
+}
+
 async function getSystemUserId() {
     try {
-        const botUser = await User.findOne({ username: 'sistema' }); 
-        if (botUser) return botUser._id;
-        
-        // Fallback: Si no existe, usamos cualquier admin
-        console.warn("[AUTO-TICKET] Advertencia: No existe el usuario 'sistema'. Usando admin por defecto.");
-        const admin = await User.findOne({ role: { $in: ['admin', 'superadmin'] } });
-        return admin ? admin._id : null;
+        const systemUser = await User.findOne({ role: 'superadmin' }).select('_id');
+        if (systemUser) return systemUser._id;
+        const anyAdmin = await User.findOne({ role: 'admin' }).select('_id');
+        return anyAdmin?._id || null;
     } catch (e) {
-        console.error("Error buscando usuario sistema:", e);
+        console.error('[MQTT] Error obteniendo systemUserId:', e);
         return null;
     }
 }
 
-// --- HELPER 2: CREAR NOTIFICACIÓN ---
-async function createNotification(targetRole, targetComuna, title, message, type, relatedEntityId = null, entityType = null) {
+async function createNotification({ title, message, type, relatedEntity = null, relatedEntityType = null, targetComuna = null }) {
     try {
-        const notifPayload = {
-            targetRole, targetComuna: targetComuna || null, 
-            title, message, type, 
-            relatedEntity: relatedEntityId, relatedEntityType: entityType
-        };
-
-        const notif = await Notification.create(notifPayload);
-        if (ioInstance) ioInstance.emit('new_notification', notif);
-    } catch (error) {
-        console.error("❌ Error guardando Notificación:", error.message);
-    }
-}
-
-// --- HELPER 3: GESTOR DE TICKETS AUTOMÁTICOS ---
-async function handleAutoTicket(device, type, description) {
-    try {
-        // Verificar Duplicados (Solo tickets pendientes o en progreso)
-        const existingTicket = await Ticket.findOne({
-            cruceId: device.cruceId,
-            status: { $in: ['pending', 'in_progress'] }
+        await Notification.create({
+            title, message, type,
+            targetRole: 'admin',
+            targetComuna, relatedEntity, relatedEntityType,
+            readBy: [], deletedBy: []
         });
 
-        if (existingTicket) {
-            console.log(`[AUTO-TICKET] Omitido: Ya existe ticket activo para ${device.cruceId}`);
-            return; 
+        if (targetComuna) {
+            await Notification.create({
+                title, message, type,
+                targetRole: 'municipalidad',
+                targetComuna, relatedEntity, relatedEntityType,
+                readBy: [], deletedBy: []
+            });
         }
 
-        const systemUserId = await getSystemUserId();
-        if (!systemUserId) return; 
-
-        // Crear Ticket
-        const newTicket = await Ticket.create({
-            title: `[ALERTA IoT] ${type === 'offline' ? 'Pérdida de Conexión' : 'Falla Crítica de Hardware'}`,
-            description: description,
-            cruceId: device.cruceId,
-            origin: 'iot_auto',
-            priority: type === 'offline' ? 'Alta' : 'Critica',
-            status: 'pending',
-            createdBy: systemUserId,
-            municipalityName: device.comuna
-        });
-
-        console.log(`[AUTO-TICKET] ✅ Ticket Creado: ${newTicket._id}`);
-
-        // Notificar
-        await createNotification('municipalidad', device.comuna, `⚠️ Ticket Crítico: ${device.cruceId}`, `Ticket automático por ${type}.`, 'new_ticket', newTicket._id, 'Ticket');
-        await createNotification('superadmin', null, `🚨 ALERTA IoT: ${device.cruceId}`, `Falla crítica. Ticket #${newTicket._id}`, 'new_ticket', newTicket._id, 'Ticket');
-
-        if (ioInstance) ioInstance.emit('new_ticket', newTicket);
-
-    } catch (error) {
-        console.error("[AUTO-TICKET] Error creando ticket:", error);
+        if (ioInstance) {
+            ioInstance.emit('new_notification', { title, message, type });
+        }
+    } catch (e) {
+        console.error('[MQTT] Error creando notificacion:', e);
     }
 }
 
-const connectToBroker = (config, io) => {
+// --- HELPER: Crear ticket automatico ---
+//
+// Tipos y prioridades:
+//   'offline'  -> Alim=Apagado + UPS=Apagado -> Sin alimentacion ni respaldo -> CRITICA
+//   'ups'      -> Alim=Apagado + UPS=Prendido -> Corte electrico, UPS activo -> ALTA
+//   'aislado'  -> UTC=Apagado + Alim=OK       -> UTC fuera de red            -> ALTA
+//   'anomalia' -> Luces=Apagado + todo OK     -> Falla en grupo de luces     -> MEDIA
+//
+// El campo "UTC" en MQTT representa el sistema de coordinacion de semaforos.
+// "UTC=Apagado" significa que el UTC no esta en la red, no que este apagado fisicamente.
+// UPS.value es voltaje analogico 0-12V (rele). >=6V = Prendido, <6V = Apagado.
+async function handleAutoTicket(device, type, description) {
+    try {
+        const systemUserId = await getSystemUserId();
+        if (!systemUserId) {
+            console.error('[MQTT] No se pudo crear ticket automatico: sin usuario sistema.');
+            return;
+        }
+
+        // Evitar duplicados por tipo
+        const existingQuery = {
+            cruceId: device.cruceId,
+            status: { $in: ['pending', 'in_progress'] }
+        };
+        // Para UPS y aislado: buscar solo tickets del mismo tipo para no bloquear otros
+        if (type === 'ups') {
+            existingQuery.origin = 'iot_auto';
+            existingQuery.title = { $regex: 'Respaldo UPS', $options: 'i' };
+        } else if (type === 'aislado') {
+            existingQuery.origin = 'iot_auto';
+            existingQuery.title = { $regex: 'Aislado', $options: 'i' };
+        }
+
+        const existingTicket = await Ticket.findOne(existingQuery);
+        if (existingTicket) {
+            console.log(`[MQTT] Ticket ya existe para ${device.cruceId} (${type}), omitiendo.`);
+            return;
+        }
+
+        const CONFIG = {
+            offline:  { emoji: '[OFFLINE]',  label: 'Apagado Total',                   priority: 'Critica' },
+            ups:      { emoji: '[UPS]',       label: 'Respaldo UPS Activo',             priority: 'Alta'    },
+            aislado:  { emoji: '[AISLADO]',   label: 'Cruce Aislado (UTC fuera de red)', priority: 'Alta'   },
+            anomalia: { emoji: '[ANOMALIA]',  label: 'Anomalia en Luces',              priority: 'Media'   },
+        };
+        const cfg   = CONFIG[type] || CONFIG.anomalia;
+        const title = `${cfg.emoji} ${cfg.label}: ${device.cruceId}`;
+
+        const ticket = await Ticket.create({
+            title,
+            description,
+            cruceId:   device.cruceId,
+            origin:    'iot_auto',
+            status:    'pending',
+            priority:  cfg.priority,
+            createdBy: systemUserId
+        });
+
+        console.log(`[MQTT] Ticket automatico [${type}] creado para ${device.cruceId}: ${ticket._id}`);
+
+        await createNotification({
+            title,
+            message:           description,
+            type:              'new_ticket',
+            relatedEntity:     ticket._id,
+            relatedEntityType: 'Ticket',
+            targetComuna:      device.comuna || null
+        });
+
+    } catch (e) {
+        console.error('[MQTT] Error en handleAutoTicket:', e);
+    }
+}
+
+const normalizeState = (state) => {
+    if (!state) return 'Desc.';
+    const s = String(state).toLowerCase().trim();
+    if (s === 'prendido')    return 'Prendido';
+    if (s === 'apagado')     return 'Apagado';
+    if (s === 'falla')       return 'Falla';
+    if (s === 'desconocido') return 'Desconocido';
+    return 'Desc.';
+};
+
+const connectToBroker = async (config, io) => {
     if (io) ioInstance = io;
     if (!config || !config.host) return;
 
+    await loadDeviceCache();
+
     if (client) {
-        console.log("🔄 Reiniciando servicio MQTT...");
-        client.end();
+        console.log("Reiniciando servicio MQTT...");
+        client.end(true);
     }
 
+    const port  = parseInt(config.port) || 8883;
+    const isTLS = port === 8883;
+    const env   = process.env.NODE_ENV === 'production' ? 'aws' : 'local';
+    const clientId = `render-app-${env}-${Math.random().toString(16).slice(2, 8)}`;
+
     const options = {
-        host: config.host,
-        port: parseInt(config.port) || 1883,
-        protocol: (config.port === 8883 || config.port === '8883') ? 'mqtts' : 'mqtt',
-        username: config.username,
-        password: config.password,
-        reconnectPeriod: 5000,
+        host:               config.host,
+        port,
+        protocol:           isTLS ? 'mqtts' : 'mqtt',
+        username:           config.username,
+        password:           config.password,
+        clientId,
+        clean:              true,
+        rejectUnauthorized: true,
+        keepalive:          30,
+        connectTimeout:     10000,
+        reconnectPeriod:    5000,
     };
 
-    console.log(`🔌 Conectando a Broker MQTT: ${options.host}...`);
-
+    console.log(`Conectando a HiveMQ: ${options.host}:${port} [${clientId}]`);
     client = mqtt.connect(options);
 
+    let watchdogInterval = null;
+
     client.on('connect', () => {
-        console.log("✅ MQTT Monitor: CONECTADO.");
-        client.subscribe('#'); 
-        setInterval(checkInactivity, CHECK_INTERVAL);
+        console.log(`MQTT Monitor: CONECTADO como [${clientId}]`);
+        client.subscribe('#', { qos: 1 }, (err) => {
+            if (err) console.error('Error suscripcion MQTT:', err.message);
+            else     console.log('Suscrito a todos los topicos (#)');
+        });
+        if (!watchdogInterval) {
+            watchdogInterval = setInterval(checkInactivity, CHECK_INTERVAL);
+        }
     });
 
-    client.on('error', (err) => console.error("❌ Error MQTT:", err.message));
+    client.on('reconnect', () => console.log('MQTT: Reconectando...'));
+    client.on('offline',   () => console.warn('MQTT: Cliente offline'));
+    client.on('close',     () => console.warn('MQTT: Conexion cerrada'));
+    client.on('error',     (err) => {
+        console.error('Error MQTT:', err.message);
+        if (err.message.includes('certificate'))      console.error('Verifica MQTT_PORT=8883 y el host');
+        if (err.message.includes('Not authorized'))   console.error('Usuario/contrasena incorrectos en HiveMQ');
+        if (err.message.includes('Client identifier')) console.error('ClientId rechazado por el broker');
+    });
 
     client.on('message', async (topic, message) => {
         const msgString = message.toString();
-        if (ioInstance) ioInstance.emit('mqtt_message', { topic, message: msgString, time: new Date().toLocaleTimeString() });
+
+        // Filtrar topicos internos (will messages) - no mostrar en el sniffer
+        const isInternalTopic = topic.startsWith('render-app/');
+        if (ioInstance && !isInternalTopic) {
+            ioInstance.emit('mqtt_message', {
+                topic, message: msgString,
+                time: new Date().toLocaleTimeString()
+            });
+        }
 
         try {
             let data;
             try { data = JSON.parse(msgString); } catch (e) { return; }
 
-            if (data.Controlador) { 
-                const device = await Semaphore.findOne({ mqtt_topic: topic });
-                
-                if (device) {
-                    const rawControlador = data.Controlador?.state || 'Desc.';
-                    const rawLuces = data.Luces?.state || 'Desc.';
-                    const rawAlim = data.Alimentacion?.state || 'Desc.';
-                    const valorUps = parseFloat(data.UPS?.value || 0);
+            if (data.UTC) {
+                let cachedDevice = deviceCache.get(topic);
 
-                    const estControlador = rawControlador.toLowerCase();
-                    const estLuces = rawLuces.toLowerCase();
-                    const estAlim = rawAlim.toLowerCase();
-                    
-                    const currentStatus = device.status || {};
-                    const diffVoltaje = Math.abs(parseFloat(currentStatus.ups_voltaje || 0) - valorUps);
-                    
-                    const haCambiado = 
-                        (currentStatus.controlador || '').toLowerCase() !== estControlador ||
-                        (currentStatus.luces || '').toLowerCase() !== estLuces ||
-                        (currentStatus.alimentacion || '').toLowerCase() !== estAlim ||
-                        diffVoltaje > 0.5;
-
-                    const timeSinceLastUpdate = Date.now() - new Date(currentStatus.last_seen || 0).getTime();
-
-                    if (haCambiado) {
-                        let logType = 'info';      
-                        let logMsg = 'Operación Normal';
-
-                        // 1. OFFLINE TOTAL / APAGADO
-                        if (estControlador !== 'prendido' && estAlim !== 'prendido' && valorUps <= 0) {
-                            logType = 'offline';
-                            logMsg = '⚫ Sin Conexión (Apagado Total)';
-                            // CORRECCIÓN 1: Generar ticket si el dispositivo avisa que se apaga
-                            await handleAutoTicket(device, 'offline', 'El dispositivo reportó apagado total (Offline) vía MQTT.');
-                        } 
-                        // 2. FALLA CRÍTICA
-                        else if (estControlador !== 'prendido') {
-                            logType = 'error';
-                            logMsg = '⚠️ Falla Crítica: Controlador Apagado';
-                            await handleAutoTicket(device, 'critical', `Controlador reporta estado: ${rawControlador}. UPS: ${valorUps}V.`);
-                        } 
-                        // 3. UPS / ALERTAS
-                        else if (estAlim !== 'prendido' && valorUps > 20) {
-                            logType = 'ups';
-                            logMsg = '🔋 Corte de Energía - Respaldo UPS Activo';
-                            // Notificaciones...
-                        } else if (estLuces !== 'prendido' || valorUps <= 20) {
-                            logType = 'warning';
-                            logMsg = valorUps <= 20 ? '🪫 Alerta UPS: Batería Baja / Apagada' : '💡 Luces Apagadas / Intermitente';
-                            // Notificaciones...
-                        }
-
-                        console.log(`[LOG] Cambio en ${device.cruceId}: ${logMsg}`);
-
-                        try { await MqttLog.create({ topic, message: msgString }); } catch (e) {}
-
-                        const newLog = await StatusLog.create({
-                            cruceId: device.cruceId, controlador: rawControlador, luces: rawLuces,
-                            alimentacion: rawAlim, ups_voltaje: valorUps, type: logType, message: logMsg
-                        });
-
-                        // Actualizar en BD
-                        await Semaphore.findByIdAndUpdate(device._id, {
-                            $set: {
-                                "status.controlador": rawControlador, "status.luces": rawLuces,
-                                "status.alimentacion": rawAlim, "status.ups_voltaje": valorUps,
-                                "status.last_seen": new Date()
-                            }
-                        });
-
-                        // CORRECCIÓN 2: Emitir evento 'status_update' para que el Dashboard cambie de color
-                        if (ioInstance) {
-                            ioInstance.emit('status_log_created', { cruceId: device.cruceId, log: newLog });
-                            ioInstance.emit('mqtt_message', { topic, message: msgString, time: new Date().toLocaleTimeString(), type: 'CHANGE' });
-                            
-                            // 🔥 ESTO FALTABA PARA ACTUALIZAR EL MAPA:
-                            ioInstance.emit('status_update', {
-                                cruceId: device.cruceId,
-                                isOnline: true, // Si manda datos, está online (aunque reporte error)
-                                fullStatus: {
-                                    controlador: rawControlador,
-                                    luces: rawLuces,
-                                    alimentacion: rawAlim,
-                                    ups_voltaje: valorUps,
-                                    last_seen: new Date()
-                                }
-                            });
-                        }
-                    } else if (timeSinceLastUpdate > HEARTBEAT_INTERVAL) {
-                        await Semaphore.findByIdAndUpdate(device._id, { $set: { "status.last_seen": new Date() } });
-                        if (ioInstance) ioInstance.emit('mqtt_message', { topic, message: msgString, time: new Date().toLocaleTimeString(), type: 'HEARTBEAT' });
+                if (!cachedDevice) {
+                    const dbDevice = await Semaphore.findOne({ mqtt_topic: topic });
+                    if (dbDevice) {
+                        cachedDevice = {
+                            _id:          dbDevice._id,
+                            cruceId:      dbDevice.cruceId,
+                            comuna:       dbDevice.comuna,
+                            monitoreando: dbDevice.monitoreando ?? false,
+                            enMantencion: dbDevice.enMantencion ?? false,
+                            tieneUPS:     dbDevice.tieneUPS !== false,
+                            mqttConfig:   dbDevice.mqtt_config || null,
+                            status:       dbDevice.status || {}
+                        };
+                        deviceCache.set(topic, cachedDevice);
+                    } else {
+                        return; // dispositivo no registrado
                     }
+                }
+
+                if (!cachedDevice.monitoreando) {
+                    console.log(`[MQTT] Ignorado ${cachedDevice.cruceId}: no monitoreando.`);
+                    return;
+                }
+
+                const enMantencion = cachedDevice.enMantencion === true;
+
+                // Leer telemetria
+                // UTC.state -> estado del UTC en la red ('Prendido'=en red, 'Apagado'=fuera de red)
+                // Alimentacion.state -> presencia de energia electrica
+                // Luces.state -> estado del grupo de luces
+                // UPS.value -> voltaje analogico 0-12V (rele: >=6V = Prendido, <6V = Apagado)
+                const rawControlador = normalizeState(data.UTC?.state);
+                const rawLuces       = normalizeState(data.Luces?.state);
+                const rawAlim        = normalizeState(data.Alimentacion?.state);
+                const valorUps       = parseFloat(data.UPS?.value || 0);
+                const UPS_THRESHOLD  = 6; // Umbral: >=6V = Prendido, <6V = Apagado
+                const upsActivo      = valorUps >= UPS_THRESHOLD;
+                const rawUps         = upsActivo ? 'Prendido' : 'Apagado';
+
+                const estControlador = rawControlador.toLowerCase();
+                const estLuces       = rawLuces.toLowerCase();
+                const estAlim        = rawAlim.toLowerCase();
+                const estUps         = rawUps.toLowerCase();
+
+                const currentStatus = cachedDevice.status;
+
+                const haCambiado =
+                    (currentStatus.controlador  || '').toLowerCase() !== estControlador ||
+                    (currentStatus.luces        || '').toLowerCase() !== estLuces       ||
+                    (currentStatus.alimentacion || '').toLowerCase() !== estAlim        ||
+                    (currentStatus.ups_estado   || '').toLowerCase() !== estUps;
+
+                const timeSinceLastUpdate = Date.now() - new Date(currentStatus.last_seen || 0).getTime();
+                cachedDevice.status.last_seen = new Date();
+
+                if (haCambiado) {
+                    cachedDevice.status.controlador  = rawControlador;
+                    cachedDevice.status.luces        = rawLuces;
+                    cachedDevice.status.alimentacion = rawAlim;
+                    cachedDevice.status.ups_estado   = rawUps;
+
+                    let logType = 'info';
+                    let logMsg  = 'Operacion Normal';
+
+                    // Si vuelve la alimentacion normal -> limpiar ups_inicio
+                    if (estAlim === 'prendido' && cachedDevice.status.ups_inicio) {
+                        console.log(`[MQTT] Alimentacion restaurada en ${cachedDevice.cruceId}`);
+                        cachedDevice.status.ups_inicio = null;
+                    }
+
+                    // ================================================================
+                    // LOGICA DE ESTADOS (prioridad de mayor a menor gravedad)
+                    //
+                    // Datos reales TRB256:
+                    //   UTC = UTC en red (Apagado = aislado, no apagado fisico)
+                    //   Alimentacion = energia electrica de red
+                    //   Luces = grupo de luces del semaforo
+                    //   UPS.value = voltaje 0-12V (rele). >=6V=Prendido, <6V=Apagado
+                    // ================================================================
+
+                    if (estAlim !== 'prendido' && !upsActivo) {
+                        // OFFLINE: sin alimentacion electrica Y sin respaldo UPS
+                        logType = 'offline';
+                        logMsg  = 'Apagado Total (sin alimentacion ni UPS)';
+                        if (!enMantencion) {
+                            await handleAutoTicket(
+                                cachedDevice, 'offline',
+                                `Cruce ${cachedDevice.cruceId} sin alimentacion electrica ni respaldo UPS. ` +
+                                `Apagado total detectado via MQTT.`
+                            );
+                        }
+
+                    } else if (estAlim !== 'prendido' && upsActivo) {
+                        // UPS ACTIVO: corte electrico pero UPS encendido
+                        logType = 'ups';
+                        logMsg  = 'Corte Electrico - Respaldo UPS Activo';
+                        // Ticket y ups_inicio solo en la PRIMERA transicion a UPS
+                        if (!cachedDevice.status.ups_inicio) {
+                            cachedDevice.status.ups_inicio = new Date();
+                            console.log(`[MQTT] UPS iniciado en ${cachedDevice.cruceId} a las ${cachedDevice.status.ups_inicio.toLocaleTimeString()}`);
+                            if (!enMantencion) {
+                                await handleAutoTicket(
+                                    cachedDevice, 'ups',
+                                    `Corte de energia electrica en cruce ${cachedDevice.cruceId}. ` +
+                                    `Sistema operando con respaldo UPS (rele activo). ` +
+                                    `Se requiere verificar el suministro electrico.`
+                                );
+                            }
+                        }
+
+                    } else if (estControlador !== 'prendido' && estAlim === 'prendido') {
+                        // AISLADO: UTC fuera de red, hay alimentacion pero el UTC no esta coordinado
+                        // Nota: "UTC=Apagado" no significa que el equipo este apagado,
+                        // significa que el UTC no se encuentra en la red de coordinacion de semaforos.
+                        logType = 'error';
+                        logMsg  = 'Cruce Aislado (UTC fuera de red)';
+                        if (!enMantencion) {
+                            await handleAutoTicket(
+                                cachedDevice, 'aislado',
+                                `El UTC del cruce ${cachedDevice.cruceId} no se encuentra en la red de coordinacion. ` +
+                                `Alimentacion presente, UPS ${upsActivo ? 'activo' : 'inactivo'}. ` +
+                                `El cruce opera de forma aislada sin coordinacion de red. ` +
+                                `Se requiere verificar la conectividad del UTC.`
+                            );
+                        }
+
+                    } else if (estLuces !== 'prendido' && estControlador === 'prendido' && estAlim === 'prendido') {
+                        // ANOMALIA: luces apagadas con controlador y alimentacion OK
+                        logType = 'warning';
+                        logMsg  = 'Anomalia: Luces Apagadas';
+                        if (!enMantencion) {
+                            await handleAutoTicket(
+                                cachedDevice, 'anomalia',
+                                `Luces del semaforo apagadas en cruce ${cachedDevice.cruceId} ` +
+                                `con controlador UTC y alimentacion activos. ` +
+                                `Posible falla en grupo de lamparas o cable de luces.`
+                            );
+                        }
+
+                    } else {
+                        // OPERATIVO: todo OK
+                        logType = 'info';
+                        logMsg  = 'Operacion Normal';
+                    }
+
+                    // ================================================================
+
+                    try { await MqttLog.create({ topic, message: msgString }); } catch (e) {}
+
+                    const newLog = await StatusLog.create({
+                        cruceId:      cachedDevice.cruceId,
+                        controlador:  rawControlador,
+                        luces:        rawLuces,
+                        alimentacion: rawAlim,
+                        ups_estado:   rawUps,
+                        type:         logType,
+                        message:      logMsg
+                    });
+
+                    // Guardar en BD
+                    const setFields = {
+                        'status.controlador':  rawControlador,
+                        'status.luces':        rawLuces,
+                        'status.alimentacion': rawAlim,
+                        'status.ups_estado':   rawUps,
+                        'status.last_seen':    cachedDevice.status.last_seen
+                    };
+                    if (cachedDevice.status.ups_inicio !== undefined) {
+                        setFields['status.ups_inicio'] = cachedDevice.status.ups_inicio;
+                    }
+                    await Semaphore.findByIdAndUpdate(cachedDevice._id, { $set: setFields }, { runValidators: true });
+
+                    if (ioInstance) {
+                        ioInstance.emit('status_log_created', { cruceId: cachedDevice.cruceId, log: newLog });
+                        ioInstance.emit('status_update', {
+                            cruceId:      cachedDevice.cruceId,
+                            isOnline:     true,
+                            monitoreando: cachedDevice.monitoreando,
+                            fullStatus:   cachedDevice.status
+                        });
+                    }
+
+                } else if (timeSinceLastUpdate > HEARTBEAT_INTERVAL) {
+                    // Solo heartbeat: actualizar last_seen sin emitir al sniffer
+                    await Semaphore.findByIdAndUpdate(cachedDevice._id, {
+                        $set: { 'status.last_seen': cachedDevice.status.last_seen }
+                    }, { runValidators: true });
                 }
             }
         } catch (err) {
-            console.error("Error procesando telemetría:", err);
+            console.error("Error procesando telemetria:", err);
         }
     });
 
     return client;
 };
 
-// --- WATCHDOG (Ticket Offline por Inactividad) ---
+// --- WATCHDOG ---
 const checkInactivity = async () => {
     try {
         const thresholdDate = new Date(Date.now() - INACTIVITY_LIMIT);
-        const deadDevices = await Semaphore.find({
-            "status.last_seen": { $lt: thresholdDate },
-            "status.controlador": { $ne: 'Desconocido' } 
-        });
 
-        for (const device of deadDevices) {
-            console.log(`[WATCHDOG] Forzando OFFLINE para: ${device.cruceId}`);
+        for (const [topic, device] of deviceCache.entries()) {
+            const lastSeen = new Date(device.status.last_seen).getTime();
 
-            const updatedDevice = await Semaphore.findByIdAndUpdate(
-                device._id,
-                { $set: { "status.controlador": 'Desconocido', "status.luces": 'Desconocido', "status.alimentacion": 'Desconocido', "status.ups_voltaje": 0 } },
-                { new: true } 
-            );
+            if (lastSeen < thresholdDate.getTime() && device.status.controlador !== 'Desconocido') {
+                const enMantencion = device.enMantencion === true;
+                console.log(`[WATCHDOG] Sin senial: ${device.cruceId}${enMantencion ? ' (en mantencion)' : ''}`);
 
-            // 🔥 TICKET AUTOMÁTICO (OFFLINE) - Esto ya estaba, pero asegúrate de que el user 'sistema' exista
-            await handleAutoTicket(updatedDevice, 'offline', 'El dispositivo ha dejado de comunicar por más de 20 minutos (Watchdog).');
+                device.status.controlador  = 'Desconocido';
+                device.status.luces        = 'Desconocido';
+                device.status.alimentacion = 'Desconocido';
+                device.status.ups_estado   = 'Apagado';
 
-            await StatusLog.create({
-                cruceId: updatedDevice.cruceId, type: 'offline', message: '📡 Pérdida de Señal (Watchdog - Inactividad)',
-                controlador: 'Desconocido', luces: 'Desconocido', alimentacion: 'Desconocido', ups_voltaje: 0
-            });
+                await Semaphore.findByIdAndUpdate(device._id, {
+                    $set: { status: device.status }
+                }, { runValidators: true });
 
-            if (ioInstance) {
-                // Actualiza el mapa a GRIS (Offline)
-                ioInstance.emit('status_update', {
-                    cruceId: updatedDevice.cruceId,
-                    isOnline: false,
-                    fullStatus: updatedDevice.status 
+                if (!enMantencion) {
+                    await handleAutoTicket(
+                        device, 'offline',
+                        `Cruce ${device.cruceId} sin comunicacion por mas de 20 minutos. Sin senial MQTT (Watchdog).`
+                    );
+                }
+
+                await StatusLog.create({
+                    cruceId:      device.cruceId,
+                    type:         'offline',
+                    message:      `Perdida de Senial (Watchdog)${enMantencion ? ' [En Mantencion]' : ''}`,
+                    controlador:  'Desconocido',
+                    luces:        'Desconocido',
+                    alimentacion: 'Desconocido',
+                    ups_estado:   'Apagado'
                 });
+
+                if (ioInstance) {
+                    ioInstance.emit('status_update', { cruceId: device.cruceId, isOnline: false, fullStatus: device.status });
+                    if (!enMantencion) {
+                        ioInstance.emit('new_notification', {
+                            title:   `Sin Senial: ${device.cruceId}`,
+                            message: `El cruce ${device.cruceId} lleva mas de 20 minutos sin comunicar.`,
+                            type:    'status_change'
+                        });
+                    }
+                }
             }
         }
-    } catch (error) { 
-        console.error("Error en Watchdog:", error); 
+    } catch (error) {
+        console.error("Error en Watchdog:", error);
     }
 };
 
-module.exports = { connectToBroker };
+// Actualizar cache desde routes externos sin reiniciar el servicio
+const updateDeviceCache = (topic, fields) => {
+    if (!topic || !deviceCache.has(topic)) return;
+    Object.assign(deviceCache.get(topic), fields);
+};
+
+module.exports = { connectToBroker, updateDeviceCache };

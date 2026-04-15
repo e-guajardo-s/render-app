@@ -87,20 +87,28 @@
     box-sizing: border-box; 
 }
 .info-window-status-pill.status-grey {
-    background-color: #6c757d; 
+    background-color: #6c757d; /* Gris = Sin Monitoreo */
+}
+.info-window-status-pill.status-purple {
+    background-color: #7c3aed; /* Morado = Aislado */
 }
 .info-window-status-pill.status-green {
     background-color: #28a745;
 }
 .info-window-status-pill.status-red {
-    background-color: #dc3545; 
+    background-color: #dc3545; /* Rojo = Sin Conexión */
 }
 .info-window-status-pill.status-orange {
-    background-color: #fd7e14; 
+    background-color: #fd7e14;
 }
-.status-blue {
-    background-color: #004085; /* Fondo Azul Claro */
+.info-window-status-pill.status-blue {
+    background-color: #004085;
 }
+.info-window-status-pill.status-yellow {
+    background-color: #f59e0b;
+    color: #1a1a1a;
+}
+
 .info-window-status-grid {
     display: flex;
     justify-content: space-around;
@@ -183,4 +191,111 @@
 @keyframes slideIn {
     from { opacity: 0; transform: translateY(-5px); }
     to { opacity: 1; transform: translateY(0); }
+}
+
+/* ─── UPS AUTONOMÍA ──────────────────────────────────────────────── */
+.ups-autonomia-wrapper {
+    background: #0f172a;
+    border-radius: 10px;
+    padding: 12px 14px;
+    margin-bottom: 14px;
+    position: relative;
+    overflow: hidden;
+}
+
+.ups-autonomia-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.ups-autonomia-titulo {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #e2e8f0;
+    letter-spacing: 0.03em;
+}
+.ups-autonomia-inicio {
+    font-size: 0.72rem;
+    color: #64748b;
+}
+
+/* Barra de carga */
+.ups-barra-fondo {
+    height: 20px;
+    background: #1e293b;
+    border-radius: 10px;
+    overflow: visible;
+    position: relative;
+    margin-bottom: 8px;
+    border: 1px solid #334155;
+}
+.ups-barra-relleno {
+    height: 100%;
+    border-radius: 10px;
+    min-width: 4px;
+    position: relative;
+    /* Brillo en el extremo derecho de la barra */
+    box-shadow: 2px 0 8px currentColor;
+}
+/* Marcas divisorias de horas */
+.ups-barra-marca {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: rgba(255,255,255,0.12);
+    pointer-events: none;
+}
+
+/* Texto porcentaje + tiempo */
+.ups-autonomia-texto {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4px;
+}
+.ups-autonomia-pct {
+    font-size: 1.1rem;
+    font-weight: 800;
+    line-height: 1;
+}
+.ups-autonomia-tiempo {
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-align: right;
+}
+
+/* Escala de horas */
+.ups-escala {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 2px;
+}
+.ups-escala span {
+    font-size: 0.62rem;
+    color: #475569;
+    font-family: monospace;
+}
+
+/* Toast de alerta */
+.ups-alerta-toast {
+    position: absolute;
+    top: -38px;
+    left: 0;
+    right: 0;
+    background: #dc2626;
+    color: #fff;
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-align: center;
+    padding: 6px 12px;
+    border-radius: 6px;
+    box-shadow: 0 4px 12px rgba(220,38,38,0.4);
+    animation: toastIn 0.3s ease;
+    z-index: 10;
+}
+@keyframes toastIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to   { opacity: 1; transform: translateY(0); }
 }

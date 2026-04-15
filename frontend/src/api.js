@@ -5,7 +5,7 @@ import axios from 'axios';
 const api = axios.create({
   // TRUCO: Si estamos en Producción (Render), usa URL relativa ('').
   // Si estamos en Desarrollo (Local), usa la variable de entorno (localhost).
-  baseURL: import.meta.env.PROD ? '' : import.meta.env.VITE_API_BASE_URL,
+  baseURL: import.meta.env.VITE_API_BASE_URL,
 });
 
 // 2. Interceptor de Petición (Request): Añade el token
@@ -26,8 +26,13 @@ api.interceptors.request.use(
 api.interceptors.response.use(
   (response) => response, 
   (error) => {
-    // Si el token expiró o no es válido (error 401)
-    if (error.response && error.response.status === 401) {
+    // Solo redirigir al login si el 401 viene con el código de token inválido/expirado.
+    // Excluimos rutas que usan 401 para indicar credencial incorrecta (ej: verify-network-pass)
+    const isAuthEndpoint = error.config?.url?.includes('/auth/') ||
+                           error.config?.url?.includes('verify-network-pass') ||
+                           error.config?.url?.includes('verify-pass');
+
+    if (error.response && error.response.status === 401 && !isAuthEndpoint) {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
       window.location.href = '/login';

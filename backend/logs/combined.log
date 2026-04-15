@@ -333,3 +333,1136 @@
 {"level":"info","message":"Socket Conectado: 49ii-wF5jN_9MDpZAAAV","service":"traffic-light-backend","timestamp":"2026-02-03 11:57:06"}
 {"level":"info","message":"Socket Conectado: 6U-ypmvUvlQh3YZJAAAX","service":"traffic-light-backend","timestamp":"2026-02-03 11:57:06"}
 {"level":"info","message":"Socket Desconectado: smP-FkPu17V7M7C2AAAS","service":"traffic-light-backend","timestamp":"2026-02-03 11:57:41"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-01 08:51:41"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-01 08:51:42"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-01 08:51:42"}
+{"level":"info","message":"Usuario logueado: e.guajardo","service":"render-app-backend","timestamp":"2026-04-01 08:52:02"}
+{"level":"info","message":"Socket conectado: HVJB-_Qv1Kzq2WHHAAAB","service":"render-app-backend","timestamp":"2026-04-01 08:52:02"}
+{"level":"info","message":"Socket conectado: BGgqO3Vnfg_5xANeAAAG","service":"render-app-backend","timestamp":"2026-04-01 08:52:02"}
+{"level":"info","message":"Socket conectado: PqmjoyZtBEybXHeCAAAH","service":"render-app-backend","timestamp":"2026-04-01 08:52:02"}
+{"level":"info","message":"Socket desconectado: PqmjoyZtBEybXHeCAAAH","service":"render-app-backend","timestamp":"2026-04-01 08:52:05"}
+{"level":"info","message":"Socket conectado: kGdQ8FpEtGYz_uJuAAAK","service":"render-app-backend","timestamp":"2026-04-01 08:53:24"}
+{"level":"info","message":"Socket desconectado: kGdQ8FpEtGYz_uJuAAAK","service":"render-app-backend","timestamp":"2026-04-01 08:57:46"}
+{"level":"info","message":"Socket conectado: ucx3qjBuH_UWTyPLAAAN","service":"render-app-backend","timestamp":"2026-04-01 08:57:56"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-01 08:59:19"}
+{"level":"info","message":"Socket conectado: ziVnhWDdlBVoSVZxAAAC","service":"render-app-backend","timestamp":"2026-04-01 08:59:19"}
+{"level":"info","message":"Socket conectado: ZGSNIM5_QaOwzoSRAAAD","service":"render-app-backend","timestamp":"2026-04-01 08:59:19"}
+{"level":"info","message":"Socket conectado: cBYCFHJ-lH5BkRUwAAAF","service":"render-app-backend","timestamp":"2026-04-01 08:59:19"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-01 08:59:20"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-01 08:59:20"}
+{"level":"info","message":"Socket desconectado: cBYCFHJ-lH5BkRUwAAAF","service":"render-app-backend","timestamp":"2026-04-01 08:59:51"}
+{"level":"info","message":"Socket desconectado: ZGSNIM5_QaOwzoSRAAAD","service":"render-app-backend","timestamp":"2026-04-01 08:59:51"}
+{"level":"info","message":"Socket desconectado: ziVnhWDdlBVoSVZxAAAC","service":"render-app-backend","timestamp":"2026-04-01 08:59:51"}
+{"level":"info","message":"Socket conectado: YEDG1kzAThc4EKFLAAAK","service":"render-app-backend","timestamp":"2026-04-01 08:59:52"}
+{"level":"info","message":"Socket conectado: 44rR0EBVJhTCsj4IAAAL","service":"render-app-backend","timestamp":"2026-04-01 08:59:52"}
+{"level":"info","message":"Socket conectado: F89t0UPjnmpZtIYYAAAM","service":"render-app-backend","timestamp":"2026-04-01 08:59:52"}
+{"level":"info","message":"Socket desconectado: YEDG1kzAThc4EKFLAAAK","service":"render-app-backend","timestamp":"2026-04-01 08:59:52"}
+{"level":"info","message":"Socket desconectado: 44rR0EBVJhTCsj4IAAAL","service":"render-app-backend","timestamp":"2026-04-01 08:59:52"}
+{"level":"info","message":"Socket conectado: 5XRCV1CUHBDu-SyLAAAP","service":"render-app-backend","timestamp":"2026-04-01 08:59:52"}
+{"level":"info","message":"Socket conectado: -MbJnP2kwTwgnRTdAAAQ","service":"render-app-backend","timestamp":"2026-04-01 08:59:52"}
+{"level":"info","message":"Socket desconectado: F89t0UPjnmpZtIYYAAAM","service":"render-app-backend","timestamp":"2026-04-01 09:00:02"}
+{"level":"info","message":"Socket conectado: u5qAyISUNv_a7IvqAAAT","service":"render-app-backend","timestamp":"2026-04-01 09:00:02"}
+{"level":"info","message":"Socket desconectado: u5qAyISUNv_a7IvqAAAT","service":"render-app-backend","timestamp":"2026-04-01 09:00:29"}
+{"level":"info","message":"Socket conectado: 2k9QzxQ5STmAl8e-AAAW","service":"render-app-backend","timestamp":"2026-04-01 09:00:29"}
+{"level":"info","message":"Socket desconectado: 2k9QzxQ5STmAl8e-AAAW","service":"render-app-backend","timestamp":"2026-04-01 09:00:42"}
+{"level":"info","message":"Socket conectado: 95qcXhBR2Bg0dmAPAAAZ","service":"render-app-backend","timestamp":"2026-04-01 09:00:42"}
+{"level":"info","message":"Socket desconectado: 95qcXhBR2Bg0dmAPAAAZ","service":"render-app-backend","timestamp":"2026-04-01 09:00:47"}
+{"level":"info","message":"Socket conectado: BDb0m724Whx9u0P4AAAc","service":"render-app-backend","timestamp":"2026-04-01 09:00:48"}
+{"level":"info","message":"Socket desconectado: BDb0m724Whx9u0P4AAAc","service":"render-app-backend","timestamp":"2026-04-01 09:05:29"}
+{"level":"info","message":"Socket conectado: -hFpVZ3T_KX3rTIDAAAf","service":"render-app-backend","timestamp":"2026-04-01 09:06:20"}
+{"level":"info","message":"Socket desconectado: -hFpVZ3T_KX3rTIDAAAf","service":"render-app-backend","timestamp":"2026-04-01 09:06:42"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-01 09:09:32"}
+{"level":"info","message":"Socket conectado: ori_zL4CJuWqiyt1AAAC","service":"render-app-backend","timestamp":"2026-04-01 09:09:32"}
+{"level":"info","message":"Socket conectado: jiA6B1loud3agoaYAAAD","service":"render-app-backend","timestamp":"2026-04-01 09:09:32"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-01 09:09:33"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-01 09:09:33"}
+{"level":"info","message":"Socket conectado: uwdgJ-ValCC3w6dBAAAF","service":"render-app-backend","timestamp":"2026-04-01 09:17:41"}
+{"level":"info","message":"Socket desconectado: uwdgJ-ValCC3w6dBAAAF","service":"render-app-backend","timestamp":"2026-04-01 09:22:34"}
+{"level":"info","message":"Socket conectado: VjfQB3SCsIh7HePJAAAI","service":"render-app-backend","timestamp":"2026-04-01 09:22:37"}
+{"level":"info","message":"Socket desconectado: VjfQB3SCsIh7HePJAAAI","service":"render-app-backend","timestamp":"2026-04-01 09:22:44"}
+{"level":"info","message":"Socket conectado: 1IjYj0GTLztxdiEUAAAL","service":"render-app-backend","timestamp":"2026-04-01 09:22:44"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-01 09:23:31"}
+{"level":"info","message":"Socket conectado: Y54AJQm8yqtnuzsOAAAC","service":"render-app-backend","timestamp":"2026-04-01 09:23:32"}
+{"level":"info","message":"Socket conectado: XcWvZLzDMvoOahyWAAAD","service":"render-app-backend","timestamp":"2026-04-01 09:23:32"}
+{"level":"info","message":"Socket conectado: NHEFg4LzB5q3P4lOAAAF","service":"render-app-backend","timestamp":"2026-04-01 09:23:32"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-01 09:23:33"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-01 09:23:33"}
+{"level":"info","message":"Socket desconectado: NHEFg4LzB5q3P4lOAAAF","service":"render-app-backend","timestamp":"2026-04-01 09:35:16"}
+{"level":"info","message":"Socket conectado: q5BdKaMMoZosHtjRAAAI","service":"render-app-backend","timestamp":"2026-04-01 09:35:33"}
+{"level":"info","message":"Socket desconectado: q5BdKaMMoZosHtjRAAAI","service":"render-app-backend","timestamp":"2026-04-01 09:35:51"}
+{"level":"info","message":"Socket conectado: 1KVkHQbVlKSIyd3RAAAL","service":"render-app-backend","timestamp":"2026-04-01 09:36:07"}
+{"level":"info","message":"Socket desconectado: 1KVkHQbVlKSIyd3RAAAL","service":"render-app-backend","timestamp":"2026-04-01 09:36:12"}
+{"level":"info","message":"Socket desconectado: Y54AJQm8yqtnuzsOAAAC","service":"render-app-backend","timestamp":"2026-04-01 09:36:18"}
+{"level":"info","message":"Socket desconectado: XcWvZLzDMvoOahyWAAAD","service":"render-app-backend","timestamp":"2026-04-01 09:36:18"}
+{"level":"warn","message":"Login fallido (pass incorrecta): v.aburto","service":"render-app-backend","timestamp":"2026-04-01 09:36:25"}
+{"level":"info","message":"Usuario logueado: sistema","service":"render-app-backend","timestamp":"2026-04-01 09:36:34"}
+{"level":"info","message":"Socket conectado: pklrI15vF4HNq2RYAAAN","service":"render-app-backend","timestamp":"2026-04-01 09:36:35"}
+{"level":"info","message":"Socket conectado: qZ7Vf13VEKPJSE74AAAS","service":"render-app-backend","timestamp":"2026-04-01 09:36:35"}
+{"level":"info","message":"Socket conectado: 5Y5VpDMjssG3pD06AAAT","service":"render-app-backend","timestamp":"2026-04-01 09:36:35"}
+{"level":"info","message":"Socket desconectado: 5Y5VpDMjssG3pD06AAAT","service":"render-app-backend","timestamp":"2026-04-01 09:36:37"}
+{"level":"info","message":"Rol actualizado: e.guajardo ahora es admin (por sistema)","service":"render-app-backend","timestamp":"2026-04-01 09:36:40"}
+{"level":"info","message":"Socket desconectado: qZ7Vf13VEKPJSE74AAAS","service":"render-app-backend","timestamp":"2026-04-01 09:36:42"}
+{"level":"info","message":"Socket desconectado: pklrI15vF4HNq2RYAAAN","service":"render-app-backend","timestamp":"2026-04-01 09:36:42"}
+{"level":"info","message":"Usuario logueado: e.guajardo","service":"render-app-backend","timestamp":"2026-04-01 09:36:49"}
+{"level":"info","message":"Socket conectado: 62vT8h43OXUkHY3LAAAV","service":"render-app-backend","timestamp":"2026-04-01 09:36:49"}
+{"level":"info","message":"Socket conectado: 5229M5GgrBdNYtutAAAa","service":"render-app-backend","timestamp":"2026-04-01 09:36:49"}
+{"level":"info","message":"Socket conectado: MI_8FlFukO66NfMWAAAb","service":"render-app-backend","timestamp":"2026-04-01 09:36:49"}
+{"level":"info","message":"Socket desconectado: MI_8FlFukO66NfMWAAAb","service":"render-app-backend","timestamp":"2026-04-01 09:36:53"}
+{"level":"info","message":"Socket conectado: __HIP7wJ4fCaWBRWAAAe","service":"render-app-backend","timestamp":"2026-04-01 09:36:57"}
+{"level":"info","message":"Socket __HIP7wJ4fCaWBRWAAAe unido a: cjtraffic/1","service":"render-app-backend","timestamp":"2026-04-01 09:37:03"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-01 09:38:02"}
+{"level":"info","message":"Socket conectado: o6hyVNR8RWRkwaWQAAAD","service":"render-app-backend","timestamp":"2026-04-01 09:38:02"}
+{"level":"info","message":"Socket conectado: ygZH4Lls72zAIhIwAAAE","service":"render-app-backend","timestamp":"2026-04-01 09:38:02"}
+{"level":"info","message":"Socket conectado: Ba_WI0YYanI9EkYmAAAF","service":"render-app-backend","timestamp":"2026-04-01 09:38:02"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-01 09:38:03"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-01 09:38:03"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-01 09:38:17"}
+{"level":"info","message":"Socket conectado: EjUjHAXIdf28Ft2JAAAB","service":"render-app-backend","timestamp":"2026-04-01 09:38:18"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-01 09:38:18"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-01 09:38:18"}
+{"level":"info","message":"Socket conectado: 432me6vnI2r7MuXDAAAE","service":"render-app-backend","timestamp":"2026-04-01 09:38:18"}
+{"level":"info","message":"Socket conectado: jQqMiLTO58GB3Ar2AAAF","service":"render-app-backend","timestamp":"2026-04-01 09:38:18"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 14.36h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-01 09:38:28"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-01 09:38:28"}
+{"level":"info","message":"Socket conectado: kVv7CweiIWsCaevzAAAD","service":"render-app-backend","timestamp":"2026-04-01 09:38:28"}
+{"level":"info","message":"Socket conectado: IDBsU-KWzcDF4CEmAAAE","service":"render-app-backend","timestamp":"2026-04-01 09:38:28"}
+{"level":"info","message":"Socket conectado: Nd9cv45Wa7dDYMUTAAAF","service":"render-app-backend","timestamp":"2026-04-01 09:38:28"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-01 09:38:29"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-01 09:38:29"}
+{"level":"info","message":"Socket desconectado: Nd9cv45Wa7dDYMUTAAAF","service":"render-app-backend","timestamp":"2026-04-01 09:38:44"}
+{"level":"info","message":"Socket conectado: YWcRGjuPBCDoCkexAAAH","service":"render-app-backend","timestamp":"2026-04-01 09:38:44"}
+{"level":"info","message":"Socket YWcRGjuPBCDoCkexAAAH unido a: cjtraffic/1","service":"render-app-backend","timestamp":"2026-04-01 09:39:55"}
+{"level":"info","message":"Socket YWcRGjuPBCDoCkexAAAH unido a: cjtraffic/2","service":"render-app-backend","timestamp":"2026-04-01 09:40:48"}
+{"level":"info","message":"Socket YWcRGjuPBCDoCkexAAAH unido a: cjtraffic/1","service":"render-app-backend","timestamp":"2026-04-01 09:40:59"}
+{"level":"info","message":"Socket desconectado: YWcRGjuPBCDoCkexAAAH","service":"render-app-backend","timestamp":"2026-04-01 09:41:03"}
+{"level":"info","message":"Socket conectado: PB1I6GtIHd4ARzY4AAAK","service":"render-app-backend","timestamp":"2026-04-01 09:41:04"}
+{"level":"info","message":"Socket desconectado: PB1I6GtIHd4ARzY4AAAK","service":"render-app-backend","timestamp":"2026-04-01 09:42:15"}
+{"level":"info","message":"Socket conectado: -VAWWp0VGIXBXj9MAAAN","service":"render-app-backend","timestamp":"2026-04-01 09:42:22"}
+{"level":"info","message":"Socket desconectado: -VAWWp0VGIXBXj9MAAAN","service":"render-app-backend","timestamp":"2026-04-01 09:42:47"}
+{"level":"info","message":"Socket conectado: j22cyNDQZS20kGXXAAAQ","service":"render-app-backend","timestamp":"2026-04-01 09:42:47"}
+{"level":"info","message":"Socket desconectado: j22cyNDQZS20kGXXAAAQ","service":"render-app-backend","timestamp":"2026-04-01 09:42:49"}
+{"level":"info","message":"Socket conectado: x2JpGI6WG6xelHaiAAAT","service":"render-app-backend","timestamp":"2026-04-01 09:42:53"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 14.26h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-01 09:44:20"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-01 09:44:20"}
+{"level":"info","message":"Socket conectado: 31s3O_5F_tJW6IfEAAAC","service":"render-app-backend","timestamp":"2026-04-01 09:44:20"}
+{"level":"info","message":"Socket conectado: AmZW6AxZuw3WZM0wAAAE","service":"render-app-backend","timestamp":"2026-04-01 09:44:20"}
+{"level":"info","message":"Socket conectado: KXeIfSZze3uKPHwmAAAF","service":"render-app-backend","timestamp":"2026-04-01 09:44:20"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-01 09:44:21"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-01 09:44:21"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 14.26h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-01 09:44:38"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-01 09:44:38"}
+{"level":"info","message":"Socket conectado: mvzax0oELrFHyv1wAAAB","service":"render-app-backend","timestamp":"2026-04-01 09:44:38"}
+{"level":"info","message":"Socket conectado: wBV77mJYNhOoV0zyAAAD","service":"render-app-backend","timestamp":"2026-04-01 09:44:38"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-01 09:44:38"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-01 09:44:38"}
+{"level":"info","message":"Socket conectado: qA7OLo9_jBIF3C3yAAAF","service":"render-app-backend","timestamp":"2026-04-01 09:44:38"}
+{"level":"info","message":"Socket desconectado: qA7OLo9_jBIF3C3yAAAF","service":"render-app-backend","timestamp":"2026-04-01 09:46:06"}
+{"level":"info","message":"Socket conectado: 4fzULDRNy6tPtfMbAAAI","service":"render-app-backend","timestamp":"2026-04-01 09:46:23"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 11.60h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-01 12:23:49"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-01 12:23:49"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-01 12:23:50"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-01 12:23:50"}
+{"level":"info","message":"Socket conectado: kB8ywi0Qp69l74L0AAAG","service":"render-app-backend","timestamp":"2026-04-01 12:23:54"}
+{"level":"info","message":"Socket conectado: Ad0ObQf42W5XYNcvAAAH","service":"render-app-backend","timestamp":"2026-04-01 12:23:54"}
+{"level":"info","message":"Socket conectado: kUrY8BTjbZWHZaQeAAAI","service":"render-app-backend","timestamp":"2026-04-01 12:23:54"}
+{"level":"info","message":"Socket desconectado: kUrY8BTjbZWHZaQeAAAI","service":"render-app-backend","timestamp":"2026-04-01 12:24:01"}
+{"level":"info","message":"Socket conectado: moThcVSgZyczpQg-AAAL","service":"render-app-backend","timestamp":"2026-04-01 12:24:02"}
+{"level":"info","message":"Socket moThcVSgZyczpQg-AAAL unido a: cjtraffic/1","service":"render-app-backend","timestamp":"2026-04-01 12:24:07"}
+{"level":"info","message":"Socket desconectado: moThcVSgZyczpQg-AAAL","service":"render-app-backend","timestamp":"2026-04-01 12:24:22"}
+{"level":"info","message":"Socket conectado: Wir5NjSxolASIdHMAAAO","service":"render-app-backend","timestamp":"2026-04-01 12:24:22"}
+{"level":"info","message":"Socket desconectado: Wir5NjSxolASIdHMAAAO","service":"render-app-backend","timestamp":"2026-04-01 12:27:35"}
+{"level":"info","message":"Socket conectado: j9WD0bzkziyamijOAAAR","service":"render-app-backend","timestamp":"2026-04-01 12:28:58"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 11.50h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-01 12:30:14"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-01 12:30:14"}
+{"level":"info","message":"Socket conectado: DSg5t2ZQo0_Juh7jAAAC","service":"render-app-backend","timestamp":"2026-04-01 12:30:14"}
+{"level":"info","message":"Socket conectado: DyBqVgofTN8YJ2zbAAAD","service":"render-app-backend","timestamp":"2026-04-01 12:30:14"}
+{"level":"info","message":"Socket conectado: GSTgvGr2F9yVJvbPAAAF","service":"render-app-backend","timestamp":"2026-04-01 12:30:14"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-01 12:30:15"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-01 12:30:15"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 11.49h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-01 12:30:26"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-01 12:30:26"}
+{"level":"info","message":"Socket conectado: KmLn2wic-OtAYkFUAAAC","service":"render-app-backend","timestamp":"2026-04-01 12:30:26"}
+{"level":"info","message":"Socket conectado: a0Y0_dOT4yvek0hCAAAD","service":"render-app-backend","timestamp":"2026-04-01 12:30:26"}
+{"level":"info","message":"Socket conectado: cTF52_C_pXhlq8D8AAAF","service":"render-app-backend","timestamp":"2026-04-01 12:30:26"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-01 12:30:27"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-01 12:30:27"}
+{"level":"info","message":"Socket desconectado: KmLn2wic-OtAYkFUAAAC","service":"render-app-backend","timestamp":"2026-04-01 12:31:02"}
+{"level":"info","message":"Socket desconectado: cTF52_C_pXhlq8D8AAAF","service":"render-app-backend","timestamp":"2026-04-01 12:31:02"}
+{"level":"info","message":"Socket desconectado: a0Y0_dOT4yvek0hCAAAD","service":"render-app-backend","timestamp":"2026-04-01 12:31:02"}
+{"level":"info","message":"Socket conectado: VcgpDHYT0E-KpSOYAAAK","service":"render-app-backend","timestamp":"2026-04-01 12:31:02"}
+{"level":"info","message":"Socket conectado: Hv2ACUDHeIUbdjWkAAAL","service":"render-app-backend","timestamp":"2026-04-01 12:31:02"}
+{"level":"info","message":"Socket conectado: rZzLnAJKU-Tor9qKAAAM","service":"render-app-backend","timestamp":"2026-04-01 12:31:02"}
+{"level":"info","message":"Socket desconectado: VcgpDHYT0E-KpSOYAAAK","service":"render-app-backend","timestamp":"2026-04-01 12:31:02"}
+{"level":"info","message":"Socket desconectado: Hv2ACUDHeIUbdjWkAAAL","service":"render-app-backend","timestamp":"2026-04-01 12:31:02"}
+{"level":"info","message":"Socket conectado: n2_DjqeMJIGRxPFFAAAP","service":"render-app-backend","timestamp":"2026-04-01 12:31:02"}
+{"level":"info","message":"Socket conectado: IgwJHPNWlLLU_sXmAAAQ","service":"render-app-backend","timestamp":"2026-04-01 12:31:02"}
+{"level":"info","message":"Socket desconectado: rZzLnAJKU-Tor9qKAAAM","service":"render-app-backend","timestamp":"2026-04-01 12:31:21"}
+{"level":"info","message":"Socket desconectado: IgwJHPNWlLLU_sXmAAAQ","service":"render-app-backend","timestamp":"2026-04-01 12:31:21"}
+{"level":"info","message":"Socket desconectado: n2_DjqeMJIGRxPFFAAAP","service":"render-app-backend","timestamp":"2026-04-01 12:31:21"}
+{"level":"info","message":"Socket conectado: qj5Aff3gpu86BqCPAAAV","service":"render-app-backend","timestamp":"2026-04-01 12:31:21"}
+{"level":"info","message":"Socket conectado: tt1BOodGG4p_RpA0AAAW","service":"render-app-backend","timestamp":"2026-04-01 12:31:21"}
+{"level":"info","message":"Socket conectado: kd6gOD2d1HwytP0EAAAX","service":"render-app-backend","timestamp":"2026-04-01 12:31:21"}
+{"level":"info","message":"Socket desconectado: qj5Aff3gpu86BqCPAAAV","service":"render-app-backend","timestamp":"2026-04-01 12:31:21"}
+{"level":"info","message":"Socket desconectado: tt1BOodGG4p_RpA0AAAW","service":"render-app-backend","timestamp":"2026-04-01 12:31:21"}
+{"level":"info","message":"Socket conectado: cdhzSUhKAwvmwFQ9AAAa","service":"render-app-backend","timestamp":"2026-04-01 12:31:21"}
+{"level":"info","message":"Socket conectado: Gf4XtqlrmpHzi8-7AAAb","service":"render-app-backend","timestamp":"2026-04-01 12:31:21"}
+{"level":"info","message":"Socket desconectado: kd6gOD2d1HwytP0EAAAX","service":"render-app-backend","timestamp":"2026-04-01 12:31:28"}
+{"level":"info","message":"Socket desconectado: Gf4XtqlrmpHzi8-7AAAb","service":"render-app-backend","timestamp":"2026-04-01 12:31:28"}
+{"level":"info","message":"Socket desconectado: cdhzSUhKAwvmwFQ9AAAa","service":"render-app-backend","timestamp":"2026-04-01 12:31:28"}
+{"level":"info","message":"Socket conectado: 65JkHRpiUCHmnpk1AAAg","service":"render-app-backend","timestamp":"2026-04-01 12:31:29"}
+{"level":"info","message":"Socket conectado: UPLHcapqDUbBqCRNAAAh","service":"render-app-backend","timestamp":"2026-04-01 12:31:29"}
+{"level":"info","message":"Socket conectado: m-x7gzJDzasuY0rkAAAi","service":"render-app-backend","timestamp":"2026-04-01 12:31:29"}
+{"level":"info","message":"Socket desconectado: 65JkHRpiUCHmnpk1AAAg","service":"render-app-backend","timestamp":"2026-04-01 12:31:29"}
+{"level":"info","message":"Socket desconectado: m-x7gzJDzasuY0rkAAAi","service":"render-app-backend","timestamp":"2026-04-01 12:31:29"}
+{"level":"info","message":"Socket conectado: mJI1uOmuEfuUMoBJAAAl","service":"render-app-backend","timestamp":"2026-04-01 12:31:29"}
+{"level":"info","message":"Socket conectado: Wc19L7JRX47E5CtGAAAm","service":"render-app-backend","timestamp":"2026-04-01 12:31:29"}
+{"level":"info","message":"Socket desconectado: UPLHcapqDUbBqCRNAAAh","service":"render-app-backend","timestamp":"2026-04-01 12:32:14"}
+{"level":"info","message":"Socket desconectado: Wc19L7JRX47E5CtGAAAm","service":"render-app-backend","timestamp":"2026-04-01 12:32:14"}
+{"level":"info","message":"Socket desconectado: mJI1uOmuEfuUMoBJAAAl","service":"render-app-backend","timestamp":"2026-04-01 12:32:14"}
+{"level":"info","message":"Socket conectado: 1CrlWpDn2RA8XqXaAAAr","service":"render-app-backend","timestamp":"2026-04-01 12:32:14"}
+{"level":"info","message":"Socket conectado: qWrf9ZT27oaeZeZ8AAAs","service":"render-app-backend","timestamp":"2026-04-01 12:32:14"}
+{"level":"info","message":"Socket conectado: N4EHCQ1LeTgCxWWcAAAt","service":"render-app-backend","timestamp":"2026-04-01 12:32:14"}
+{"level":"info","message":"Socket desconectado: qWrf9ZT27oaeZeZ8AAAs","service":"render-app-backend","timestamp":"2026-04-01 12:32:14"}
+{"level":"info","message":"Socket conectado: tsmZX0FGKAVOfJu-AAAw","service":"render-app-backend","timestamp":"2026-04-01 12:32:14"}
+{"level":"info","message":"Socket conectado: lioM6yG4GXFe618AAAAx","service":"render-app-backend","timestamp":"2026-04-01 12:32:14"}
+{"level":"info","message":"Socket desconectado: 1CrlWpDn2RA8XqXaAAAr","service":"render-app-backend","timestamp":"2026-04-01 12:32:14"}
+{"level":"info","message":"Socket desconectado: N4EHCQ1LeTgCxWWcAAAt","service":"render-app-backend","timestamp":"2026-04-01 12:32:46"}
+{"level":"info","message":"Socket desconectado: lioM6yG4GXFe618AAAAx","service":"render-app-backend","timestamp":"2026-04-01 12:32:46"}
+{"level":"info","message":"Socket desconectado: tsmZX0FGKAVOfJu-AAAw","service":"render-app-backend","timestamp":"2026-04-01 12:32:46"}
+{"level":"info","message":"Socket conectado: TKwDXy6ndASWnfDzAAA2","service":"render-app-backend","timestamp":"2026-04-01 12:32:47"}
+{"level":"info","message":"Socket conectado: 0ZtRkFBZItzt8v_BAAA3","service":"render-app-backend","timestamp":"2026-04-01 12:32:47"}
+{"level":"info","message":"Socket conectado: UOzKtLu5d2CC9N5oAAA4","service":"render-app-backend","timestamp":"2026-04-01 12:32:47"}
+{"level":"info","message":"Socket desconectado: TKwDXy6ndASWnfDzAAA2","service":"render-app-backend","timestamp":"2026-04-01 12:32:47"}
+{"level":"info","message":"Socket desconectado: 0ZtRkFBZItzt8v_BAAA3","service":"render-app-backend","timestamp":"2026-04-01 12:32:47"}
+{"level":"info","message":"Socket conectado: NIDYHmh_JcBBnJXmAAA7","service":"render-app-backend","timestamp":"2026-04-01 12:32:47"}
+{"level":"info","message":"Socket conectado: TLyRJHIJGoBSOzy_AAA8","service":"render-app-backend","timestamp":"2026-04-01 12:32:47"}
+{"level":"info","message":"Socket desconectado: UOzKtLu5d2CC9N5oAAA4","service":"render-app-backend","timestamp":"2026-04-01 12:32:53"}
+{"level":"info","message":"Socket conectado: hNI4nA960Nb5P9N2AAA_","service":"render-app-backend","timestamp":"2026-04-01 12:32:53"}
+{"level":"info","message":"Socket desconectado: hNI4nA960Nb5P9N2AAA_","service":"render-app-backend","timestamp":"2026-04-01 12:33:28"}
+{"level":"info","message":"Socket conectado: UEzp55v9PK21JqDbAABC","service":"render-app-backend","timestamp":"2026-04-01 12:33:29"}
+{"level":"info","message":"Socket desconectado: UEzp55v9PK21JqDbAABC","service":"render-app-backend","timestamp":"2026-04-01 12:33:46"}
+{"level":"info","message":"Socket conectado: _w8YfCeUtOBKmXO_AABE","service":"render-app-backend","timestamp":"2026-04-01 12:34:08"}
+{"level":"info","message":"Socket desconectado: NIDYHmh_JcBBnJXmAAA7","service":"render-app-backend","timestamp":"2026-04-01 12:34:10"}
+{"level":"info","message":"Socket desconectado: TLyRJHIJGoBSOzy_AAA8","service":"render-app-backend","timestamp":"2026-04-01 12:34:10"}
+{"level":"info","message":"Socket desconectado: _w8YfCeUtOBKmXO_AABE","service":"render-app-backend","timestamp":"2026-04-01 12:34:10"}
+{"level":"info","message":"Socket conectado: 7OfoU2z9RI5PP9JaAABI","service":"render-app-backend","timestamp":"2026-04-01 12:34:10"}
+{"level":"info","message":"Socket conectado: 9RhtrWJT7zxrjhF5AABJ","service":"render-app-backend","timestamp":"2026-04-01 12:34:10"}
+{"level":"info","message":"Socket conectado: I3-OI8BHaaOkRKqLAABK","service":"render-app-backend","timestamp":"2026-04-01 12:34:10"}
+{"level":"info","message":"Socket desconectado: 7OfoU2z9RI5PP9JaAABI","service":"render-app-backend","timestamp":"2026-04-01 12:34:10"}
+{"level":"info","message":"Socket desconectado: I3-OI8BHaaOkRKqLAABK","service":"render-app-backend","timestamp":"2026-04-01 12:34:10"}
+{"level":"info","message":"Socket conectado: xiIG1EWOEEXrbkJ9AABN","service":"render-app-backend","timestamp":"2026-04-01 12:34:10"}
+{"level":"info","message":"Socket conectado: NVJX-gmspcTN6S4TAABO","service":"render-app-backend","timestamp":"2026-04-01 12:34:10"}
+{"level":"info","message":"Socket desconectado: 9RhtrWJT7zxrjhF5AABJ","service":"render-app-backend","timestamp":"2026-04-01 12:34:29"}
+{"level":"info","message":"Socket desconectado: NVJX-gmspcTN6S4TAABO","service":"render-app-backend","timestamp":"2026-04-01 12:34:29"}
+{"level":"info","message":"Socket desconectado: xiIG1EWOEEXrbkJ9AABN","service":"render-app-backend","timestamp":"2026-04-01 12:34:29"}
+{"level":"info","message":"Socket conectado: S9T-FfT_jhGLx4FUAABT","service":"render-app-backend","timestamp":"2026-04-01 12:34:30"}
+{"level":"info","message":"Socket conectado: D8O2SiIsJT2xZaXBAABU","service":"render-app-backend","timestamp":"2026-04-01 12:34:30"}
+{"level":"info","message":"Socket conectado: mC7h_YDm9AMswa6HAABV","service":"render-app-backend","timestamp":"2026-04-01 12:34:30"}
+{"level":"info","message":"Socket desconectado: S9T-FfT_jhGLx4FUAABT","service":"render-app-backend","timestamp":"2026-04-01 12:34:30"}
+{"level":"info","message":"Socket desconectado: D8O2SiIsJT2xZaXBAABU","service":"render-app-backend","timestamp":"2026-04-01 12:34:30"}
+{"level":"info","message":"Socket conectado: qmCukDwTt3_XEysXAABY","service":"render-app-backend","timestamp":"2026-04-01 12:34:30"}
+{"level":"info","message":"Socket conectado: FDxzgVgIWXd8tfe1AABZ","service":"render-app-backend","timestamp":"2026-04-01 12:34:30"}
+{"level":"info","message":"Socket desconectado: mC7h_YDm9AMswa6HAABV","service":"render-app-backend","timestamp":"2026-04-01 12:34:53"}
+{"level":"info","message":"Socket desconectado: FDxzgVgIWXd8tfe1AABZ","service":"render-app-backend","timestamp":"2026-04-01 12:34:53"}
+{"level":"info","message":"Socket desconectado: qmCukDwTt3_XEysXAABY","service":"render-app-backend","timestamp":"2026-04-01 12:34:53"}
+{"level":"info","message":"Socket conectado: 75fls13QB1zDdgpOAABe","service":"render-app-backend","timestamp":"2026-04-01 12:34:53"}
+{"level":"info","message":"Socket conectado: 3JHyU6vbwd-H1-KAAABf","service":"render-app-backend","timestamp":"2026-04-01 12:34:53"}
+{"level":"info","message":"Socket desconectado: 75fls13QB1zDdgpOAABe","service":"render-app-backend","timestamp":"2026-04-01 12:34:53"}
+{"level":"info","message":"Socket conectado: kuzsmBJ5XxFW0b5_AABg","service":"render-app-backend","timestamp":"2026-04-01 12:34:53"}
+{"level":"info","message":"Socket desconectado: 3JHyU6vbwd-H1-KAAABf","service":"render-app-backend","timestamp":"2026-04-01 12:34:53"}
+{"level":"info","message":"Socket conectado: lQ-tVGXfC3f-xxnwAABj","service":"render-app-backend","timestamp":"2026-04-01 12:34:53"}
+{"level":"info","message":"Socket conectado: efliIG5aKGHpxJb9AABk","service":"render-app-backend","timestamp":"2026-04-01 12:34:53"}
+{"level":"info","message":"Socket desconectado: kuzsmBJ5XxFW0b5_AABg","service":"render-app-backend","timestamp":"2026-04-01 12:35:09"}
+{"level":"info","message":"Socket desconectado: efliIG5aKGHpxJb9AABk","service":"render-app-backend","timestamp":"2026-04-01 12:35:09"}
+{"level":"info","message":"Socket desconectado: lQ-tVGXfC3f-xxnwAABj","service":"render-app-backend","timestamp":"2026-04-01 12:35:09"}
+{"level":"info","message":"Socket conectado: t6m2vIMjaESwCX9LAABp","service":"render-app-backend","timestamp":"2026-04-01 12:35:10"}
+{"level":"info","message":"Socket conectado: 3FbL933pQc0lvcyzAABq","service":"render-app-backend","timestamp":"2026-04-01 12:35:10"}
+{"level":"info","message":"Socket conectado: aGN5h78GLXrWDf3_AABr","service":"render-app-backend","timestamp":"2026-04-01 12:35:10"}
+{"level":"info","message":"Socket desconectado: t6m2vIMjaESwCX9LAABp","service":"render-app-backend","timestamp":"2026-04-01 12:35:10"}
+{"level":"info","message":"Socket desconectado: 3FbL933pQc0lvcyzAABq","service":"render-app-backend","timestamp":"2026-04-01 12:35:10"}
+{"level":"info","message":"Socket conectado: 3seuztqKsJn8U6e_AABu","service":"render-app-backend","timestamp":"2026-04-01 12:35:10"}
+{"level":"info","message":"Socket conectado: pUksFi3HSQ6biuoEAABv","service":"render-app-backend","timestamp":"2026-04-01 12:35:10"}
+{"level":"info","message":"Socket desconectado: aGN5h78GLXrWDf3_AABr","service":"render-app-backend","timestamp":"2026-04-01 12:37:41"}
+{"level":"info","message":"Socket desconectado: pUksFi3HSQ6biuoEAABv","service":"render-app-backend","timestamp":"2026-04-01 12:37:41"}
+{"level":"info","message":"Socket desconectado: 3seuztqKsJn8U6e_AABu","service":"render-app-backend","timestamp":"2026-04-01 12:37:41"}
+{"level":"info","message":"Socket conectado: J5FlMpdG2oCA0wAwAAB0","service":"render-app-backend","timestamp":"2026-04-01 12:37:41"}
+{"level":"info","message":"Socket conectado: ZnCLSbev-BY5otTBAAB1","service":"render-app-backend","timestamp":"2026-04-01 12:37:41"}
+{"level":"info","message":"Socket conectado: iaCob8tKBi5jWJXNAAB2","service":"render-app-backend","timestamp":"2026-04-01 12:37:41"}
+{"level":"info","message":"Socket desconectado: ZnCLSbev-BY5otTBAAB1","service":"render-app-backend","timestamp":"2026-04-01 12:37:41"}
+{"level":"info","message":"Socket desconectado: iaCob8tKBi5jWJXNAAB2","service":"render-app-backend","timestamp":"2026-04-01 12:37:41"}
+{"level":"info","message":"Socket conectado: kjSf5bb22aI3b0ZgAAB5","service":"render-app-backend","timestamp":"2026-04-01 12:37:41"}
+{"level":"info","message":"Socket conectado: y3lQD8uBP3QqeboeAAB6","service":"render-app-backend","timestamp":"2026-04-01 12:37:41"}
+{"level":"info","message":"Socket desconectado: J5FlMpdG2oCA0wAwAAB0","service":"render-app-backend","timestamp":"2026-04-01 12:37:56"}
+{"level":"info","message":"Socket desconectado: y3lQD8uBP3QqeboeAAB6","service":"render-app-backend","timestamp":"2026-04-01 12:37:56"}
+{"level":"info","message":"Socket desconectado: kjSf5bb22aI3b0ZgAAB5","service":"render-app-backend","timestamp":"2026-04-01 12:37:56"}
+{"level":"info","message":"Socket conectado: gvCB8OyBFYhBnXzgAAB_","service":"render-app-backend","timestamp":"2026-04-01 12:37:56"}
+{"level":"info","message":"Socket conectado: jsmYhNhENoORnk46AACA","service":"render-app-backend","timestamp":"2026-04-01 12:37:56"}
+{"level":"info","message":"Socket conectado: VeeW5hfldlhlsZ-oAACB","service":"render-app-backend","timestamp":"2026-04-01 12:37:56"}
+{"level":"info","message":"Socket desconectado: gvCB8OyBFYhBnXzgAAB_","service":"render-app-backend","timestamp":"2026-04-01 12:37:56"}
+{"level":"info","message":"Socket desconectado: jsmYhNhENoORnk46AACA","service":"render-app-backend","timestamp":"2026-04-01 12:37:56"}
+{"level":"info","message":"Socket conectado: aljQjtJ6AF6ZS23mAACE","service":"render-app-backend","timestamp":"2026-04-01 12:37:56"}
+{"level":"info","message":"Socket conectado: VODKsY0UNJDZiDk1AACF","service":"render-app-backend","timestamp":"2026-04-01 12:37:56"}
+{"level":"info","message":"Socket desconectado: VeeW5hfldlhlsZ-oAACB","service":"render-app-backend","timestamp":"2026-04-01 12:37:57"}
+{"level":"info","message":"Socket desconectado: aljQjtJ6AF6ZS23mAACE","service":"render-app-backend","timestamp":"2026-04-01 12:37:57"}
+{"level":"info","message":"Socket desconectado: VODKsY0UNJDZiDk1AACF","service":"render-app-backend","timestamp":"2026-04-01 12:37:57"}
+{"level":"info","message":"Socket conectado: 5vLy90DgP5jTU868AACK","service":"render-app-backend","timestamp":"2026-04-01 12:37:57"}
+{"level":"info","message":"Socket conectado: nZCixOixul67rztPAACL","service":"render-app-backend","timestamp":"2026-04-01 12:37:57"}
+{"level":"info","message":"Socket conectado: eNoOHUvJlMQ_ODM7AACM","service":"render-app-backend","timestamp":"2026-04-01 12:37:57"}
+{"level":"info","message":"Socket desconectado: 5vLy90DgP5jTU868AACK","service":"render-app-backend","timestamp":"2026-04-01 12:37:57"}
+{"level":"info","message":"Socket desconectado: nZCixOixul67rztPAACL","service":"render-app-backend","timestamp":"2026-04-01 12:37:57"}
+{"level":"info","message":"Socket conectado: cxMaIeBke-MPea7CAACP","service":"render-app-backend","timestamp":"2026-04-01 12:37:58"}
+{"level":"info","message":"Socket conectado: Bd0f24JnY9WSrhD0AACQ","service":"render-app-backend","timestamp":"2026-04-01 12:37:58"}
+{"level":"info","message":"Socket desconectado: eNoOHUvJlMQ_ODM7AACM","service":"render-app-backend","timestamp":"2026-04-01 12:37:58"}
+{"level":"info","message":"Socket desconectado: Bd0f24JnY9WSrhD0AACQ","service":"render-app-backend","timestamp":"2026-04-01 12:37:58"}
+{"level":"info","message":"Socket desconectado: cxMaIeBke-MPea7CAACP","service":"render-app-backend","timestamp":"2026-04-01 12:37:58"}
+{"level":"info","message":"Socket conectado: hKm6wN9YSEJZxZ5UAACV","service":"render-app-backend","timestamp":"2026-04-01 12:37:58"}
+{"level":"info","message":"Socket conectado: 7MBs3kCeLuGsT58QAACW","service":"render-app-backend","timestamp":"2026-04-01 12:37:58"}
+{"level":"info","message":"Socket conectado: JxhS8x00QKlASBb7AACX","service":"render-app-backend","timestamp":"2026-04-01 12:37:58"}
+{"level":"info","message":"Socket desconectado: hKm6wN9YSEJZxZ5UAACV","service":"render-app-backend","timestamp":"2026-04-01 12:37:58"}
+{"level":"info","message":"Socket desconectado: 7MBs3kCeLuGsT58QAACW","service":"render-app-backend","timestamp":"2026-04-01 12:37:58"}
+{"level":"info","message":"Socket conectado: KXq1QUDyj45N_agPAACa","service":"render-app-backend","timestamp":"2026-04-01 12:37:58"}
+{"level":"info","message":"Socket conectado: HTIxMWGwkUO9C9r6AACb","service":"render-app-backend","timestamp":"2026-04-01 12:37:58"}
+{"level":"info","message":"Socket desconectado: JxhS8x00QKlASBb7AACX","service":"render-app-backend","timestamp":"2026-04-01 12:37:59"}
+{"level":"info","message":"Socket desconectado: HTIxMWGwkUO9C9r6AACb","service":"render-app-backend","timestamp":"2026-04-01 12:37:59"}
+{"level":"info","message":"Socket desconectado: KXq1QUDyj45N_agPAACa","service":"render-app-backend","timestamp":"2026-04-01 12:37:59"}
+{"level":"info","message":"Socket conectado: I7xwqLZOdFe3P-HSAACg","service":"render-app-backend","timestamp":"2026-04-01 12:37:59"}
+{"level":"info","message":"Socket conectado: 6LLb7x6pTa0gGapSAACh","service":"render-app-backend","timestamp":"2026-04-01 12:37:59"}
+{"level":"info","message":"Socket conectado: 3ODW28J6cLwRK4FNAACi","service":"render-app-backend","timestamp":"2026-04-01 12:37:59"}
+{"level":"info","message":"Socket desconectado: I7xwqLZOdFe3P-HSAACg","service":"render-app-backend","timestamp":"2026-04-01 12:37:59"}
+{"level":"info","message":"Socket desconectado: 6LLb7x6pTa0gGapSAACh","service":"render-app-backend","timestamp":"2026-04-01 12:37:59"}
+{"level":"info","message":"Socket conectado: qlnprkjj_CrkUG5GAACl","service":"render-app-backend","timestamp":"2026-04-01 12:37:59"}
+{"level":"info","message":"Socket conectado: 9IP-i0QT5O80V4ifAACm","service":"render-app-backend","timestamp":"2026-04-01 12:37:59"}
+{"level":"info","message":"Socket desconectado: 3ODW28J6cLwRK4FNAACi","service":"render-app-backend","timestamp":"2026-04-01 12:38:16"}
+{"level":"info","message":"Socket desconectado: 9IP-i0QT5O80V4ifAACm","service":"render-app-backend","timestamp":"2026-04-01 12:38:16"}
+{"level":"info","message":"Socket desconectado: qlnprkjj_CrkUG5GAACl","service":"render-app-backend","timestamp":"2026-04-01 12:38:16"}
+{"level":"info","message":"Socket conectado: Oi93ObLjcah1s10MAACr","service":"render-app-backend","timestamp":"2026-04-01 12:38:16"}
+{"level":"info","message":"Socket conectado: 5u9RM8O8b04YeLQUAACs","service":"render-app-backend","timestamp":"2026-04-01 12:38:16"}
+{"level":"info","message":"Socket conectado: mCiUcjfxiIpmrvT3AACt","service":"render-app-backend","timestamp":"2026-04-01 12:38:16"}
+{"level":"info","message":"Socket desconectado: Oi93ObLjcah1s10MAACr","service":"render-app-backend","timestamp":"2026-04-01 12:38:16"}
+{"level":"info","message":"Socket desconectado: 5u9RM8O8b04YeLQUAACs","service":"render-app-backend","timestamp":"2026-04-01 12:38:16"}
+{"level":"info","message":"Socket conectado: EimvQPaY8vWzye0eAACw","service":"render-app-backend","timestamp":"2026-04-01 12:38:16"}
+{"level":"info","message":"Socket conectado: GHYiCLBDEz6MxF61AACx","service":"render-app-backend","timestamp":"2026-04-01 12:38:16"}
+{"level":"info","message":"Socket desconectado: mCiUcjfxiIpmrvT3AACt","service":"render-app-backend","timestamp":"2026-04-01 12:38:23"}
+{"level":"info","message":"Socket desconectado: GHYiCLBDEz6MxF61AACx","service":"render-app-backend","timestamp":"2026-04-01 12:38:23"}
+{"level":"info","message":"Socket desconectado: EimvQPaY8vWzye0eAACw","service":"render-app-backend","timestamp":"2026-04-01 12:38:23"}
+{"level":"info","message":"Socket conectado: 9JHDm5xA_LKPQodwAAC2","service":"render-app-backend","timestamp":"2026-04-01 12:38:23"}
+{"level":"info","message":"Socket conectado: h__BrJpEi8NsFe29AAC3","service":"render-app-backend","timestamp":"2026-04-01 12:38:23"}
+{"level":"info","message":"Socket conectado: iRTcQwOmu-np8Zp0AAC4","service":"render-app-backend","timestamp":"2026-04-01 12:38:23"}
+{"level":"info","message":"Socket desconectado: 9JHDm5xA_LKPQodwAAC2","service":"render-app-backend","timestamp":"2026-04-01 12:38:23"}
+{"level":"info","message":"Socket desconectado: h__BrJpEi8NsFe29AAC3","service":"render-app-backend","timestamp":"2026-04-01 12:38:23"}
+{"level":"info","message":"Socket conectado: kuxw32h-WL2OX82VAAC7","service":"render-app-backend","timestamp":"2026-04-01 12:38:23"}
+{"level":"info","message":"Socket conectado: QdhwxQYEQK284EvTAAC8","service":"render-app-backend","timestamp":"2026-04-01 12:38:23"}
+{"level":"info","message":"Socket desconectado: iRTcQwOmu-np8Zp0AAC4","service":"render-app-backend","timestamp":"2026-04-01 12:38:28"}
+{"level":"info","message":"Socket conectado: XytfEDWDTM98WqJ5AAC_","service":"render-app-backend","timestamp":"2026-04-01 12:38:32"}
+{"level":"info","message":"Socket desconectado: XytfEDWDTM98WqJ5AAC_","service":"render-app-backend","timestamp":"2026-04-01 12:38:55"}
+{"level":"info","message":"Socket conectado: vIYu1khaT6amLNiGAADC","service":"render-app-backend","timestamp":"2026-04-01 12:39:09"}
+{"level":"info","message":"Socket desconectado: kuxw32h-WL2OX82VAAC7","service":"render-app-backend","timestamp":"2026-04-01 12:39:10"}
+{"level":"info","message":"Socket desconectado: vIYu1khaT6amLNiGAADC","service":"render-app-backend","timestamp":"2026-04-01 12:39:10"}
+{"level":"info","message":"Socket desconectado: QdhwxQYEQK284EvTAAC8","service":"render-app-backend","timestamp":"2026-04-01 12:39:10"}
+{"level":"info","message":"Socket conectado: 36UFHPFWUvhK_EjkAADH","service":"render-app-backend","timestamp":"2026-04-01 12:39:11"}
+{"level":"info","message":"Socket conectado: 7b_Ko9ONRgdNDhJ7AADI","service":"render-app-backend","timestamp":"2026-04-01 12:39:11"}
+{"level":"info","message":"Socket conectado: geUJTvUvDtW4u8m8AADJ","service":"render-app-backend","timestamp":"2026-04-01 12:39:11"}
+{"level":"info","message":"Socket desconectado: geUJTvUvDtW4u8m8AADJ","service":"render-app-backend","timestamp":"2026-04-01 12:39:11"}
+{"level":"info","message":"Socket conectado: JYDFd8808V2YdzyzAADM","service":"render-app-backend","timestamp":"2026-04-01 12:39:11"}
+{"level":"info","message":"Socket conectado: EMYLPDh9XMcpVDVCAADN","service":"render-app-backend","timestamp":"2026-04-01 12:39:11"}
+{"level":"info","message":"Socket desconectado: 36UFHPFWUvhK_EjkAADH","service":"render-app-backend","timestamp":"2026-04-01 12:39:11"}
+{"level":"info","message":"Socket desconectado: 7b_Ko9ONRgdNDhJ7AADI","service":"render-app-backend","timestamp":"2026-04-01 12:40:50"}
+{"level":"info","message":"Socket desconectado: EMYLPDh9XMcpVDVCAADN","service":"render-app-backend","timestamp":"2026-04-01 12:40:50"}
+{"level":"info","message":"Socket desconectado: JYDFd8808V2YdzyzAADM","service":"render-app-backend","timestamp":"2026-04-01 12:40:50"}
+{"level":"info","message":"Socket conectado: 0BWWKX9hnw9in1vxAADS","service":"render-app-backend","timestamp":"2026-04-01 12:40:50"}
+{"level":"info","message":"Socket conectado: ZGWxqOXpZKosyi4TAADT","service":"render-app-backend","timestamp":"2026-04-01 12:40:50"}
+{"level":"info","message":"Socket conectado: ffr_qj3-qXCFusQSAADU","service":"render-app-backend","timestamp":"2026-04-01 12:40:50"}
+{"level":"info","message":"Socket desconectado: ZGWxqOXpZKosyi4TAADT","service":"render-app-backend","timestamp":"2026-04-01 12:40:50"}
+{"level":"info","message":"Socket desconectado: ffr_qj3-qXCFusQSAADU","service":"render-app-backend","timestamp":"2026-04-01 12:40:50"}
+{"level":"info","message":"Socket conectado: I1udsrXcYXwruUZMAADX","service":"render-app-backend","timestamp":"2026-04-01 12:40:50"}
+{"level":"info","message":"Socket conectado: 922JI7IhZVgaXxEkAADY","service":"render-app-backend","timestamp":"2026-04-01 12:40:50"}
+{"level":"info","message":"Socket desconectado: 0BWWKX9hnw9in1vxAADS","service":"render-app-backend","timestamp":"2026-04-01 12:40:56"}
+{"level":"info","message":"Socket conectado: rNJdlDE6tuhqGvimAADb","service":"render-app-backend","timestamp":"2026-04-01 12:40:56"}
+{"level":"info","message":"Socket rNJdlDE6tuhqGvimAADb unido a: cjtraffic/1","service":"render-app-backend","timestamp":"2026-04-01 12:41:10"}
+{"level":"info","message":"Socket desconectado: rNJdlDE6tuhqGvimAADb","service":"render-app-backend","timestamp":"2026-04-01 12:41:45"}
+{"level":"info","message":"Socket conectado: 2OBuJdOERj9MWAblAADe","service":"render-app-backend","timestamp":"2026-04-01 12:41:45"}
+{"level":"info","message":"Socket desconectado: I1udsrXcYXwruUZMAADX","service":"render-app-backend","timestamp":"2026-04-01 12:41:46"}
+{"level":"info","message":"Socket desconectado: 2OBuJdOERj9MWAblAADe","service":"render-app-backend","timestamp":"2026-04-01 12:41:46"}
+{"level":"info","message":"Socket desconectado: 922JI7IhZVgaXxEkAADY","service":"render-app-backend","timestamp":"2026-04-01 12:41:46"}
+{"level":"info","message":"Socket conectado: ZiZqjFqoSr-Tn8ucAADj","service":"render-app-backend","timestamp":"2026-04-01 12:41:47"}
+{"level":"info","message":"Socket conectado: SVr3sETtdZo2mZ-sAADk","service":"render-app-backend","timestamp":"2026-04-01 12:41:47"}
+{"level":"info","message":"Socket conectado: m-r6v5KGU7P3B24DAADl","service":"render-app-backend","timestamp":"2026-04-01 12:41:47"}
+{"level":"info","message":"Socket desconectado: SVr3sETtdZo2mZ-sAADk","service":"render-app-backend","timestamp":"2026-04-01 12:41:47"}
+{"level":"info","message":"Socket conectado: qNmW1fYPT5kiBlzqAADo","service":"render-app-backend","timestamp":"2026-04-01 12:41:47"}
+{"level":"info","message":"Socket conectado: u9hCF-gcRN2EcqP2AADp","service":"render-app-backend","timestamp":"2026-04-01 12:41:47"}
+{"level":"info","message":"Socket desconectado: ZiZqjFqoSr-Tn8ucAADj","service":"render-app-backend","timestamp":"2026-04-01 12:41:47"}
+{"level":"info","message":"Socket desconectado: m-r6v5KGU7P3B24DAADl","service":"render-app-backend","timestamp":"2026-04-01 12:41:50"}
+{"level":"info","message":"Socket conectado: xqqjIIfgLVV3Kd0-AADs","service":"render-app-backend","timestamp":"2026-04-01 12:41:50"}
+{"level":"info","message":"Socket xqqjIIfgLVV3Kd0-AADs unido a: cjtraffic/1","service":"render-app-backend","timestamp":"2026-04-01 12:41:55"}
+{"level":"info","message":"Socket xqqjIIfgLVV3Kd0-AADs unido a: cjtraffic/2","service":"render-app-backend","timestamp":"2026-04-01 12:41:56"}
+{"level":"info","message":"Socket xqqjIIfgLVV3Kd0-AADs unido a: cjtraffic/1","service":"render-app-backend","timestamp":"2026-04-01 12:41:58"}
+{"level":"info","message":"Socket desconectado: xqqjIIfgLVV3Kd0-AADs","service":"render-app-backend","timestamp":"2026-04-01 12:42:35"}
+{"level":"info","message":"Socket conectado: mSw01qXDseYrUqMGAADv","service":"render-app-backend","timestamp":"2026-04-01 12:42:35"}
+{"level":"info","message":"Socket desconectado: qNmW1fYPT5kiBlzqAADo","service":"render-app-backend","timestamp":"2026-04-01 12:43:46"}
+{"level":"info","message":"Socket desconectado: mSw01qXDseYrUqMGAADv","service":"render-app-backend","timestamp":"2026-04-01 12:43:46"}
+{"level":"info","message":"Socket desconectado: u9hCF-gcRN2EcqP2AADp","service":"render-app-backend","timestamp":"2026-04-01 12:43:46"}
+{"level":"info","message":"Socket conectado: w6eXeGVqEpik4FR_AAD0","service":"render-app-backend","timestamp":"2026-04-01 12:43:46"}
+{"level":"info","message":"Socket conectado: VFKyBhyEyMv4erD1AAD1","service":"render-app-backend","timestamp":"2026-04-01 12:43:46"}
+{"level":"info","message":"Socket conectado: QKNztRL3if1x6Ew-AAD2","service":"render-app-backend","timestamp":"2026-04-01 12:43:46"}
+{"level":"info","message":"Socket desconectado: w6eXeGVqEpik4FR_AAD0","service":"render-app-backend","timestamp":"2026-04-01 12:43:46"}
+{"level":"info","message":"Socket desconectado: VFKyBhyEyMv4erD1AAD1","service":"render-app-backend","timestamp":"2026-04-01 12:43:46"}
+{"level":"info","message":"Socket conectado: ZcQPV2laqOTjhiDmAAD5","service":"render-app-backend","timestamp":"2026-04-01 12:43:46"}
+{"level":"info","message":"Socket conectado: fC1bKpv5RpGmAUGxAAD6","service":"render-app-backend","timestamp":"2026-04-01 12:43:46"}
+{"level":"info","message":"Socket desconectado: QKNztRL3if1x6Ew-AAD2","service":"render-app-backend","timestamp":"2026-04-01 12:43:48"}
+{"level":"info","message":"Socket conectado: MNLaTv6I-YtsLYJoAAD9","service":"render-app-backend","timestamp":"2026-04-01 12:43:48"}
+{"level":"info","message":"Socket desconectado: MNLaTv6I-YtsLYJoAAD9","service":"render-app-backend","timestamp":"2026-04-01 12:44:03"}
+{"level":"info","message":"Socket conectado: WAidAFgjxAR55CugAAEA","service":"render-app-backend","timestamp":"2026-04-01 12:44:03"}
+{"level":"info","message":"Socket desconectado: ZcQPV2laqOTjhiDmAAD5","service":"render-app-backend","timestamp":"2026-04-01 12:44:21"}
+{"level":"info","message":"Socket desconectado: WAidAFgjxAR55CugAAEA","service":"render-app-backend","timestamp":"2026-04-01 12:44:21"}
+{"level":"info","message":"Socket desconectado: fC1bKpv5RpGmAUGxAAD6","service":"render-app-backend","timestamp":"2026-04-01 12:44:21"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 11.23h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-01 12:46:11"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-01 12:46:11"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-01 12:46:12"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-01 12:46:12"}
+{"level":"info","message":"Usuario logueado: e.guajardo","service":"render-app-backend","timestamp":"2026-04-01 12:46:18"}
+{"level":"info","message":"Socket conectado: CIbIKCzOYuA9dW63AAAB","service":"render-app-backend","timestamp":"2026-04-01 12:46:18"}
+{"level":"info","message":"Socket conectado: Yt3tytAM0Gk_8Qh8AAAF","service":"render-app-backend","timestamp":"2026-04-01 12:46:18"}
+{"level":"info","message":"Socket conectado: FEk7jK5OTq5jk7iuAAAH","service":"render-app-backend","timestamp":"2026-04-01 12:46:18"}
+{"level":"info","message":"Socket desconectado: FEk7jK5OTq5jk7iuAAAH","service":"render-app-backend","timestamp":"2026-04-01 12:46:27"}
+{"level":"info","message":"Socket conectado: Is-bDUqKjy3mc4K8AAAK","service":"render-app-backend","timestamp":"2026-04-01 12:46:27"}
+{"level":"info","message":"Socket Is-bDUqKjy3mc4K8AAAK unido a: cjtraffic/1","service":"render-app-backend","timestamp":"2026-04-01 12:46:32"}
+{"level":"info","message":"Socket desconectado: Is-bDUqKjy3mc4K8AAAK","service":"render-app-backend","timestamp":"2026-04-01 12:47:33"}
+{"level":"info","message":"Socket conectado: 5E-tyL2smBjdD0G4AAAN","service":"render-app-backend","timestamp":"2026-04-01 12:47:34"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 11.20h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-01 12:48:01"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-01 12:48:01"}
+{"level":"info","message":"Socket conectado: N3GFO8XemgK6JTLyAAAB","service":"render-app-backend","timestamp":"2026-04-01 12:48:01"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-01 12:48:02"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-01 12:48:02"}
+{"level":"info","message":"Socket conectado: zapzisJRYyLPhe6_AAAE","service":"render-app-backend","timestamp":"2026-04-01 12:48:02"}
+{"level":"info","message":"Socket conectado: bFWGqufPVT2MEM3lAAAF","service":"render-app-backend","timestamp":"2026-04-01 12:48:02"}
+{"level":"info","message":"Socket desconectado: bFWGqufPVT2MEM3lAAAF","service":"render-app-backend","timestamp":"2026-04-01 12:48:40"}
+{"level":"info","message":"Socket desconectado: zapzisJRYyLPhe6_AAAE","service":"render-app-backend","timestamp":"2026-04-01 12:48:40"}
+{"level":"info","message":"Socket desconectado: N3GFO8XemgK6JTLyAAAB","service":"render-app-backend","timestamp":"2026-04-01 12:48:40"}
+{"level":"info","message":"Socket conectado: cuJ3TIQWnOvx5QNyAAAJ","service":"render-app-backend","timestamp":"2026-04-01 12:48:41"}
+{"level":"info","message":"Socket conectado: _WA9m9fbc5i8e1NSAAAL","service":"render-app-backend","timestamp":"2026-04-01 12:48:41"}
+{"level":"info","message":"Socket conectado: l1dY5UjIYUyGpvdvAAAM","service":"render-app-backend","timestamp":"2026-04-01 12:48:41"}
+{"level":"info","message":"Socket desconectado: cuJ3TIQWnOvx5QNyAAAJ","service":"render-app-backend","timestamp":"2026-04-01 12:48:41"}
+{"level":"info","message":"Socket desconectado: _WA9m9fbc5i8e1NSAAAL","service":"render-app-backend","timestamp":"2026-04-01 12:48:41"}
+{"level":"info","message":"Socket conectado: g40sXl7ZiceTNfWRAAAP","service":"render-app-backend","timestamp":"2026-04-01 12:48:41"}
+{"level":"info","message":"Socket conectado: U0USatBXjyyfp1iUAAAQ","service":"render-app-backend","timestamp":"2026-04-01 12:48:41"}
+{"level":"info","message":"Socket desconectado: U0USatBXjyyfp1iUAAAQ","service":"render-app-backend","timestamp":"2026-04-01 12:54:29"}
+{"level":"info","message":"Socket desconectado: g40sXl7ZiceTNfWRAAAP","service":"render-app-backend","timestamp":"2026-04-01 12:54:29"}
+{"level":"info","message":"Socket desconectado: l1dY5UjIYUyGpvdvAAAM","service":"render-app-backend","timestamp":"2026-04-01 12:54:29"}
+{"level":"info","message":"Socket conectado: Jo3OcZYW8yJqOwcNAAAW","service":"render-app-backend","timestamp":"2026-04-01 12:54:44"}
+{"level":"info","message":"Socket desconectado: Jo3OcZYW8yJqOwcNAAAW","service":"render-app-backend","timestamp":"2026-04-01 12:54:45"}
+{"level":"info","message":"Socket conectado: dQNI5a9gj9HsgdFLAAAY","service":"render-app-backend","timestamp":"2026-04-01 12:54:45"}
+{"level":"info","message":"Socket conectado: GVMHLtbs795DWWXBAAAZ","service":"render-app-backend","timestamp":"2026-04-01 12:54:45"}
+{"level":"info","message":"Socket desconectado: GVMHLtbs795DWWXBAAAZ","service":"render-app-backend","timestamp":"2026-04-01 12:55:06"}
+{"level":"info","message":"Socket desconectado: dQNI5a9gj9HsgdFLAAAY","service":"render-app-backend","timestamp":"2026-04-01 12:55:06"}
+{"level":"info","message":"Socket conectado: lC6C1KtA0UKIfQr3AAAg","service":"render-app-backend","timestamp":"2026-04-01 12:55:06"}
+{"level":"info","message":"Socket conectado: AApmkiyGGBVgJ8fwAAAh","service":"render-app-backend","timestamp":"2026-04-01 12:55:06"}
+{"level":"info","message":"Socket conectado: wDic_xqVUeH4VwmFAAAi","service":"render-app-backend","timestamp":"2026-04-01 12:55:06"}
+{"level":"info","message":"Socket desconectado: wDic_xqVUeH4VwmFAAAi","service":"render-app-backend","timestamp":"2026-04-01 12:55:19"}
+{"level":"info","message":"Socket desconectado: lC6C1KtA0UKIfQr3AAAg","service":"render-app-backend","timestamp":"2026-04-01 12:57:58"}
+{"level":"info","message":"Socket desconectado: AApmkiyGGBVgJ8fwAAAh","service":"render-app-backend","timestamp":"2026-04-01 12:57:58"}
+{"level":"info","message":"Socket conectado: V0LN218-QEm8nsGOAAAl","service":"render-app-backend","timestamp":"2026-04-01 12:57:58"}
+{"level":"info","message":"Socket conectado: BLQQa4RJqhnDk0tVAAAm","service":"render-app-backend","timestamp":"2026-04-01 12:57:58"}
+{"level":"info","message":"Socket desconectado: V0LN218-QEm8nsGOAAAl","service":"render-app-backend","timestamp":"2026-04-01 12:57:58"}
+{"level":"info","message":"Socket conectado: x6gDPM66ISgkxzO3AAAo","service":"render-app-backend","timestamp":"2026-04-01 12:57:58"}
+{"level":"info","message":"Socket desconectado: BLQQa4RJqhnDk0tVAAAm","service":"render-app-backend","timestamp":"2026-04-01 12:58:37"}
+{"level":"info","message":"Socket desconectado: x6gDPM66ISgkxzO3AAAo","service":"render-app-backend","timestamp":"2026-04-01 12:58:37"}
+{"level":"info","message":"Socket conectado: wwzx5lKNjhFLd8DdAAAr","service":"render-app-backend","timestamp":"2026-04-01 12:58:38"}
+{"level":"info","message":"Socket conectado: SUkA9Sk1Uc0nAUGnAAAs","service":"render-app-backend","timestamp":"2026-04-01 12:58:38"}
+{"level":"info","message":"Socket desconectado: wwzx5lKNjhFLd8DdAAAr","service":"render-app-backend","timestamp":"2026-04-01 12:58:38"}
+{"level":"info","message":"Socket conectado: VsPyi2-S7ILY4NRTAAAu","service":"render-app-backend","timestamp":"2026-04-01 12:58:38"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 10.91h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-01 13:05:25"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-01 13:05:25"}
+{"level":"info","message":"Socket conectado: 2mAfpNGrJ24L52RDAAAB","service":"render-app-backend","timestamp":"2026-04-01 13:05:25"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-01 13:05:26"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-01 13:05:26"}
+{"level":"info","message":"Socket conectado: ZJ4MgNB8rmh_NrjUAAAD","service":"render-app-backend","timestamp":"2026-04-01 13:05:27"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 10.91h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-01 13:05:33"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-01 13:05:33"}
+{"level":"info","message":"Socket conectado: DdSlk93lsHAzWx3KAAAB","service":"render-app-backend","timestamp":"2026-04-01 13:05:33"}
+{"level":"info","message":"Socket conectado: xhbWuQlfr_b_WrtaAAAD","service":"render-app-backend","timestamp":"2026-04-01 13:05:33"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-01 13:05:33"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-01 13:05:33"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 10.90h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-01 13:05:43"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-01 13:05:43"}
+{"level":"info","message":"Socket conectado: 8WO_36RlmCq7VA1tAAAB","service":"render-app-backend","timestamp":"2026-04-01 13:05:44"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-01 13:05:44"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-01 13:05:44"}
+{"level":"info","message":"Socket conectado: VIzqE3iwgkoZrK5MAAAD","service":"render-app-backend","timestamp":"2026-04-01 13:05:45"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 10.87h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-01 13:07:39"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-01 13:07:39"}
+{"level":"info","message":"Socket conectado: V5itieXb2npzIT5iAAAB","service":"render-app-backend","timestamp":"2026-04-01 13:07:40"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-01 13:07:40"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-01 13:07:40"}
+{"level":"info","message":"Socket conectado: QY_-ivXigvFjAqHzAAAD","service":"render-app-backend","timestamp":"2026-04-01 13:07:41"}
+{"level":"info","message":"Socket desconectado: V5itieXb2npzIT5iAAAB","service":"render-app-backend","timestamp":"2026-04-01 13:08:14"}
+{"level":"info","message":"Socket desconectado: QY_-ivXigvFjAqHzAAAD","service":"render-app-backend","timestamp":"2026-04-01 13:08:14"}
+{"level":"info","message":"Socket conectado: t0-UoWPebtxUy6S0AAAG","service":"render-app-backend","timestamp":"2026-04-01 13:08:14"}
+{"level":"info","message":"Socket conectado: IC0wzeDen8l_vKrRAAAH","service":"render-app-backend","timestamp":"2026-04-01 13:08:14"}
+{"level":"info","message":"Socket desconectado: t0-UoWPebtxUy6S0AAAG","service":"render-app-backend","timestamp":"2026-04-01 13:08:14"}
+{"level":"info","message":"Socket conectado: d-ISpnJPM_4yUeyQAAAJ","service":"render-app-backend","timestamp":"2026-04-01 13:08:14"}
+{"level":"info","message":"Socket desconectado: IC0wzeDen8l_vKrRAAAH","service":"render-app-backend","timestamp":"2026-04-01 13:08:21"}
+{"level":"info","message":"Socket desconectado: d-ISpnJPM_4yUeyQAAAJ","service":"render-app-backend","timestamp":"2026-04-01 13:08:21"}
+{"level":"info","message":"Socket conectado: TZUUIsNkpdnVTRsZAAAM","service":"render-app-backend","timestamp":"2026-04-01 13:08:21"}
+{"level":"info","message":"Socket conectado: RLFAQGQechdV_pheAAAN","service":"render-app-backend","timestamp":"2026-04-01 13:08:21"}
+{"level":"info","message":"Socket conectado: 2h7II60pTQyOfEdXAAAP","service":"render-app-backend","timestamp":"2026-04-01 13:08:21"}
+{"level":"info","message":"Socket desconectado: TZUUIsNkpdnVTRsZAAAM","service":"render-app-backend","timestamp":"2026-04-01 13:08:21"}
+{"level":"info","message":"Socket desconectado: RLFAQGQechdV_pheAAAN","service":"render-app-backend","timestamp":"2026-04-01 13:08:54"}
+{"level":"info","message":"Socket desconectado: 2h7II60pTQyOfEdXAAAP","service":"render-app-backend","timestamp":"2026-04-01 13:08:54"}
+{"level":"info","message":"Socket conectado: mayZWLXsQ-Hg-vaAAAAS","service":"render-app-backend","timestamp":"2026-04-01 13:08:54"}
+{"level":"info","message":"Socket conectado: nNDA3oL1TH1ozCN6AAAT","service":"render-app-backend","timestamp":"2026-04-01 13:08:54"}
+{"level":"info","message":"Socket desconectado: mayZWLXsQ-Hg-vaAAAAS","service":"render-app-backend","timestamp":"2026-04-01 13:08:54"}
+{"level":"info","message":"Socket conectado: inWCZxunj7nPzmn3AAAV","service":"render-app-backend","timestamp":"2026-04-01 13:08:54"}
+{"level":"info","message":"Socket desconectado: inWCZxunj7nPzmn3AAAV","service":"render-app-backend","timestamp":"2026-04-01 13:21:35"}
+{"level":"info","message":"Socket desconectado: nNDA3oL1TH1ozCN6AAAT","service":"render-app-backend","timestamp":"2026-04-01 13:21:35"}
+{"level":"info","message":"Socket conectado: 8N1ssPxuWisjrJnXAAAY","service":"render-app-backend","timestamp":"2026-04-01 13:21:36"}
+{"level":"info","message":"Socket conectado: -adXUywr7_U_wDTGAAAZ","service":"render-app-backend","timestamp":"2026-04-01 13:21:36"}
+{"level":"info","message":"Socket desconectado: 8N1ssPxuWisjrJnXAAAY","service":"render-app-backend","timestamp":"2026-04-01 13:21:36"}
+{"level":"info","message":"Socket conectado: qg_BpSuTvft96oocAAAb","service":"render-app-backend","timestamp":"2026-04-01 13:21:36"}
+{"level":"info","message":"Socket desconectado: -adXUywr7_U_wDTGAAAZ","service":"render-app-backend","timestamp":"2026-04-01 14:39:01"}
+{"level":"info","message":"Socket desconectado: qg_BpSuTvft96oocAAAb","service":"render-app-backend","timestamp":"2026-04-01 14:39:01"}
+{"level":"info","message":"Socket conectado: rQxb6H7YQ1J3n5dkAAAe","service":"render-app-backend","timestamp":"2026-04-01 14:39:02"}
+{"level":"info","message":"Socket conectado: vJvqLEu3WDLbgJEXAAAf","service":"render-app-backend","timestamp":"2026-04-01 14:39:02"}
+{"level":"info","message":"Socket desconectado: rQxb6H7YQ1J3n5dkAAAe","service":"render-app-backend","timestamp":"2026-04-01 14:39:02"}
+{"level":"info","message":"Socket conectado: QXLkqDe2T7LUxxBkAAAh","service":"render-app-backend","timestamp":"2026-04-01 14:39:02"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 15.47h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 08:31:32"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 08:31:32"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 15.47h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 08:31:34"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 08:31:34"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 08:31:35"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 08:31:35"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 15.47h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 08:31:39"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 08:31:39"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 08:31:40"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 08:31:40"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 15.47h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 08:31:46"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 08:31:46"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 08:31:47"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 08:31:47"}
+{"level":"info","message":"Usuario logueado: e.guajardo","service":"render-app-backend","timestamp":"2026-04-02 08:31:52"}
+{"level":"info","message":"Socket conectado: kZPIy8jzoO0brEWCAAAB","service":"render-app-backend","timestamp":"2026-04-02 08:31:52"}
+{"level":"info","message":"Socket conectado: 1qJ3KyosANuzTg2PAAAE","service":"render-app-backend","timestamp":"2026-04-02 08:31:52"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 15.47h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 08:31:53"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 08:31:53"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 08:31:54"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 08:31:54"}
+{"level":"info","message":"Socket conectado: CtBDMwyNk27RoN0jAAAB","service":"render-app-backend","timestamp":"2026-04-02 08:31:55"}
+{"level":"info","message":"Socket conectado: zpByRO_kgHo78NgTAAAD","service":"render-app-backend","timestamp":"2026-04-02 08:31:55"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 15.47h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 08:31:57"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 08:31:57"}
+{"level":"info","message":"Socket conectado: O0u86WfP2JnphrJaAAAB","service":"render-app-backend","timestamp":"2026-04-02 08:31:57"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 08:31:57"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 08:31:57"}
+{"level":"info","message":"Socket conectado: YCNfbDdx1Zn5Q8pHAAAD","service":"render-app-backend","timestamp":"2026-04-02 08:31:57"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 15.47h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 08:32:03"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 08:32:03"}
+{"level":"info","message":"Socket conectado: L02m56Onuc9AYvT1AAAB","service":"render-app-backend","timestamp":"2026-04-02 08:32:04"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 08:32:04"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 08:32:04"}
+{"level":"info","message":"Socket conectado: 5U0aozmTpXNJEYgVAAAD","service":"render-app-backend","timestamp":"2026-04-02 08:32:05"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 15.46h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 08:32:12"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 08:32:12"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 08:32:12"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 08:32:12"}
+{"level":"info","message":"Socket conectado: EHH4gUqxjR6UocYlAAAB","service":"render-app-backend","timestamp":"2026-04-02 08:32:13"}
+{"level":"info","message":"Socket conectado: OkcZb6QZPqLXbG-oAAAD","service":"render-app-backend","timestamp":"2026-04-02 08:32:14"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 15.46h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 08:32:33"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 08:32:33"}
+{"level":"info","message":"Socket conectado: 5WO2ABQr-oSb42TGAAAB","service":"render-app-backend","timestamp":"2026-04-02 08:32:34"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 08:32:34"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 08:32:34"}
+{"level":"info","message":"Socket conectado: MULXtvfCvIw-0m43AAAD","service":"render-app-backend","timestamp":"2026-04-02 08:32:36"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 15.45h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 08:32:44"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 08:32:44"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 08:32:45"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 08:32:45"}
+{"level":"info","message":"Socket conectado: saD7_wnX9mbtNRdxAAAB","service":"render-app-backend","timestamp":"2026-04-02 08:32:45"}
+{"level":"info","message":"Socket conectado: nB37tea3PCMhmDOIAAAD","service":"render-app-backend","timestamp":"2026-04-02 08:32:46"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 15.45h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 08:32:54"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 08:32:54"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 08:32:55"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 08:32:55"}
+{"level":"info","message":"Socket conectado: CiXwYeboIeY4lmlOAAAC","service":"render-app-backend","timestamp":"2026-04-02 08:32:56"}
+{"level":"info","message":"Socket conectado: v4B3FBqXvTYDFRgKAAAD","service":"render-app-backend","timestamp":"2026-04-02 08:32:56"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 15.45h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 08:33:00"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 08:33:00"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 08:33:01"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 08:33:01"}
+{"level":"info","message":"Socket conectado: f1-FgwJFvx1zvwDqAAAB","service":"render-app-backend","timestamp":"2026-04-02 08:33:02"}
+{"level":"info","message":"Socket conectado: rPIi-VRd3lK2BzXEAAAD","service":"render-app-backend","timestamp":"2026-04-02 08:33:03"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 15.45h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 08:33:05"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 08:33:05"}
+{"level":"info","message":"Socket conectado: 1i2vGaSHZ6IG-1dOAAAB","service":"render-app-backend","timestamp":"2026-04-02 08:33:06"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 08:33:06"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 08:33:06"}
+{"level":"info","message":"Socket conectado: 88Arjr_FGP2Mxzd6AAAD","service":"render-app-backend","timestamp":"2026-04-02 08:33:08"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 15.45h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 08:33:12"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 08:33:12"}
+{"level":"info","message":"Socket conectado: -5GKlQQDEDIyW7AiAAAB","service":"render-app-backend","timestamp":"2026-04-02 08:33:13"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 08:33:13"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 08:33:13"}
+{"level":"info","message":"Socket conectado: 9lV4SSNkdq-A7qnVAAAD","service":"render-app-backend","timestamp":"2026-04-02 08:33:13"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 15.44h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 08:33:38"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 08:33:38"}
+{"level":"info","message":"Socket conectado: M9wqmmgpWD6I2JyJAAAB","service":"render-app-backend","timestamp":"2026-04-02 08:33:38"}
+{"level":"info","message":"Socket conectado: j8pf7INxOSlHsBJnAAAD","service":"render-app-backend","timestamp":"2026-04-02 08:33:38"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 08:33:39"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 08:33:39"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 15.43h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 08:33:55"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 08:33:55"}
+{"level":"info","message":"Socket conectado: imONp7E-K2kg6yJOAAAB","service":"render-app-backend","timestamp":"2026-04-02 08:33:55"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 08:33:56"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 08:33:56"}
+{"level":"info","message":"Socket conectado: U8kgkOpe4URmxzMIAAAD","service":"render-app-backend","timestamp":"2026-04-02 08:33:57"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 15.43h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 08:34:04"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 08:34:04"}
+{"level":"info","message":"Socket conectado: oYO8Ja6Nvm8ukXJqAAAB","service":"render-app-backend","timestamp":"2026-04-02 08:34:04"}
+{"level":"info","message":"Socket conectado: B3zm-HGM7sEYDEgPAAAD","service":"render-app-backend","timestamp":"2026-04-02 08:34:05"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 08:34:05"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 08:34:05"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 15.43h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 08:34:09"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 08:34:09"}
+{"level":"info","message":"Socket conectado: nItn5qyYrBbAE0StAAAB","service":"render-app-backend","timestamp":"2026-04-02 08:34:09"}
+{"level":"info","message":"Socket conectado: iwnoYF3nLpuiPw9XAAAD","service":"render-app-backend","timestamp":"2026-04-02 08:34:09"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 08:34:09"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 08:34:09"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 15.27h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 08:43:56"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 08:43:56"}
+{"level":"info","message":"Socket conectado: qisq25B-yyfuDeIWAAAB","service":"render-app-backend","timestamp":"2026-04-02 08:43:56"}
+{"level":"info","message":"Socket conectado: HrPSTQT2OX37oF1TAAAD","service":"render-app-backend","timestamp":"2026-04-02 08:43:57"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 08:43:57"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 08:43:57"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 15.27h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 08:44:04"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 08:44:04"}
+{"level":"info","message":"Socket conectado: IgPrkzqIjHNRyd_9AAAB","service":"render-app-backend","timestamp":"2026-04-02 08:44:05"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 08:44:05"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 08:44:05"}
+{"level":"info","message":"Socket conectado: 5xqCfLhOYAuANdv1AAAD","service":"render-app-backend","timestamp":"2026-04-02 08:44:06"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 15.26h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 08:44:15"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 08:44:15"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 08:44:15"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 08:44:15"}
+{"level":"info","message":"Socket conectado: unN5GYVQg_YsFKsdAAAB","service":"render-app-backend","timestamp":"2026-04-02 08:44:16"}
+{"level":"info","message":"Socket conectado: E-jBleeuZshWvyqxAAAD","service":"render-app-backend","timestamp":"2026-04-02 08:44:17"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 15.26h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 08:44:31"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 08:44:31"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 08:44:32"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 08:44:32"}
+{"level":"info","message":"Socket conectado: IzTDKy-IhmRN_RhQAAAC","service":"render-app-backend","timestamp":"2026-04-02 08:44:33"}
+{"level":"info","message":"Socket conectado: lxqr9AVjy9okvIb3AAAD","service":"render-app-backend","timestamp":"2026-04-02 08:44:33"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 15.25h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 08:44:46"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 08:44:46"}
+{"level":"info","message":"Socket conectado: KZaUir-ZThD0y_c8AAAB","service":"render-app-backend","timestamp":"2026-04-02 08:44:47"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 08:44:47"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 08:44:47"}
+{"level":"info","message":"Socket conectado: KFVQ9k1rlanUL5Q_AAAD","service":"render-app-backend","timestamp":"2026-04-02 08:44:49"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 15.25h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 08:44:50"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 08:44:50"}
+{"level":"info","message":"Socket conectado: RmoOGj9aKLE79NM_AAAB","service":"render-app-backend","timestamp":"2026-04-02 08:44:51"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 08:44:51"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 08:44:51"}
+{"level":"info","message":"Socket conectado: PgGB0xOQjkYaaqBTAAAD","service":"render-app-backend","timestamp":"2026-04-02 08:44:52"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 15.23h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 08:46:19"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 08:46:19"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 08:46:20"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 08:46:20"}
+{"level":"info","message":"Socket conectado: TctNK5n4vumcg3fHAAAB","service":"render-app-backend","timestamp":"2026-04-02 08:46:21"}
+{"level":"info","message":"Socket conectado: fM0ZCHdfifbgjS1JAAAD","service":"render-app-backend","timestamp":"2026-04-02 08:46:22"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 15.23h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 08:46:24"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 08:46:24"}
+{"level":"info","message":"Socket conectado: HxrFVKYfrD_krKESAAAB","service":"render-app-backend","timestamp":"2026-04-02 08:46:24"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 08:46:24"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 08:46:24"}
+{"level":"info","message":"Socket conectado: 7EP7tSLXHP3DHGVAAAAD","service":"render-app-backend","timestamp":"2026-04-02 08:46:25"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 15.22h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 08:46:30"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 08:46:30"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 08:46:31"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 08:46:31"}
+{"level":"info","message":"Socket conectado: gozi-dNr604sGrPwAAAC","service":"render-app-backend","timestamp":"2026-04-02 08:46:31"}
+{"level":"info","message":"Socket conectado: bzQSQa0s5ECOs6X5AAAD","service":"render-app-backend","timestamp":"2026-04-02 08:46:31"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 15.22h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 08:46:35"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 08:46:35"}
+{"level":"info","message":"Socket conectado: Lt1T0H7wdZt_-EP7AAAB","service":"render-app-backend","timestamp":"2026-04-02 08:46:35"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 08:46:36"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 08:46:36"}
+{"level":"info","message":"Socket conectado: MTqAot0T-146MqUQAAAD","service":"render-app-backend","timestamp":"2026-04-02 08:46:36"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 15.22h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 08:46:40"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 08:46:40"}
+{"level":"info","message":"Socket conectado: 16Mb8HLx04MEkZIBAAAB","service":"render-app-backend","timestamp":"2026-04-02 08:46:41"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 08:46:41"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 08:46:41"}
+{"level":"info","message":"Socket conectado: Kb2AIt7vQA8ERax7AAAD","service":"render-app-backend","timestamp":"2026-04-02 08:46:43"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 15.22h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 08:46:47"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 08:46:47"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 08:46:47"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 08:46:47"}
+{"level":"info","message":"Socket conectado: F6_JCM_hIAj27_1_AAAB","service":"render-app-backend","timestamp":"2026-04-02 08:46:48"}
+{"level":"info","message":"Socket conectado: GOrBH6fw5ZqTiTChAAAD","service":"render-app-backend","timestamp":"2026-04-02 08:46:49"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 15.21h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 08:47:07"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 08:47:07"}
+{"level":"info","message":"Socket conectado: e3DEKo3fGXWJpmObAAAB","service":"render-app-backend","timestamp":"2026-04-02 08:47:08"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 08:47:08"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 08:47:08"}
+{"level":"info","message":"Socket conectado: 2LgpBfQugpmlU5MOAAAD","service":"render-app-backend","timestamp":"2026-04-02 08:47:09"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 15.20h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 08:47:48"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 08:47:48"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 08:47:49"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 08:47:49"}
+{"level":"info","message":"Socket conectado: nAfwzciGXpOskXlMAAAC","service":"render-app-backend","timestamp":"2026-04-02 08:47:50"}
+{"level":"info","message":"Socket conectado: qrGuQhqGkgtNCBaZAAAD","service":"render-app-backend","timestamp":"2026-04-02 08:47:50"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 15.20h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 08:48:11"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 08:48:11"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 08:48:11"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 08:48:11"}
+{"level":"info","message":"Socket conectado: E1TetBnUa_MG1uaSAAAB","service":"render-app-backend","timestamp":"2026-04-02 08:48:12"}
+{"level":"info","message":"Socket conectado: Tk9ev6qmoQIeCSKvAAAD","service":"render-app-backend","timestamp":"2026-04-02 08:48:13"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 15.16h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 08:50:08"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 08:50:08"}
+{"level":"info","message":"Socket conectado: QOjaCfyzsUBO2K8HAAAB","service":"render-app-backend","timestamp":"2026-04-02 08:50:09"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 08:50:10"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 08:50:10"}
+{"level":"info","message":"Socket conectado: 3j6ZYWYP63Le2oa-AAAD","service":"render-app-backend","timestamp":"2026-04-02 08:50:11"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 15.10h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 08:54:06"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 08:54:06"}
+{"level":"info","message":"Socket conectado: Vvk18dYkWxHYSrPoAAAB","service":"render-app-backend","timestamp":"2026-04-02 08:54:07"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 08:54:07"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 08:54:07"}
+{"level":"info","message":"Socket conectado: kPr6Oikba37NFjpvAAAD","service":"render-app-backend","timestamp":"2026-04-02 08:54:09"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 15.00h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 08:59:54"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 08:59:54"}
+{"level":"info","message":"Socket conectado: g_MYeyvePuyYi_SZAAAB","service":"render-app-backend","timestamp":"2026-04-02 08:59:55"}
+{"level":"info","message":"Socket conectado: VPm9NMT0ciNZnl3GAAAD","service":"render-app-backend","timestamp":"2026-04-02 08:59:56"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 08:59:56"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 08:59:56"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 15.00h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 09:00:05"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 09:00:05"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 09:00:05"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 09:00:05"}
+{"level":"info","message":"Socket conectado: 1iu7vUn94v212HiaAAAC","service":"render-app-backend","timestamp":"2026-04-02 09:00:06"}
+{"level":"info","message":"Socket conectado: 4FxXLjlJq4aAmxjXAAAD","service":"render-app-backend","timestamp":"2026-04-02 09:00:06"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 14.98h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 09:01:22"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 09:01:22"}
+{"level":"info","message":"Socket conectado: 1WR6IjKK6MifYfdJAAAB","service":"render-app-backend","timestamp":"2026-04-02 09:01:23"}
+{"level":"info","message":"Socket conectado: tUcx-f6d07-21nt_AAAD","service":"render-app-backend","timestamp":"2026-04-02 09:01:24"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 09:01:25"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 09:01:25"}
+{"level":"info","message":"Socket desconectado: tUcx-f6d07-21nt_AAAD","service":"render-app-backend","timestamp":"2026-04-02 09:01:29"}
+{"level":"info","message":"Socket desconectado: 1WR6IjKK6MifYfdJAAAB","service":"render-app-backend","timestamp":"2026-04-02 09:01:29"}
+{"level":"info","message":"Socket conectado: RleAfgjSvv5mOi7VAAAG","service":"render-app-backend","timestamp":"2026-04-02 09:01:30"}
+{"level":"info","message":"Socket conectado: 9j7KhCM1sAV2D0SqAAAH","service":"render-app-backend","timestamp":"2026-04-02 09:01:30"}
+{"level":"info","message":"Socket desconectado: RleAfgjSvv5mOi7VAAAG","service":"render-app-backend","timestamp":"2026-04-02 09:01:30"}
+{"level":"info","message":"Socket conectado: KuOmWylDAkECRRBaAAAJ","service":"render-app-backend","timestamp":"2026-04-02 09:01:30"}
+{"level":"warn","message":"Intento fallido de acceso a redes desde usuario: e.guajardo","service":"render-app-backend","timestamp":"2026-04-02 09:57:01"}
+{"level":"warn","message":"Intento fallido de acceso a redes desde usuario: e.guajardo","service":"render-app-backend","timestamp":"2026-04-02 09:57:07"}
+{"level":"info","message":"Socket desconectado: 9j7KhCM1sAV2D0SqAAAH","service":"render-app-backend","timestamp":"2026-04-02 11:54:43"}
+{"level":"info","message":"Socket desconectado: KuOmWylDAkECRRBaAAAJ","service":"render-app-backend","timestamp":"2026-04-02 11:54:43"}
+{"level":"info","message":"Socket conectado: MmWh2VdXFnI_nIDLAAAM","service":"render-app-backend","timestamp":"2026-04-02 11:54:43"}
+{"level":"info","message":"Socket conectado: RlPd_9IpbQd3eshXAAAN","service":"render-app-backend","timestamp":"2026-04-02 11:54:43"}
+{"level":"info","message":"Socket desconectado: MmWh2VdXFnI_nIDLAAAM","service":"render-app-backend","timestamp":"2026-04-02 11:54:43"}
+{"level":"info","message":"Socket conectado: Qhd3BmoFuLsw8f_yAAAP","service":"render-app-backend","timestamp":"2026-04-02 11:54:43"}
+{"level":"info","message":"Socket desconectado: RlPd_9IpbQd3eshXAAAN","service":"render-app-backend","timestamp":"2026-04-02 12:53:30"}
+{"level":"info","message":"Socket desconectado: Qhd3BmoFuLsw8f_yAAAP","service":"render-app-backend","timestamp":"2026-04-02 12:53:30"}
+{"level":"info","message":"Socket conectado: _w0ehlA_8g6p9z3aAAAS","service":"render-app-backend","timestamp":"2026-04-02 12:53:31"}
+{"level":"info","message":"Socket conectado: maJYroua9ZouO7_MAAAT","service":"render-app-backend","timestamp":"2026-04-02 12:53:31"}
+{"level":"info","message":"Socket desconectado: _w0ehlA_8g6p9z3aAAAS","service":"render-app-backend","timestamp":"2026-04-02 12:53:31"}
+{"level":"info","message":"Socket conectado: SU7lGa4U13Yj8AaMAAAV","service":"render-app-backend","timestamp":"2026-04-02 12:53:31"}
+{"level":"info","message":"Socket desconectado: maJYroua9ZouO7_MAAAT","service":"render-app-backend","timestamp":"2026-04-02 12:59:07"}
+{"level":"info","message":"Socket desconectado: SU7lGa4U13Yj8AaMAAAV","service":"render-app-backend","timestamp":"2026-04-02 12:59:07"}
+{"level":"info","message":"Socket conectado: tEin7Qp-EtbNI1lmAAAY","service":"render-app-backend","timestamp":"2026-04-02 12:59:07"}
+{"level":"info","message":"Socket conectado: wFOEj7gT8VVo46PiAAAZ","service":"render-app-backend","timestamp":"2026-04-02 12:59:07"}
+{"level":"info","message":"Socket conectado: 0iiA9Mby7wdb7lFhAAAb","service":"render-app-backend","timestamp":"2026-04-02 12:59:07"}
+{"level":"info","message":"Socket desconectado: tEin7Qp-EtbNI1lmAAAY","service":"render-app-backend","timestamp":"2026-04-02 12:59:07"}
+{"level":"info","message":"Socket desconectado: wFOEj7gT8VVo46PiAAAZ","service":"render-app-backend","timestamp":"2026-04-02 12:59:26"}
+{"level":"info","message":"Socket desconectado: 0iiA9Mby7wdb7lFhAAAb","service":"render-app-backend","timestamp":"2026-04-02 12:59:26"}
+{"level":"info","message":"Socket conectado: bv3Biqg5mDPI1AVUAAAe","service":"render-app-backend","timestamp":"2026-04-02 12:59:26"}
+{"level":"info","message":"Socket conectado: Q15wi8zGZHzWlkwNAAAf","service":"render-app-backend","timestamp":"2026-04-02 12:59:26"}
+{"level":"info","message":"Socket conectado: AsEkei2wMkf3Dt95AAAh","service":"render-app-backend","timestamp":"2026-04-02 12:59:26"}
+{"level":"info","message":"Socket desconectado: bv3Biqg5mDPI1AVUAAAe","service":"render-app-backend","timestamp":"2026-04-02 12:59:26"}
+{"level":"info","message":"Socket desconectado: Q15wi8zGZHzWlkwNAAAf","service":"render-app-backend","timestamp":"2026-04-02 12:59:58"}
+{"level":"info","message":"Socket desconectado: AsEkei2wMkf3Dt95AAAh","service":"render-app-backend","timestamp":"2026-04-02 12:59:58"}
+{"level":"info","message":"Socket conectado: lNpjm7dsNwXVG7LFAAAk","service":"render-app-backend","timestamp":"2026-04-02 12:59:58"}
+{"level":"info","message":"Socket conectado: cGyjIuiuWG-x_ObUAAAl","service":"render-app-backend","timestamp":"2026-04-02 12:59:58"}
+{"level":"info","message":"Socket desconectado: lNpjm7dsNwXVG7LFAAAk","service":"render-app-backend","timestamp":"2026-04-02 12:59:58"}
+{"level":"info","message":"Socket conectado: I7L_KaiI5Qd8EgzzAAAn","service":"render-app-backend","timestamp":"2026-04-02 12:59:58"}
+{"level":"info","message":"Socket desconectado: cGyjIuiuWG-x_ObUAAAl","service":"render-app-backend","timestamp":"2026-04-02 13:00:48"}
+{"level":"info","message":"Socket desconectado: I7L_KaiI5Qd8EgzzAAAn","service":"render-app-backend","timestamp":"2026-04-02 13:00:48"}
+{"level":"info","message":"Socket conectado: s70y9RX430huBXGaAAAq","service":"render-app-backend","timestamp":"2026-04-02 13:00:48"}
+{"level":"info","message":"Socket conectado: lNcYtpdGHwF_lh5YAAAr","service":"render-app-backend","timestamp":"2026-04-02 13:00:48"}
+{"level":"info","message":"Socket desconectado: s70y9RX430huBXGaAAAq","service":"render-app-backend","timestamp":"2026-04-02 13:00:48"}
+{"level":"info","message":"Socket conectado: ub4dmjm-PY02WWxjAAAt","service":"render-app-backend","timestamp":"2026-04-02 13:00:48"}
+{"level":"info","message":"Socket desconectado: lNcYtpdGHwF_lh5YAAAr","service":"render-app-backend","timestamp":"2026-04-02 13:01:30"}
+{"level":"info","message":"Socket desconectado: ub4dmjm-PY02WWxjAAAt","service":"render-app-backend","timestamp":"2026-04-02 13:01:30"}
+{"level":"info","message":"Socket conectado: OvQVeaXn88duse0uAAAw","service":"render-app-backend","timestamp":"2026-04-02 13:01:30"}
+{"level":"info","message":"Socket conectado: 2T-J3Bl8JA12T58iAAAx","service":"render-app-backend","timestamp":"2026-04-02 13:01:30"}
+{"level":"info","message":"Socket conectado: Riq54r4Z5lrZ0I98AAAz","service":"render-app-backend","timestamp":"2026-04-02 13:01:30"}
+{"level":"info","message":"Socket desconectado: OvQVeaXn88duse0uAAAw","service":"render-app-backend","timestamp":"2026-04-02 13:01:31"}
+{"level":"info","message":"Socket desconectado: Riq54r4Z5lrZ0I98AAAz","service":"render-app-backend","timestamp":"2026-04-02 13:02:56"}
+{"level":"info","message":"Socket desconectado: 2T-J3Bl8JA12T58iAAAx","service":"render-app-backend","timestamp":"2026-04-02 13:02:56"}
+{"level":"info","message":"Socket conectado: kO_FrCphglD7poE7AAA2","service":"render-app-backend","timestamp":"2026-04-02 13:02:56"}
+{"level":"info","message":"Socket conectado: IIeXNGqntPGqgzjiAAA3","service":"render-app-backend","timestamp":"2026-04-02 13:02:56"}
+{"level":"info","message":"Socket desconectado: kO_FrCphglD7poE7AAA2","service":"render-app-backend","timestamp":"2026-04-02 13:02:56"}
+{"level":"info","message":"Socket conectado: Z5I5OKXXLB1KAK9XAAA5","service":"render-app-backend","timestamp":"2026-04-02 13:02:56"}
+{"level":"info","message":"Socket desconectado: IIeXNGqntPGqgzjiAAA3","service":"render-app-backend","timestamp":"2026-04-02 13:03:22"}
+{"level":"info","message":"Socket desconectado: Z5I5OKXXLB1KAK9XAAA5","service":"render-app-backend","timestamp":"2026-04-02 13:03:22"}
+{"level":"info","message":"Socket conectado: YssML_xu-IMH54HaAAA8","service":"render-app-backend","timestamp":"2026-04-02 13:03:23"}
+{"level":"info","message":"Socket conectado: RFncrNSxnGRhw8ckAAA9","service":"render-app-backend","timestamp":"2026-04-02 13:03:23"}
+{"level":"info","message":"Socket conectado: D1uOiArQl8GL-xX_AAA_","service":"render-app-backend","timestamp":"2026-04-02 13:03:23"}
+{"level":"info","message":"Socket desconectado: YssML_xu-IMH54HaAAA8","service":"render-app-backend","timestamp":"2026-04-02 13:03:23"}
+{"level":"info","message":"Socket desconectado: RFncrNSxnGRhw8ckAAA9","service":"render-app-backend","timestamp":"2026-04-02 13:05:15"}
+{"level":"info","message":"Socket desconectado: D1uOiArQl8GL-xX_AAA_","service":"render-app-backend","timestamp":"2026-04-02 13:05:15"}
+{"level":"info","message":"Socket conectado: RLNu0hwzKprADHFlAABC","service":"render-app-backend","timestamp":"2026-04-02 13:05:15"}
+{"level":"info","message":"Socket conectado: HhPsdwpW1wy6XEQIAABD","service":"render-app-backend","timestamp":"2026-04-02 13:05:15"}
+{"level":"info","message":"Socket conectado: kOaZny2RBPEQuAE1AABF","service":"render-app-backend","timestamp":"2026-04-02 13:05:15"}
+{"level":"info","message":"Socket desconectado: RLNu0hwzKprADHFlAABC","service":"render-app-backend","timestamp":"2026-04-02 13:05:16"}
+{"level":"info","message":"Socket desconectado: HhPsdwpW1wy6XEQIAABD","service":"render-app-backend","timestamp":"2026-04-02 13:06:12"}
+{"level":"info","message":"Socket desconectado: kOaZny2RBPEQuAE1AABF","service":"render-app-backend","timestamp":"2026-04-02 13:06:12"}
+{"level":"info","message":"Socket conectado: 9vYlAwITefhFTHxrAABI","service":"render-app-backend","timestamp":"2026-04-02 13:06:12"}
+{"level":"info","message":"Socket conectado: l8fUztaBjhrmrD_eAABJ","service":"render-app-backend","timestamp":"2026-04-02 13:06:12"}
+{"level":"info","message":"Socket desconectado: 9vYlAwITefhFTHxrAABI","service":"render-app-backend","timestamp":"2026-04-02 13:06:12"}
+{"level":"info","message":"Socket conectado: chvaxjDF4v7jYohVAABL","service":"render-app-backend","timestamp":"2026-04-02 13:06:12"}
+{"level":"info","message":"Socket desconectado: l8fUztaBjhrmrD_eAABJ","service":"render-app-backend","timestamp":"2026-04-02 13:07:29"}
+{"level":"info","message":"Socket desconectado: chvaxjDF4v7jYohVAABL","service":"render-app-backend","timestamp":"2026-04-02 13:07:29"}
+{"level":"info","message":"Socket conectado: JPzUQWtK--zVgsA9AABO","service":"render-app-backend","timestamp":"2026-04-02 13:07:30"}
+{"level":"info","message":"Socket conectado: r2je5HKumHjDU4kFAABP","service":"render-app-backend","timestamp":"2026-04-02 13:07:30"}
+{"level":"info","message":"Socket desconectado: JPzUQWtK--zVgsA9AABO","service":"render-app-backend","timestamp":"2026-04-02 13:07:30"}
+{"level":"info","message":"Socket conectado: xeXXO4oYWqZn-GYYAABR","service":"render-app-backend","timestamp":"2026-04-02 13:07:30"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 10.86h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 13:08:24"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 13:08:24"}
+{"level":"info","message":"Socket conectado: UyH__JhTGavcT-B9AAAB","service":"render-app-backend","timestamp":"2026-04-02 13:08:24"}
+{"level":"info","message":"Socket conectado: sSIed6VOAScbrrmVAAAD","service":"render-app-backend","timestamp":"2026-04-02 13:08:25"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 13:08:25"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 13:08:25"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 10.85h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 13:08:54"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 13:08:54"}
+{"level":"info","message":"Socket conectado: 0Z6vZlaEGPVt519XAAAB","service":"render-app-backend","timestamp":"2026-04-02 13:08:55"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 13:08:55"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 13:08:55"}
+{"level":"info","message":"Socket conectado: XlJ4hmlZ41wAiQ1UAAAD","service":"render-app-backend","timestamp":"2026-04-02 13:08:57"}
+{"level":"info","message":"Socket desconectado: 0Z6vZlaEGPVt519XAAAB","service":"render-app-backend","timestamp":"2026-04-02 13:14:47"}
+{"level":"info","message":"Socket desconectado: XlJ4hmlZ41wAiQ1UAAAD","service":"render-app-backend","timestamp":"2026-04-02 13:14:47"}
+{"level":"info","message":"Socket conectado: DHGjueH5RhzzXx_UAAAG","service":"render-app-backend","timestamp":"2026-04-02 13:14:47"}
+{"level":"info","message":"Socket conectado: apKwfpoEv6RO4FOnAAAH","service":"render-app-backend","timestamp":"2026-04-02 13:14:47"}
+{"level":"info","message":"Socket desconectado: apKwfpoEv6RO4FOnAAAH","service":"render-app-backend","timestamp":"2026-04-02 13:14:48"}
+{"level":"info","message":"Socket conectado: vgppmUgKtc-wUXPAAAAJ","service":"render-app-backend","timestamp":"2026-04-02 13:14:48"}
+{"level":"info","message":"Socket desconectado: DHGjueH5RhzzXx_UAAAG","service":"render-app-backend","timestamp":"2026-04-02 13:15:03"}
+{"level":"info","message":"Socket desconectado: vgppmUgKtc-wUXPAAAAJ","service":"render-app-backend","timestamp":"2026-04-02 13:15:03"}
+{"level":"info","message":"Socket conectado: x-_IjtE9eJZ9_88mAAAM","service":"render-app-backend","timestamp":"2026-04-02 13:15:03"}
+{"level":"info","message":"Socket conectado: aqpIExnsyOb2LRhAAAAN","service":"render-app-backend","timestamp":"2026-04-02 13:15:03"}
+{"level":"info","message":"Socket conectado: hFTtkUUcggLXgKE7AAAP","service":"render-app-backend","timestamp":"2026-04-02 13:15:04"}
+{"level":"info","message":"Socket desconectado: x-_IjtE9eJZ9_88mAAAM","service":"render-app-backend","timestamp":"2026-04-02 13:15:04"}
+{"level":"info","message":"Socket desconectado: aqpIExnsyOb2LRhAAAAN","service":"render-app-backend","timestamp":"2026-04-02 13:20:19"}
+{"level":"info","message":"Socket desconectado: hFTtkUUcggLXgKE7AAAP","service":"render-app-backend","timestamp":"2026-04-02 13:20:19"}
+{"level":"info","message":"Socket conectado: B9fy3G8zdE7X9MSWAAAS","service":"render-app-backend","timestamp":"2026-04-02 13:20:19"}
+{"level":"info","message":"Socket conectado: pO_gzGyJ9w5MD3MBAAAT","service":"render-app-backend","timestamp":"2026-04-02 13:20:19"}
+{"level":"info","message":"Socket conectado: eQPxfQnN4hX3uIHYAAAV","service":"render-app-backend","timestamp":"2026-04-02 13:20:19"}
+{"level":"info","message":"Socket desconectado: B9fy3G8zdE7X9MSWAAAS","service":"render-app-backend","timestamp":"2026-04-02 13:20:19"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 10.60h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 13:24:06"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 13:24:06"}
+{"level":"info","message":"Socket conectado: Djkj6ax1HzKJ33cnAAAB","service":"render-app-backend","timestamp":"2026-04-02 13:24:07"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 13:24:07"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 13:24:07"}
+{"level":"info","message":"Socket conectado: O8_Y7EFYFOhukR9gAAAD","service":"render-app-backend","timestamp":"2026-04-02 13:24:08"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 10.60h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 13:24:17"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 13:24:17"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 13:24:18"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 13:24:18"}
+{"level":"info","message":"Socket conectado: vRI--HLbCu33nZLxAAAB","service":"render-app-backend","timestamp":"2026-04-02 13:24:19"}
+{"level":"info","message":"Socket conectado: UhROPtFE1-t_nbf6AAAD","service":"render-app-backend","timestamp":"2026-04-02 13:24:20"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 10.59h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 13:24:26"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 13:24:26"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 13:24:26"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 13:24:26"}
+{"level":"info","message":"Socket conectado: kKU5EdreSt9UnmyDAAAB","service":"render-app-backend","timestamp":"2026-04-02 13:24:27"}
+{"level":"info","message":"Socket conectado: 3_-hGF05Fzs4IXK6AAAD","service":"render-app-backend","timestamp":"2026-04-02 13:24:29"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 10.59h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 13:24:33"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 13:24:33"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 13:24:33"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 13:24:33"}
+{"level":"info","message":"Socket conectado: lyWCr2G3HvMigKi4AAAB","service":"render-app-backend","timestamp":"2026-04-02 13:24:34"}
+{"level":"info","message":"Socket conectado: 0a4Bc9VIW12nTAaAAAAD","service":"render-app-backend","timestamp":"2026-04-02 13:24:35"}
+{"level":"info","message":"Socket desconectado: lyWCr2G3HvMigKi4AAAB","service":"render-app-backend","timestamp":"2026-04-02 13:24:46"}
+{"level":"info","message":"Socket desconectado: 0a4Bc9VIW12nTAaAAAAD","service":"render-app-backend","timestamp":"2026-04-02 13:24:46"}
+{"level":"info","message":"Socket conectado: THpzC42qK-UC4BIDAAAG","service":"render-app-backend","timestamp":"2026-04-02 13:24:47"}
+{"level":"info","message":"Socket conectado: HxH7dzmo4j5e7gTqAAAH","service":"render-app-backend","timestamp":"2026-04-02 13:24:47"}
+{"level":"info","message":"Socket desconectado: THpzC42qK-UC4BIDAAAG","service":"render-app-backend","timestamp":"2026-04-02 13:24:47"}
+{"level":"info","message":"Socket conectado: cI5Cl9hDPkBCeCOOAAAJ","service":"render-app-backend","timestamp":"2026-04-02 13:24:47"}
+{"level":"info","message":"Socket desconectado: HxH7dzmo4j5e7gTqAAAH","service":"render-app-backend","timestamp":"2026-04-02 13:28:05"}
+{"level":"info","message":"Socket desconectado: cI5Cl9hDPkBCeCOOAAAJ","service":"render-app-backend","timestamp":"2026-04-02 13:28:05"}
+{"level":"info","message":"Socket conectado: NmZ7vJ5JYMmUPqiLAAAM","service":"render-app-backend","timestamp":"2026-04-02 13:28:05"}
+{"level":"info","message":"Socket conectado: Nkf3zMsyj58uqygNAAAN","service":"render-app-backend","timestamp":"2026-04-02 13:28:05"}
+{"level":"info","message":"Socket desconectado: NmZ7vJ5JYMmUPqiLAAAM","service":"render-app-backend","timestamp":"2026-04-02 13:28:05"}
+{"level":"info","message":"Socket conectado: j3GrHGG8qmRowEC4AAAP","service":"render-app-backend","timestamp":"2026-04-02 13:28:05"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 10.51h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 13:29:28"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 13:29:28"}
+{"level":"info","message":"Socket conectado: N2JIE9yDDKw4MS1kAAAB","service":"render-app-backend","timestamp":"2026-04-02 13:29:29"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 13:29:29"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 13:29:29"}
+{"level":"info","message":"Socket conectado: hTOlVTJoSc6LfJrKAAAD","service":"render-app-backend","timestamp":"2026-04-02 13:29:30"}
+{"level":"info","message":"Socket desconectado: N2JIE9yDDKw4MS1kAAAB","service":"render-app-backend","timestamp":"2026-04-02 13:31:14"}
+{"level":"info","message":"Socket desconectado: hTOlVTJoSc6LfJrKAAAD","service":"render-app-backend","timestamp":"2026-04-02 13:31:14"}
+{"level":"info","message":"Socket conectado: JwcngqqQTNFAwC09AAAG","service":"render-app-backend","timestamp":"2026-04-02 13:31:14"}
+{"level":"info","message":"Socket conectado: qo7MdbfWBNgyrOWkAAAH","service":"render-app-backend","timestamp":"2026-04-02 13:31:15"}
+{"level":"info","message":"Socket conectado: eRUHbo9wiNsxeKJdAAAJ","service":"render-app-backend","timestamp":"2026-04-02 13:31:15"}
+{"level":"info","message":"Socket desconectado: JwcngqqQTNFAwC09AAAG","service":"render-app-backend","timestamp":"2026-04-02 13:31:15"}
+{"level":"info","message":"Socket desconectado: qo7MdbfWBNgyrOWkAAAH","service":"render-app-backend","timestamp":"2026-04-02 13:31:38"}
+{"level":"info","message":"Socket desconectado: eRUHbo9wiNsxeKJdAAAJ","service":"render-app-backend","timestamp":"2026-04-02 13:31:38"}
+{"level":"info","message":"Socket conectado: VQ9cu8NbxX8CWVgdAAAM","service":"render-app-backend","timestamp":"2026-04-02 13:31:39"}
+{"level":"info","message":"Socket conectado: ERojwdYeTNv9Y5-zAAAN","service":"render-app-backend","timestamp":"2026-04-02 13:31:39"}
+{"level":"info","message":"Socket desconectado: VQ9cu8NbxX8CWVgdAAAM","service":"render-app-backend","timestamp":"2026-04-02 13:31:39"}
+{"level":"info","message":"Socket conectado: C8C351KeQFztsQA2AAAP","service":"render-app-backend","timestamp":"2026-04-02 13:31:39"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 10.46h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 13:32:27"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 13:32:27"}
+{"level":"info","message":"Socket conectado: PyTNqzfUUnBfKAABAAAB","service":"render-app-backend","timestamp":"2026-04-02 13:32:27"}
+{"level":"info","message":"Socket conectado: TMgpkX5yqgxBnYphAAAD","service":"render-app-backend","timestamp":"2026-04-02 13:32:28"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 13:32:28"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 13:32:28"}
+{"level":"info","message":"Socket desconectado: PyTNqzfUUnBfKAABAAAB","service":"render-app-backend","timestamp":"2026-04-02 13:33:17"}
+{"level":"info","message":"Socket desconectado: TMgpkX5yqgxBnYphAAAD","service":"render-app-backend","timestamp":"2026-04-02 13:33:17"}
+{"level":"info","message":"Socket conectado: qbkQom5U5PT-UcVEAAAG","service":"render-app-backend","timestamp":"2026-04-02 13:33:18"}
+{"level":"info","message":"Socket conectado: _BpybV2_iC8tIgl_AAAH","service":"render-app-backend","timestamp":"2026-04-02 13:33:18"}
+{"level":"info","message":"Socket conectado: qK0yMFA5JCsAMylLAAAJ","service":"render-app-backend","timestamp":"2026-04-02 13:33:18"}
+{"level":"info","message":"Socket desconectado: qbkQom5U5PT-UcVEAAAG","service":"render-app-backend","timestamp":"2026-04-02 13:33:18"}
+{"level":"info","message":"Socket desconectado: _BpybV2_iC8tIgl_AAAH","service":"render-app-backend","timestamp":"2026-04-02 13:33:34"}
+{"level":"info","message":"Socket desconectado: qK0yMFA5JCsAMylLAAAJ","service":"render-app-backend","timestamp":"2026-04-02 13:33:34"}
+{"level":"info","message":"Socket conectado: zUBYkgLzokqBfyjfAAAM","service":"render-app-backend","timestamp":"2026-04-02 13:33:34"}
+{"level":"info","message":"Socket conectado: NaOgFVorHZIMuHzVAAAN","service":"render-app-backend","timestamp":"2026-04-02 13:33:34"}
+{"level":"info","message":"Socket desconectado: zUBYkgLzokqBfyjfAAAM","service":"render-app-backend","timestamp":"2026-04-02 13:33:34"}
+{"level":"info","message":"Socket conectado: tsKNBKIedVWlmYTuAAAP","service":"render-app-backend","timestamp":"2026-04-02 13:33:34"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 10.40h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 13:35:45"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 13:35:45"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 13:35:46"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 13:35:46"}
+{"level":"info","message":"Socket conectado: 0wHteZwiv_dZ2CXYAAAC","service":"render-app-backend","timestamp":"2026-04-02 13:35:47"}
+{"level":"info","message":"Socket conectado: sNdSOOHntORP73dgAAAD","service":"render-app-backend","timestamp":"2026-04-02 13:35:47"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 10.40h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 13:35:53"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 13:35:53"}
+{"level":"info","message":"Socket conectado: H3TRpkhKUCAyBI8KAAAB","service":"render-app-backend","timestamp":"2026-04-02 13:35:54"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 13:35:54"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 13:35:54"}
+{"level":"info","message":"Socket conectado: NK8QR2nAXe5ISMSNAAAD","service":"render-app-backend","timestamp":"2026-04-02 13:35:56"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 10.40h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 13:35:59"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 13:35:59"}
+{"level":"info","message":"Socket conectado: Ywra4yMs25q-Ia2_AAAB","service":"render-app-backend","timestamp":"2026-04-02 13:36:00"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 13:36:00"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 13:36:00"}
+{"level":"info","message":"Socket conectado: ElaFDOVF1YRD675BAAAD","service":"render-app-backend","timestamp":"2026-04-02 13:36:01"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 10.34h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-02 13:39:30"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-02 13:39:30"}
+{"level":"info","message":"Socket conectado: mUbF8jTiIdw-ok4pAAAB","service":"render-app-backend","timestamp":"2026-04-02 13:39:31"}
+{"level":"info","message":"Socket conectado: z8Wj-fzoq19HKffEAAAD","service":"render-app-backend","timestamp":"2026-04-02 13:39:31"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-02 13:39:31"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-02 13:39:31"}
+{"level":"info","message":"Socket desconectado: mUbF8jTiIdw-ok4pAAAB","service":"render-app-backend","timestamp":"2026-04-02 13:43:48"}
+{"level":"info","message":"Socket desconectado: z8Wj-fzoq19HKffEAAAD","service":"render-app-backend","timestamp":"2026-04-02 13:43:48"}
+{"level":"info","message":"Socket conectado: yYDubJ_bEToJ6BIjAAAG","service":"render-app-backend","timestamp":"2026-04-02 13:43:49"}
+{"level":"info","message":"Socket conectado: hPZX1wJcMPc1RCmrAAAH","service":"render-app-backend","timestamp":"2026-04-02 13:43:49"}
+{"level":"info","message":"Socket conectado: N4K6m8QwqGdEkQtWAAAJ","service":"render-app-backend","timestamp":"2026-04-02 13:43:49"}
+{"level":"info","message":"Socket desconectado: yYDubJ_bEToJ6BIjAAAG","service":"render-app-backend","timestamp":"2026-04-02 13:43:49"}
+{"level":"info","message":"Socket desconectado: hPZX1wJcMPc1RCmrAAAH","service":"render-app-backend","timestamp":"2026-04-02 13:45:42"}
+{"level":"info","message":"Socket desconectado: N4K6m8QwqGdEkQtWAAAJ","service":"render-app-backend","timestamp":"2026-04-02 13:45:42"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 15.42h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-08 08:34:33"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-08 08:34:33"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-08 08:34:34"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-08 08:34:34"}
+{"level":"warn","message":"Login fallido (pass incorrecta): e.guajardo","service":"render-app-backend","timestamp":"2026-04-08 08:36:00"}
+{"level":"info","message":"Usuario logueado: e.guajardo","service":"render-app-backend","timestamp":"2026-04-08 08:36:06"}
+{"level":"info","message":"Socket conectado: _cB2AR2mrgTKEm8RAAAB","service":"render-app-backend","timestamp":"2026-04-08 08:36:06"}
+{"level":"info","message":"Socket conectado: d2qFxFf0WfGTBRTsAAAE","service":"render-app-backend","timestamp":"2026-04-08 08:36:07"}
+{"level":"info","message":"Socket desconectado: _cB2AR2mrgTKEm8RAAAB","service":"render-app-backend","timestamp":"2026-04-08 08:48:22"}
+{"level":"info","message":"Socket desconectado: d2qFxFf0WfGTBRTsAAAE","service":"render-app-backend","timestamp":"2026-04-08 08:48:22"}
+{"level":"info","message":"Socket conectado: qybUIrEd63vu0Q0YAAAH","service":"render-app-backend","timestamp":"2026-04-08 08:48:23"}
+{"level":"info","message":"Socket desconectado: qybUIrEd63vu0Q0YAAAH","service":"render-app-backend","timestamp":"2026-04-08 08:48:23"}
+{"level":"info","message":"Socket conectado: 46XpK2ZivvRSwL-3AAAI","service":"render-app-backend","timestamp":"2026-04-08 08:48:23"}
+{"level":"info","message":"Socket conectado: iSGkEzdFw_j7bFPcAAAK","service":"render-app-backend","timestamp":"2026-04-08 08:48:23"}
+{"level":"info","message":"Socket desconectado: iSGkEzdFw_j7bFPcAAAK","service":"render-app-backend","timestamp":"2026-04-08 10:22:32"}
+{"level":"info","message":"Socket desconectado: 46XpK2ZivvRSwL-3AAAI","service":"render-app-backend","timestamp":"2026-04-08 10:22:40"}
+{"level":"info","message":"Socket conectado: ZjfSJodFC0FyMY-dAAAN","service":"render-app-backend","timestamp":"2026-04-08 10:22:42"}
+{"level":"info","message":"Socket conectado: UyqX_s-Mz_6tLFUzAAAO","service":"render-app-backend","timestamp":"2026-04-08 10:22:42"}
+{"level":"info","message":"Socket desconectado: ZjfSJodFC0FyMY-dAAAN","service":"render-app-backend","timestamp":"2026-04-08 10:22:42"}
+{"level":"info","message":"Socket desconectado: UyqX_s-Mz_6tLFUzAAAO","service":"render-app-backend","timestamp":"2026-04-08 10:22:42"}
+{"level":"info","message":"Socket conectado: oURzN3X0IRYgbhXgAAAR","service":"render-app-backend","timestamp":"2026-04-08 10:22:43"}
+{"level":"info","message":"Socket conectado: 8wnxT_uB791f2pIMAAAS","service":"render-app-backend","timestamp":"2026-04-08 10:22:43"}
+{"level":"info","message":"Socket desconectado: oURzN3X0IRYgbhXgAAAR","service":"render-app-backend","timestamp":"2026-04-08 10:22:44"}
+{"level":"info","message":"Socket conectado: y3B5Nl_lbi2OZB7XAAAU","service":"render-app-backend","timestamp":"2026-04-08 10:22:44"}
+{"level":"info","message":"Socket desconectado: 8wnxT_uB791f2pIMAAAS","service":"render-app-backend","timestamp":"2026-04-08 10:31:16"}
+{"level":"info","message":"Socket desconectado: y3B5Nl_lbi2OZB7XAAAU","service":"render-app-backend","timestamp":"2026-04-08 10:31:16"}
+{"level":"info","message":"Socket conectado: 2rCzmXR9c7o4v9k-AAAX","service":"render-app-backend","timestamp":"2026-04-08 10:31:19"}
+{"level":"info","message":"Socket conectado: Sp9eI_EQxUN8GdAPAAAY","service":"render-app-backend","timestamp":"2026-04-08 10:31:19"}
+{"level":"info","message":"Socket conectado: jx-wa-aYOMQwkApUAAAb","service":"render-app-backend","timestamp":"2026-04-08 10:33:35"}
+{"level":"info","message":"Socket conectado: MCS0mefwIg7CphS_AAAc","service":"render-app-backend","timestamp":"2026-04-08 10:33:35"}
+{"level":"info","message":"Socket desconectado: MCS0mefwIg7CphS_AAAc","service":"render-app-backend","timestamp":"2026-04-08 10:33:35"}
+{"level":"info","message":"Socket desconectado: jx-wa-aYOMQwkApUAAAb","service":"render-app-backend","timestamp":"2026-04-08 10:33:35"}
+{"level":"info","message":"Socket desconectado: 2rCzmXR9c7o4v9k-AAAX","service":"render-app-backend","timestamp":"2026-04-08 10:33:53"}
+{"level":"info","message":"Socket desconectado: Sp9eI_EQxUN8GdAPAAAY","service":"render-app-backend","timestamp":"2026-04-08 10:33:53"}
+{"level":"info","message":"Usuario logueado: e.guajardo","service":"render-app-backend","timestamp":"2026-04-08 16:36:14"}
+{"level":"info","message":"Socket conectado: V7_iRDfkd0dTlnl5AAAe","service":"render-app-backend","timestamp":"2026-04-08 16:36:14"}
+{"level":"info","message":"Socket conectado: BiUJezLCaNUr978tAAAh","service":"render-app-backend","timestamp":"2026-04-08 16:36:14"}
+{"level":"info","message":"Socket desconectado: V7_iRDfkd0dTlnl5AAAe","service":"render-app-backend","timestamp":"2026-04-08 16:47:58"}
+{"level":"info","message":"Socket desconectado: BiUJezLCaNUr978tAAAh","service":"render-app-backend","timestamp":"2026-04-08 16:47:58"}
+{"level":"info","message":"Socket conectado: e6fEh9uvIhj3pTAbAAAk","service":"render-app-backend","timestamp":"2026-04-08 16:47:58"}
+{"level":"info","message":"Socket conectado: rFYYQKVyUwN7kz4-AAAl","service":"render-app-backend","timestamp":"2026-04-08 16:47:58"}
+{"level":"info","message":"Socket conectado: 9VJSJC4xbSmgZryZAAAn","service":"render-app-backend","timestamp":"2026-04-08 16:47:58"}
+{"level":"info","message":"Socket desconectado: e6fEh9uvIhj3pTAbAAAk","service":"render-app-backend","timestamp":"2026-04-08 16:47:58"}
+{"level":"info","message":"Socket desconectado: rFYYQKVyUwN7kz4-AAAl","service":"render-app-backend","timestamp":"2026-04-08 16:57:34"}
+{"level":"info","message":"Socket desconectado: 9VJSJC4xbSmgZryZAAAn","service":"render-app-backend","timestamp":"2026-04-08 16:57:34"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 8.77h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-15 15:13:46"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-15 15:13:46"}
+{"code":"EREFUSED","hostname":"_mongodb._tcp.cluster0.sviiw0t.mongodb.net","level":"error","message":"Error al conectar a MongoDB: querySrv EREFUSED _mongodb._tcp.cluster0.sviiw0t.mongodb.net","service":"render-app-backend","stack":"Error: querySrv EREFUSED _mongodb._tcp.cluster0.sviiw0t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:294:17)","syscall":"querySrv","timestamp":"2026-04-15 15:13:46"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 8.75h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-15 15:14:47"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-15 15:14:47"}
+{"code":"EREFUSED","hostname":"_mongodb._tcp.cluster0.sviiw0t.mongodb.net","level":"error","message":"Error al conectar a MongoDB: querySrv EREFUSED _mongodb._tcp.cluster0.sviiw0t.mongodb.net","service":"render-app-backend","stack":"Error: querySrv EREFUSED _mongodb._tcp.cluster0.sviiw0t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:294:17)","syscall":"querySrv","timestamp":"2026-04-15 15:14:47"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 8.75h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-15 15:14:52"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-15 15:14:52"}
+{"code":"EREFUSED","hostname":"_mongodb._tcp.cluster0.sviiw0t.mongodb.net","level":"error","message":"Error al conectar a MongoDB: querySrv EREFUSED _mongodb._tcp.cluster0.sviiw0t.mongodb.net","service":"render-app-backend","stack":"Error: querySrv EREFUSED _mongodb._tcp.cluster0.sviiw0t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:294:17)","syscall":"querySrv","timestamp":"2026-04-15 15:14:52"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 8.75h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-15 15:15:13"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-15 15:15:13"}
+{"code":"EREFUSED","hostname":"_mongodb._tcp.cluster0.sviiw0t.mongodb.net","level":"error","message":"Error al conectar a MongoDB: querySrv EREFUSED _mongodb._tcp.cluster0.sviiw0t.mongodb.net","service":"render-app-backend","stack":"Error: querySrv EREFUSED _mongodb._tcp.cluster0.sviiw0t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:294:17)","syscall":"querySrv","timestamp":"2026-04-15 15:15:13"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 8.74h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-15 15:15:48"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-15 15:15:48"}
+{"code":"EREFUSED","hostname":"_mongodb._tcp.cluster0.sviiw0t.mongodb.net","level":"error","message":"Error al conectar a MongoDB: querySrv EREFUSED _mongodb._tcp.cluster0.sviiw0t.mongodb.net","service":"render-app-backend","stack":"Error: querySrv EREFUSED _mongodb._tcp.cluster0.sviiw0t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:294:17)","syscall":"querySrv","timestamp":"2026-04-15 15:15:48"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 8.72h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-15 15:17:00"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-15 15:17:00"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-15 15:17:00"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-15 15:17:00"}
+{"level":"info","message":"Usuario logueado: e.guajardo","service":"render-app-backend","timestamp":"2026-04-15 15:17:29"}
+{"level":"info","message":"Socket conectado: V8W-go2gt-FkE7eMAAAB","service":"render-app-backend","timestamp":"2026-04-15 15:17:29"}
+{"level":"info","message":"Socket conectado: w1M9AzzH1ul_QlJCAAAE","service":"render-app-backend","timestamp":"2026-04-15 15:17:29"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 8.65h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-15 15:20:43"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-15 15:20:43"}
+{"code":"EREFUSED","hostname":"_mongodb._tcp.cluster0.sviiw0t.mongodb.net","level":"error","message":"Error al conectar a MongoDB: querySrv EREFUSED _mongodb._tcp.cluster0.sviiw0t.mongodb.net","service":"render-app-backend","stack":"Error: querySrv EREFUSED _mongodb._tcp.cluster0.sviiw0t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:294:17)","syscall":"querySrv","timestamp":"2026-04-15 15:20:43"}
+{"level":"info","message":"Socket conectado: aAJ0FGzSMplWIyBWAAAB","service":"render-app-backend","timestamp":"2026-04-15 15:20:44"}
+{"level":"info","message":"Socket conectado: h3nheLZv4b9N0XXoAAAD","service":"render-app-backend","timestamp":"2026-04-15 15:20:45"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 8.65h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-15 15:20:50"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-15 15:20:50"}
+{"code":"EREFUSED","hostname":"_mongodb._tcp.cluster0.sviiw0t.mongodb.net","level":"error","message":"Error al conectar a MongoDB: querySrv EREFUSED _mongodb._tcp.cluster0.sviiw0t.mongodb.net","service":"render-app-backend","stack":"Error: querySrv EREFUSED _mongodb._tcp.cluster0.sviiw0t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:294:17)","syscall":"querySrv","timestamp":"2026-04-15 15:20:50"}
+{"level":"info","message":"Socket conectado: 0E9ddF3Z4_NMcw_8AAAB","service":"render-app-backend","timestamp":"2026-04-15 15:20:50"}
+{"level":"info","message":"Socket conectado: MIje6zlu79sWv3tDAAAD","service":"render-app-backend","timestamp":"2026-04-15 15:20:52"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 8.65h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-15 15:20:57"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-15 15:20:57"}
+{"code":"EREFUSED","hostname":"_mongodb._tcp.cluster0.sviiw0t.mongodb.net","level":"error","message":"Error al conectar a MongoDB: querySrv EREFUSED _mongodb._tcp.cluster0.sviiw0t.mongodb.net","service":"render-app-backend","stack":"Error: querySrv EREFUSED _mongodb._tcp.cluster0.sviiw0t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:294:17)","syscall":"querySrv","timestamp":"2026-04-15 15:20:57"}
+{"level":"info","message":"Socket conectado: jdSDVi7bfVZjCl4sAAAB","service":"render-app-backend","timestamp":"2026-04-15 15:20:57"}
+{"level":"info","message":"Socket conectado: NmLi7OOX7_g-qq85AAAD","service":"render-app-backend","timestamp":"2026-04-15 15:20:59"}
+{"level":"info","message":"Socket desconectado: jdSDVi7bfVZjCl4sAAAB","service":"render-app-backend","timestamp":"2026-04-15 15:21:15"}
+{"level":"info","message":"Socket desconectado: NmLi7OOX7_g-qq85AAAD","service":"render-app-backend","timestamp":"2026-04-15 15:21:15"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 8.64h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-15 15:21:22"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-15 15:21:22"}
+{"code":"EREFUSED","hostname":"_mongodb._tcp.cluster0.sviiw0t.mongodb.net","level":"error","message":"Error al conectar a MongoDB: querySrv EREFUSED _mongodb._tcp.cluster0.sviiw0t.mongodb.net","service":"render-app-backend","stack":"Error: querySrv EREFUSED _mongodb._tcp.cluster0.sviiw0t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:294:17)","syscall":"querySrv","timestamp":"2026-04-15 15:21:22"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 8.64h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-15 15:21:44"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-15 15:21:44"}
+{"code":"EREFUSED","hostname":"_mongodb._tcp.cluster0.sviiw0t.mongodb.net","level":"error","message":"Error al conectar a MongoDB: querySrv EREFUSED _mongodb._tcp.cluster0.sviiw0t.mongodb.net","service":"render-app-backend","stack":"Error: querySrv EREFUSED _mongodb._tcp.cluster0.sviiw0t.mongodb.net\n    at QueryReqWrap.onresolve [as oncomplete] (node:internal/dns/promises:294:17)","syscall":"querySrv","timestamp":"2026-04-15 15:21:44"}
+{"level":"error","message":"Error crítico no capturado: Operation `users.findOne()` buffering timed out after 10000ms","service":"render-app-backend","stack":"MongooseError: Operation `users.findOne()` buffering timed out after 10000ms\n    at Timeout.<anonymous> (D:\\Elias Guajardo\\Nueva carpeta\\Programacion\\render-app\\backend\\node_modules\\mongoose\\lib\\drivers\\node-mongodb-native\\collection.js:187:23)\n    at listOnTimeout (node:internal/timers:588:17)\n    at process.processTimers (node:internal/timers:523:7)","timestamp":"2026-04-15 15:21:54"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 8.63h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-15 15:22:29"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-15 15:22:29"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-15 15:22:30"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-15 15:22:30"}
+{"level":"info","message":"Usuario logueado: e.guajardo","service":"render-app-backend","timestamp":"2026-04-15 15:22:35"}
+{"level":"info","message":"Socket conectado: pr7-NthhWWTRTfkcAAAB","service":"render-app-backend","timestamp":"2026-04-15 15:22:35"}
+{"level":"info","message":"Socket conectado: OulKgSHbgtM2dEMvAAAE","service":"render-app-backend","timestamp":"2026-04-15 15:22:35"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 8.62h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-15 15:22:47"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-15 15:22:47"}
+{"level":"info","message":"Socket conectado: GL9dtF6aHiXT48iMAAAB","service":"render-app-backend","timestamp":"2026-04-15 15:22:47"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-15 15:22:47"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-15 15:22:47"}
+{"level":"info","message":"Socket conectado: la8xDcKVPokxVTdLAAAD","service":"render-app-backend","timestamp":"2026-04-15 15:22:49"}
+{"level":"info","message":"Socket desconectado: GL9dtF6aHiXT48iMAAAB","service":"render-app-backend","timestamp":"2026-04-15 15:26:06"}
+{"level":"info","message":"Socket desconectado: la8xDcKVPokxVTdLAAAD","service":"render-app-backend","timestamp":"2026-04-15 15:26:06"}
+{"level":"info","message":"Socket conectado: s-Nrw3BF0hPgai9vAAAG","service":"render-app-backend","timestamp":"2026-04-15 15:26:07"}
+{"level":"info","message":"Socket conectado: 4lBnKqJrYPZVzXolAAAH","service":"render-app-backend","timestamp":"2026-04-15 15:26:07"}
+{"level":"info","message":"Socket conectado: j2aqynTLcSf25OYSAAAJ","service":"render-app-backend","timestamp":"2026-04-15 15:26:07"}
+{"level":"info","message":"Socket desconectado: s-Nrw3BF0hPgai9vAAAG","service":"render-app-backend","timestamp":"2026-04-15 15:26:07"}
+{"level":"info","message":"Socket desconectado: j2aqynTLcSf25OYSAAAJ","service":"render-app-backend","timestamp":"2026-04-15 15:38:27"}
+{"level":"info","message":"Socket desconectado: 4lBnKqJrYPZVzXolAAAH","service":"render-app-backend","timestamp":"2026-04-15 15:38:27"}
+{"level":"warn","message":"Login fallido (pass incorrecta): tecnico","service":"render-app-backend","timestamp":"2026-04-15 15:38:31"}
+{"level":"info","message":"Usuario logueado: tecnico","service":"render-app-backend","timestamp":"2026-04-15 15:38:37"}
+{"level":"info","message":"Socket conectado: NMYK7PjhUMBmO4RWAAAL","service":"render-app-backend","timestamp":"2026-04-15 15:38:37"}
+{"level":"info","message":"Socket conectado: KiQ0-uqfTwM7PKU9AAAO","service":"render-app-backend","timestamp":"2026-04-15 15:38:37"}
+{"level":"info","message":"Socket desconectado: KiQ0-uqfTwM7PKU9AAAO","service":"render-app-backend","timestamp":"2026-04-15 15:39:10"}
+{"level":"info","message":"Socket desconectado: NMYK7PjhUMBmO4RWAAAL","service":"render-app-backend","timestamp":"2026-04-15 15:39:10"}
+{"level":"info","message":"Usuario logueado: e.guajardo","service":"render-app-backend","timestamp":"2026-04-15 15:39:18"}
+{"level":"info","message":"Socket conectado: ZFnLZdubrWWw2luqAAAQ","service":"render-app-backend","timestamp":"2026-04-15 15:39:18"}
+{"level":"info","message":"Socket conectado: LqPd4cGRJQVKb1uXAAAT","service":"render-app-backend","timestamp":"2026-04-15 15:39:18"}
+{"level":"info","message":"Socket desconectado: ZFnLZdubrWWw2luqAAAQ","service":"render-app-backend","timestamp":"2026-04-15 15:39:54"}
+{"level":"info","message":"Socket desconectado: LqPd4cGRJQVKb1uXAAAT","service":"render-app-backend","timestamp":"2026-04-15 15:39:54"}
+{"level":"info","message":"Socket conectado: PyJTVeg5GCkfWzHRAAAW","service":"render-app-backend","timestamp":"2026-04-15 15:39:55"}
+{"level":"info","message":"Socket conectado: cezKhoxiTylzEQ0XAAAX","service":"render-app-backend","timestamp":"2026-04-15 15:39:55"}
+{"level":"info","message":"Socket desconectado: cezKhoxiTylzEQ0XAAAX","service":"render-app-backend","timestamp":"2026-04-15 15:39:55"}
+{"level":"info","message":"Socket conectado: RBGu7I51mTZGiJlbAAAZ","service":"render-app-backend","timestamp":"2026-04-15 15:39:55"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 8.31h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-15 15:41:07"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-15 15:41:07"}
+{"level":"info","message":"Socket conectado: RJknsJUnCzB6jW0hAAAC","service":"render-app-backend","timestamp":"2026-04-15 15:41:07"}
+{"level":"info","message":"Socket conectado: thuXUtlXwtdvJRshAAAD","service":"render-app-backend","timestamp":"2026-04-15 15:41:07"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-15 15:41:07"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-15 15:41:07"}
+{"level":"info","message":"Socket desconectado: RJknsJUnCzB6jW0hAAAC","service":"render-app-backend","timestamp":"2026-04-15 15:41:09"}
+{"level":"info","message":"Socket desconectado: thuXUtlXwtdvJRshAAAD","service":"render-app-backend","timestamp":"2026-04-15 15:41:09"}
+{"level":"info","message":"Socket conectado: 6eECIufNwOLqfdb0AAAG","service":"render-app-backend","timestamp":"2026-04-15 15:41:12"}
+{"level":"info","message":"Socket conectado: 0ftFUfFLOO4zqVCTAAAH","service":"render-app-backend","timestamp":"2026-04-15 15:41:12"}
+{"level":"info","message":"Socket desconectado: 6eECIufNwOLqfdb0AAAG","service":"render-app-backend","timestamp":"2026-04-15 15:41:12"}
+{"level":"info","message":"Socket conectado: w4B8GJzyhwoKyzEyAAAJ","service":"render-app-backend","timestamp":"2026-04-15 15:41:12"}
+{"level":"warn","message":"Intento fallido de acceso a redes desde usuario: e.guajardo","service":"render-app-backend","timestamp":"2026-04-15 15:41:29"}
+{"level":"info","message":"Socket desconectado: 0ftFUfFLOO4zqVCTAAAH","service":"render-app-backend","timestamp":"2026-04-15 15:42:11"}
+{"level":"info","message":"Socket desconectado: w4B8GJzyhwoKyzEyAAAJ","service":"render-app-backend","timestamp":"2026-04-15 15:42:11"}
+{"level":"info","message":"Socket conectado: HR547GjKLqUSDh8pAAAM","service":"render-app-backend","timestamp":"2026-04-15 15:42:12"}
+{"level":"info","message":"Socket conectado: QXYkkKwZ52mXXza_AAAN","service":"render-app-backend","timestamp":"2026-04-15 15:42:12"}
+{"level":"info","message":"Socket conectado: xwpIwjUTneYCfCpxAAAP","service":"render-app-backend","timestamp":"2026-04-15 15:42:12"}
+{"level":"info","message":"Socket desconectado: HR547GjKLqUSDh8pAAAM","service":"render-app-backend","timestamp":"2026-04-15 15:42:12"}
+{"level":"info","message":"Socket desconectado: QXYkkKwZ52mXXza_AAAN","service":"render-app-backend","timestamp":"2026-04-15 15:49:43"}
+{"level":"info","message":"Socket desconectado: xwpIwjUTneYCfCpxAAAP","service":"render-app-backend","timestamp":"2026-04-15 15:49:43"}
+{"level":"info","message":"Socket conectado: c5-8yxveI0EhMTOYAAAS","service":"render-app-backend","timestamp":"2026-04-15 15:49:43"}
+{"level":"info","message":"Socket conectado: tdBHusMKdMwnIYAOAAAT","service":"render-app-backend","timestamp":"2026-04-15 15:49:43"}
+{"level":"info","message":"Socket conectado: 2mhUQJfj0LdOuvrVAAAV","service":"render-app-backend","timestamp":"2026-04-15 15:49:43"}
+{"level":"info","message":"Socket desconectado: c5-8yxveI0EhMTOYAAAS","service":"render-app-backend","timestamp":"2026-04-15 15:49:43"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 8.16h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-15 15:50:11"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-15 15:50:11"}
+{"level":"info","message":"Socket conectado: CnQ1JfsbjKLaslwKAAAB","service":"render-app-backend","timestamp":"2026-04-15 15:50:11"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-15 15:50:12"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-15 15:50:12"}
+{"level":"info","message":"Socket conectado: OWT8MyWVWpf6ymkyAAAD","service":"render-app-backend","timestamp":"2026-04-15 15:50:12"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 8.16h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-15 15:50:20"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-15 15:50:20"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-15 15:50:21"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-15 15:50:21"}
+{"level":"info","message":"Socket conectado: GpAXCFHEPFfqySCvAAAC","service":"render-app-backend","timestamp":"2026-04-15 15:50:21"}
+{"level":"info","message":"Socket conectado: kf5eC5aI8nvb538ZAAAD","service":"render-app-backend","timestamp":"2026-04-15 15:50:21"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 8.16h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-15 15:50:25"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-15 15:50:25"}
+{"level":"info","message":"Socket conectado: Obk4Jx19ZGv1P__aAAAB","service":"render-app-backend","timestamp":"2026-04-15 15:50:25"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-15 15:50:26"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-15 15:50:26"}
+{"level":"info","message":"Socket conectado: qHEMO8rmx76e0wzBAAAD","service":"render-app-backend","timestamp":"2026-04-15 15:50:26"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 8.16h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-15 15:50:39"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-15 15:50:39"}
+{"level":"info","message":"Socket conectado: tjbW5KYCXhjo-vAbAAAB","service":"render-app-backend","timestamp":"2026-04-15 15:50:39"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-15 15:50:39"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 920a162d453541b69868c47b7b15a20a.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-15 15:50:39"}
+{"level":"info","message":"Socket conectado: 2MimYQP2FhdA1A2bAAAD","service":"render-app-backend","timestamp":"2026-04-15 15:50:40"}
+{"level":"info","message":"[MQTT Cleanup] Próxima limpieza en 8.15h (medianoche local).","service":"render-app-backend","timestamp":"2026-04-15 15:50:57"}
+{"level":"info","message":"Servidor corriendo en puerto 5000 [development]","service":"render-app-backend","timestamp":"2026-04-15 15:50:57"}
+{"level":"info","message":"MongoDB conectado exitosamente","service":"render-app-backend","timestamp":"2026-04-15 15:50:57"}
+{"level":"info","message":"Iniciando conexión MQTT hacia: 40eb546085b3473a9418da9b904b582e.s1.eu.hivemq.cloud","service":"render-app-backend","timestamp":"2026-04-15 15:50:57"}
+{"level":"info","message":"Socket conectado: xJwgqV_zO6oPxM0oAAAB","service":"render-app-backend","timestamp":"2026-04-15 15:50:57"}
+{"level":"info","message":"Socket conectado: PcJ8G6YssXk6m0tuAAAD","service":"render-app-backend","timestamp":"2026-04-15 15:50:59"}
+{"level":"info","message":"Socket desconectado: xJwgqV_zO6oPxM0oAAAB","service":"render-app-backend","timestamp":"2026-04-15 15:51:13"}
+{"level":"info","message":"Socket desconectado: PcJ8G6YssXk6m0tuAAAD","service":"render-app-backend","timestamp":"2026-04-15 15:51:13"}
+{"level":"info","message":"Socket conectado: V9mm9QxMl6ozB5xsAAAG","service":"render-app-backend","timestamp":"2026-04-15 15:51:17"}
+{"level":"info","message":"Socket conectado: 12V5eSZdEQV3UzQmAAAH","service":"render-app-backend","timestamp":"2026-04-15 15:51:17"}
+{"level":"info","message":"Socket conectado: 1J4Yd3AC0jDG1o8fAAAJ","service":"render-app-backend","timestamp":"2026-04-15 15:51:17"}
+{"level":"info","message":"Socket desconectado: V9mm9QxMl6ozB5xsAAAG","service":"render-app-backend","timestamp":"2026-04-15 15:51:17"}
+{"level":"info","message":"Socket desconectado: 1J4Yd3AC0jDG1o8fAAAJ","service":"render-app-backend","timestamp":"2026-04-15 15:57:17"}
+{"level":"info","message":"Socket desconectado: 12V5eSZdEQV3UzQmAAAH","service":"render-app-backend","timestamp":"2026-04-15 15:57:17"}
+{"level":"info","message":"Usuario logueado: e.guajardo","service":"render-app-backend","timestamp":"2026-04-15 15:57:25"}
+{"level":"info","message":"Socket conectado: uly6ROCYCud9JT1OAAAL","service":"render-app-backend","timestamp":"2026-04-15 15:57:25"}
+{"level":"info","message":"Socket conectado: u9cVn1xIDZK-msPMAAAO","service":"render-app-backend","timestamp":"2026-04-15 15:57:25"}
+{"level":"info","message":"Socket desconectado: uly6ROCYCud9JT1OAAAL","service":"render-app-backend","timestamp":"2026-04-15 15:57:28"}
+{"level":"info","message":"Socket desconectado: u9cVn1xIDZK-msPMAAAO","service":"render-app-backend","timestamp":"2026-04-15 15:57:28"}
+{"level":"info","message":"Socket conectado: bGDjcIkrelGJN3bDAAAR","service":"render-app-backend","timestamp":"2026-04-15 15:57:28"}
+{"level":"info","message":"Socket conectado: Wmw4_WR3fPn2gwuIAAAS","service":"render-app-backend","timestamp":"2026-04-15 15:57:28"}
+{"level":"info","message":"Socket desconectado: bGDjcIkrelGJN3bDAAAR","service":"render-app-backend","timestamp":"2026-04-15 15:57:28"}
+{"level":"info","message":"Socket conectado: KZ0FEuPBkYSwy9K_AAAU","service":"render-app-backend","timestamp":"2026-04-15 15:57:28"}
+{"level":"info","message":"Socket desconectado: KZ0FEuPBkYSwy9K_AAAU","service":"render-app-backend","timestamp":"2026-04-15 15:57:29"}
+{"level":"info","message":"Socket desconectado: Wmw4_WR3fPn2gwuIAAAS","service":"render-app-backend","timestamp":"2026-04-15 15:57:29"}
+{"level":"info","message":"Socket conectado: oRxuPm18_iJzzYz0AAAX","service":"render-app-backend","timestamp":"2026-04-15 15:57:29"}
+{"level":"info","message":"Socket conectado: ny-hwlOnEaAiHrSEAAAY","service":"render-app-backend","timestamp":"2026-04-15 15:57:29"}
+{"level":"info","message":"Socket desconectado: oRxuPm18_iJzzYz0AAAX","service":"render-app-backend","timestamp":"2026-04-15 15:57:29"}
+{"level":"info","message":"Socket conectado: oO3ZPLY60aSblW8uAAAa","service":"render-app-backend","timestamp":"2026-04-15 15:57:29"}
+{"level":"info","message":"Socket desconectado: oO3ZPLY60aSblW8uAAAa","service":"render-app-backend","timestamp":"2026-04-15 15:57:55"}
+{"level":"info","message":"Socket desconectado: ny-hwlOnEaAiHrSEAAAY","service":"render-app-backend","timestamp":"2026-04-15 15:57:55"}

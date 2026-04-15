@@ -9,6 +9,9 @@ const fileSchema = new Schema({
     size: { type: Number, required: true }
 }, { _id: true });
 
+// Definimos los únicos estados aceptables para la telemetría
+const ESTADOS_PERMITIDOS = ['Prendido', 'Apagado', 'Falla', 'Desconocido', 'Desc.'];
+
 const semaphoreSchema = new Schema({
     cruce: { type: String, required: [true, 'El nombre del cruce es obligatorio'], trim: true },
     cruceId: { type: String, required: [true, 'El ID del cruce es obligatorio'], unique: true, trim: true },
@@ -22,25 +25,62 @@ const semaphoreSchema = new Schema({
         lng: { type: Number }
     },
     
-    // --- ESTADO EN TIEMPO REAL ---
+    // --- ESTADO EN TIEMPO REAL (BLINDADO) ---
     status: {
-       controlador: { type: String, default: 'Desconocido' }, 
-       luces: { type: String, default: 'Desconocido' },
-       alimentacion: { type: String, default: 'Desconocido' },
-       ups_voltaje: { type: Number, default: 0 }, 
+       controlador: { 
+           type: String, 
+           enum: { values: ESTADOS_PERMITIDOS, message: '{VALUE} no es un estado válido' },
+           default: 'Desconocido',
+           trim: true 
+       }, 
+       luces: { 
+           type: String, 
+           enum: { values: ESTADOS_PERMITIDOS, message: '{VALUE} no es un estado válido' },
+           default: 'Desconocido',
+           trim: true 
+       },
+       alimentacion: { 
+           type: String, 
+           enum: { values: ESTADOS_PERMITIDOS, message: '{VALUE} no es un estado válido' },
+           default: 'Desconocido',
+           trim: true 
+       },
+       ups_voltaje: { 
+           type: Number, 
+           default: 0,
+           min: [0, 'El voltaje no puede ser negativo']
+       },
+       ups_estado: {
+           type: String,
+           enum: { values: ESTADOS_PERMITIDOS, message: '{VALUE} no es un estado valido' },
+           default: 'Apagado',
+           trim: true
+       },
+       ups_inicio: { type: Date, default: null }, // Momento en que empezó el respaldo UPS
        last_seen: { type: Date, default: Date.now }
     },
-    // -----------------------------
+    // ----------------------------------------
 
-    // Configuración de Red y MQTT
+    // Si el cruce está siendo monitoreado (espera mensajes MQTT) o no
+    monitoreando: { type: Boolean, default: false },
+
+    // Mantención programada — inhibe alertas mientras técnico trabaja
+    enMantencion: { type: Boolean, default: false },
+    mantencionInicio: { type: Date },
+    mantencionMotivo: { type: String, trim: true },
+
+    // Configuración de Red y MQTT por semáforo
     ip_gateway: { type: String, trim: true, default: '' },
     mqtt_topic: { type: String, trim: true, default: '' },
     mqtt_config: {
-        host: { type: String, trim: true, default: '' },
-        port: { type: Number, default: 1883 },
+        host:     { type: String, trim: true, default: '' },
+        port:     { type: Number, default: 8883 },
         username: { type: String, trim: true, default: '' },
-        password: { type: String, trim: true, default: '' }
+        password: { type: String, trim: true, default: '' },
     },
+
+    // Si el semáforo tiene UPS instalado
+    tieneUPS: { type: Boolean, default: true },
 
     documentos: {
         planos: [fileSchema],

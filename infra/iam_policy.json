@@ -1,0 +1,49 @@
+# infra/iam_policy.json
+# Política IAM para el IAM Role que adjuntas a la instancia EC2
+# Permisos: leer secretos + descargar artefactos de CodeDeploy + logs
+
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Sid": "SecretsManagerRead",
+      "Effect": "Allow",
+      "Action": [
+        "secretsmanager:GetSecretValue",
+        "secretsmanager:DescribeSecret"
+      ],
+      "Resource": "arn:aws:secretsmanager:*:*:secret:render-app/*"
+    },
+    {
+      "Sid": "S3ArtifactsBucket",
+      "Effect": "Allow",
+      "Action": [
+        "s3:GetObject",
+        "s3:ListBucket"
+      ],
+      "Resource": [
+        "arn:aws:s3:::render-app-artifacts",
+        "arn:aws:s3:::render-app-artifacts/*"
+      ]
+    },
+    {
+      "Sid": "CloudWatchLogs",
+      "Effect": "Allow",
+      "Action": [
+        "logs:CreateLogGroup",
+        "logs:CreateLogStream",
+        "logs:PutLogEvents",
+        "logs:DescribeLogStreams"
+      ],
+      "Resource": "arn:aws:logs:*:*:log-group:/render-app/*"
+    },
+    {
+      "Sid": "CodeDeployAgent",
+      "Effect": "Allow",
+      "Action": [
+        "codedeploy:*"
+      ],
+      "Resource": "*"
+    }
+  ]
+}

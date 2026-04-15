@@ -4,19 +4,23 @@ const router = express.Router();
 const multer = require('multer');
 const path = require('path');
 const fs = require('fs');
+const fsPromises = require('fs').promises; // Usamos promesas para no bloquear el servidor
 const Semaphore = require('../models/Semaphore.model');
 const { verifyToken, verifyTokenAndAdmin } = require('../authMiddleware');
 
-// --- Configuración de Multer (Almacenamiento) ---
+// --- Configuración de Multer (Almacenamiento Local Mejorado) ---
 const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
+    destination: async (req, file, cb) => {
         const uploadPath = path.join(__dirname, '../uploads/');
-        // Asegurarse que la carpeta 'uploads' exista
-        fs.mkdirSync(uploadPath, { recursive: true });
+        try {
+            // Verifica si la carpeta existe, si no, la crea de forma asíncrona
+            await fsPromises.access(uploadPath);
+        } catch (error) {
+            await fsPromises.mkdir(uploadPath, { recursive: true });
+        }
         cb(null, uploadPath);
     },
     filename: (req, file, cb) => {
-        // Crear un nombre único para evitar colisiones
         const uniqueSuffix = Date.now() + '-' + Math.round(Math.random() * 1E9);
         cb(null, uniqueSuffix + '-' + file.originalname.replace(/\s+/g, '_'));
     }
@@ -25,29 +29,20 @@ const storage = multer.diskStorage({
 const upload = multer({ storage: storage });
 
 // --- RUTA DE SUBIDA (Solo Admin) ---
-// POST /api/docs/:semaphoreId/:docType
 router.post(
     '/:semaphoreId/:docType', 
     verifyTokenAndAdmin, 
-    upload.single('file'), // 'file' debe coincidir con el nombre del FormData
+    upload.single('file'), 
     async (req, res) => {
         try {
             const { semaphoreId, docType } = req.params;
-            
-            // Validar docType
             const docTypesPermitidos = ['planos', 'catastros', 'data'];
-            if (!docTypesPermitidos.includes(docType)) {
-                return res.status(400).json({ message: "Tipo de documento no válido." });
-            }
-
-            if (!req.file) {
-                return res.status(400).json({ message: "No se subió ningún archivo." });
-            }
+            
+            if (!docTypesPermitidos.includes(docType)) return res.status(400).json({ message: "Tipo no válido." });
+            if (!req.file) return res.status(400).json({ message: "No se subió ningún archivo." });
             
             const semaphore = await Semaphore.findById(semaphoreId);
-            if (!semaphore) {
-                return res.status(404).json({ message: "Semáforo no encontrado." });
-            }
+            if (!semaphore) return res.status(404).json({ message: "Semáforo no encontrado." });
 
             const newFile = {
                 originalname: req.file.originalname,
@@ -57,13 +52,10 @@ router.post(
                 size: req.file.size
             };
 
-            // Añadir el archivo al array correspondiente
             semaphore.documentos[docType].push(newFile);
             await semaphore.save();
             
-            // Devolvemos el semáforo actualizado
             res.status(200).json(semaphore);
-
         } catch (error) {
             console.error("Error al subir archivo:", error);
             res.status(500).json({ message: "Error interno al subir archivo." });
@@ -71,14 +63,11 @@ router.post(
     }
 );
 
-
-// --- RUTA DE DESCARGA (Todos los usuarios logueados) ---
-// GET /api/docs/download/:fileId
+// --- RUTA DE DESCARGA ---
 router.get('/download/:fileId', verifyToken, async (req, res) => {
     try {
         const { fileId } = req.params;
 
-        // Buscar el semáforo que contiene este fileId
         const semaphore = await Semaphore.findOne({
             $or: [
                 { "documentos.planos._id": fileId },
@@ -87,33 +76,24 @@ router.get('/download/:fileId', verifyToken, async (req, res) => {
             ]
         });
 
-        if (!semaphore) {
-            return res.status(404).json({ message: "Archivo no encontrado (ref)." });
-        }
+        if (!semaphore) return res.status(404).json({ message: "Archivo no encontrado (ref)." });
 
-        // Encontrar el documento específico
         let fileDoc = null;
         ['planos', 'catastros', 'data'].forEach(type => {
             const found = semaphore.documentos[type].id(fileId);
             if (found) fileDoc = found;
         });
 
-        if (!fileDoc) {
-            return res.status(404).json({ message: "Archivo no encontrado (doc)." });
-        }
+        if (!fileDoc) return res.status(404).json({ message: "Archivo no encontrado (doc)." });
 
         const filePath = path.join(__dirname, '../uploads/', fileDoc.filename);
 
-        // Verificar que el archivo exista en el disco
-        if (fs.existsSync(filePath)) {
-            // Enviar el archivo para descarga forzada
-            res.download(filePath, fileDoc.originalname, (err) => {
-                if (err) {
-                    console.error("Error al descargar archivo:", err);
-                }
-            });
-        } else {
-            res.status(404).json({ message: "Archivo no encontrado en el servidor." });
+        // Verificación asíncrona
+        try {
+            await fsPromises.access(filePath);
+            res.download(filePath, fileDoc.originalname);
+        } catch (err) {
+            res.status(404).json({ message: "Archivo no encontrado físicamente en el servidor." });
         }
 
     } catch (error) {
@@ -122,9 +102,7 @@ router.get('/download/:fileId', verifyToken, async (req, res) => {
     }
 });
 
-
-// --- RUTA DE BORRADO (CORREGIDA) ---
-// DELETE /api/docs/:semaphoreId/:docType/:fileId
+// --- RUTA DE BORRADO ---
 router.delete(
     '/:semaphoreId/:docType/:fileId', 
     verifyTokenAndAdmin, 
@@ -133,38 +111,27 @@ router.delete(
             const { semaphoreId, docType, fileId } = req.params;
 
             const docTypesPermitidos = ['planos', 'catastros', 'data'];
-            if (!docTypesPermitidos.includes(docType)) {
-                return res.status(400).json({ message: "Tipo de documento no válido." });
-            }
+            if (!docTypesPermitidos.includes(docType)) return res.status(400).json({ message: "Tipo no válido." });
 
             const semaphore = await Semaphore.findById(semaphoreId);
-            if (!semaphore) {
-                return res.status(404).json({ message: "Semáforo no encontrado." });
-            }
+            if (!semaphore) return res.status(404).json({ message: "Semáforo no encontrado." });
 
-            // Encontrar el archivo (necesitamos su nombre para borrarlo del disco)
             const fileDoc = semaphore.documentos[docType].id(fileId);
-            if (!fileDoc) {
-                return res.status(404).json({ message: "Referencia de archivo no encontrada." });
-            }
+            if (!fileDoc) return res.status(404).json({ message: "Referencia no encontrada." });
             
-            // 1. Borrar el archivo del disco
+            // 1. Borrado físico asíncrono (no bloquea el servidor)
             const filePath = path.join(__dirname, '../uploads/', fileDoc.filename);
-            if (fs.existsSync(filePath)) {
-                fs.unlinkSync(filePath);
-            } else {
-                console.warn(`Archivo físico no encontrado: ${filePath}`);
+            try {
+                await fsPromises.unlink(filePath);
+            } catch (err) {
+                console.warn(`Archivo físico no encontrado para borrar: ${filePath}`);
             }
 
-            // --- ¡AQUÍ ESTÁ EL ARREGLO! ---
-            // 2. Quitar la referencia de la DB usando .pull()
-            // ANTES: fileDoc.remove(); 
+            // 2. Quitar la referencia de MongoDB
             semaphore.documentos[docType].pull(fileId);
-            // -----------------------------
+            await semaphore.save();
             
-            await semaphore.save(); // Guardar el documento padre
-            
-            res.status(200).json(semaphore); // Devolver el semáforo actualizado
+            res.status(200).json(semaphore);
 
         } catch (error) {
             console.error("Error al eliminar:", error);
@@ -172,6 +139,5 @@ router.delete(
         }
     }
 );
-
 
 module.exports = router;

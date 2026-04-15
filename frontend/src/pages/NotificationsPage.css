@@ -43,6 +43,38 @@
 
 .actions-group { display: flex; gap: 10px; }
 
+.notifications-filters {
+    display: flex;
+    gap: 8px;
+    padding: 0.9rem 1.25rem;
+    border-bottom: 1px solid #f1f5f9;
+    background: #fff;
+}
+
+.filter-tab {
+    border: 1px solid #e2e8f0;
+    border-radius: 999px;
+    padding: 6px 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: #475569;
+    background: #f8fafc;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.filter-tab:hover {
+    border-color: #cbd5e1;
+    background: #f1f5f9;
+}
+
+.filter-tab.active {
+    color: #fff;
+    border-color: #ff9900;
+    background: #ff9900;
+    box-shadow: 0 6px 12px -8px rgba(255, 153, 0, 0.65);
+}
+
 /* Botones Modernos */
 .btn-action {
     border: none; border-radius: 8px; padding: 8px 14px; font-size: 0.8rem; font-weight: 600;
@@ -138,4 +170,5 @@
     .notifications-actions-bar { flex-direction: column; align-items: stretch; gap: 10px; }
     .actions-group { justify-content: space-between; }
     .stats-text { text-align: center; }
+    .notifications-filters { flex-wrap: wrap; }
 }
