@@ -3,8 +3,7 @@ const express = require('express');
 const router = express.Router();
 const Semaphore = require('../models/Semaphore.model');
 const { verifyToken, verifyTokenAndAdmin } = require('../authMiddleware'); 
-const mqttService = require('../services/mqttService');
-const { updateDeviceCache } = mqttService;
+const { updateDeviceCache } = require('../services/mqttService');
 const audit = require('../middlewares/audit');
 
 // GET /api/semaphores - Obtener TODOS
@@ -129,7 +128,7 @@ router.get('/:id', verifyToken, async (req, res) => {
 router.post('/', verifyTokenAndAdmin, async (req, res) => {
     const { 
         cruce, cruceId, comuna, red, controlador, UOCT, coordenadas,
-        ip_gateway, mqtt_topic, mqtt_config, tieneUPS
+        ip_gateway, mqtt_topic, tieneUPS
     } = req.body; 
     
     try {
@@ -149,7 +148,7 @@ router.post('/', verifyTokenAndAdmin, async (req, res) => {
 
         const newSemaphore = new Semaphore({
             cruce, cruceId, comuna, red, controlador, UOCT,
-            ip_gateway, mqtt_topic, mqtt_config,
+            ip_gateway, mqtt_topic,
             tieneUPS: tieneUPS !== undefined ? tieneUPS : true,
             coordenadas: (coords.lat !== undefined) ? coords : undefined,
             status: { controlador: 'Desconocido', alimentacion: 'Desconocido', luces: 'Desconocido', ups_estado: 'Apagado' }
@@ -169,13 +168,13 @@ router.put('/:id', verifyTokenAndAdmin, async (req, res) => {
     const { id } = req.params;
     const { 
         cruce, cruceId, comuna, red, controlador, UOCT, coordenadas,
-        ip_gateway, mqtt_topic, mqtt_config, tieneUPS
+        ip_gateway, mqtt_topic, tieneUPS
     } = req.body; 
     
     try {
         let updateData = { 
             cruce, cruceId, comuna, red, controlador, UOCT,
-            ip_gateway, mqtt_topic, mqtt_config
+            ip_gateway, mqtt_topic
         };
 
         if (tieneUPS !== undefined) updateData.tieneUPS = tieneUPS; 
@@ -196,15 +195,6 @@ router.put('/:id', verifyTokenAndAdmin, async (req, res) => {
         const updatedSemaphore = await Semaphore.findByIdAndUpdate(id, updateData, { new: true, runValidators: true }); 
         
         if (!updatedSemaphore) return res.status(404).json({ message: "Semáforo no encontrado." });
-
-        // --- LÓGICA DE RECONEXIÓN MQTT ---
-        // Si se recibió configuración MQTT nueva, intentamos reconectar el servicio global
-        if (mqtt_config && mqtt_config.host && mqtt_config.username) {
-            console.log(`🔄 Actualización de credenciales MQTT detectada en: ${updatedSemaphore.cruceId}`);
-            // Llamamos al servicio para que reinicie la conexión con los nuevos datos
-            mqttService.connectToBroker(mqtt_config);
-        }
-        // --------------------------------
 
         res.status(200).json(updatedSemaphore);
 

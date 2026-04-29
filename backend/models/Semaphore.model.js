@@ -69,15 +69,12 @@ const semaphoreSchema = new Schema({
     mantencionInicio: { type: Date },
     mantencionMotivo: { type: String, trim: true },
 
-    // Configuración de Red y MQTT por semáforo
+    // Configuración de Red y MQTT por semáforo.
+    // Las credenciales del broker (host, port, usuario, password) van en variables
+    // de entorno del servidor (.env), no en la base de datos.
+    // Cada semáforo solo necesita su topic único.
     ip_gateway: { type: String, trim: true, default: '' },
     mqtt_topic: { type: String, trim: true, default: '' },
-    mqtt_config: {
-        host:     { type: String, trim: true, default: '' },
-        port:     { type: Number, default: 8883 },
-        username: { type: String, trim: true, default: '' },
-        password: { type: String, trim: true, default: '' },
-    },
 
     // Si el semáforo tiene UPS instalado
     tieneUPS: { type: Boolean, default: true },
