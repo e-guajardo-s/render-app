@@ -3,6 +3,7 @@ import React, { useState, useMemo, useEffect } from 'react';
 import { useOutletContext } from 'react-router-dom';
 import { useQuery, useQueryClient } from '@tanstack/react-query';
 import { useSocket } from '../context/SocketContext';
+import { useAuth } from '../context/AuthContext';
 import api from '../api'; 
 import SantiagoMap from '../components/SantiagoMap';
 import MapFilterPanel from '../components/MapFilterPanel';
@@ -98,6 +99,7 @@ const initialFilterState = STATUS_LEGEND.reduce((acc, status) => { acc[status.ke
 function DashboardPage() {
     const { onMapReady } = useOutletContext();
     const queryClient = useQueryClient();
+    const { user } = useAuth();
 
     // --- ESTADO UI ---
     const [isPanelOpen, setIsPanelOpen] = useState(false);
@@ -111,17 +113,17 @@ function DashboardPage() {
     
     // 1. Obtener Avisos Activos del Sistema
     const { data: noticesData = [] } = useQuery({
-        queryKey: ['activeNotices'],
+        queryKey: ['activeNotices', user?.id],
         queryFn: async () => {
             const res = await api.get('/api/notices/active');
             return res.data;
         },
-        staleTime: 1000 * 60 * 5, // 5 min
+        staleTime: 1000 * 60 * 5,
     });
 
     // 2. Obtener Semáforos
     const { data: semaphoresData = [], isLoading: loadingSem, isError: errorSem } = useQuery({
-        queryKey: ['semaphores'],
+        queryKey: ['semaphores', user?.id],
         queryFn: async () => {
             const res = await api.get('/api/semaphores');
             return res.data;
@@ -131,7 +133,7 @@ function DashboardPage() {
 
     // 3. Obtener Tickets Activos
     const { data: ticketsData = [] } = useQuery({
-        queryKey: ['tickets'],
+        queryKey: ['tickets', user?.id],
         queryFn: async () => {
             const res = await api.get('/api/tickets');
             return res.data;
