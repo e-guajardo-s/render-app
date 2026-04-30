@@ -8,7 +8,7 @@ echo "=== [CodeDeploy] Validando servicio ==="
 MAX_RETRIES=5
 COUNT=0
 
-until curl -sf http://localhost:5000/api > /dev/null; do
+until curl -sf http://localhost:3000/api > /dev/null; do
   COUNT=$((COUNT + 1))
   if [ $COUNT -ge $MAX_RETRIES ]; then
     echo "ERROR: La app no respondió después de $MAX_RETRIES intentos."

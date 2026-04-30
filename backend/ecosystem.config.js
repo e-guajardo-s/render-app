@@ -37,11 +37,11 @@ module.exports = {
       // Las secretas (JWT_SECRET, MONGO_URI, etc.) las inyecta start_app.sh
       env_production: {
         NODE_ENV: 'production',
-        PORT: 5000,
+        PORT: 3000,
       },
       env_development: {
         NODE_ENV: 'development',
-        PORT: 5000,
+        PORT: 3000,
       },
     },
   ],

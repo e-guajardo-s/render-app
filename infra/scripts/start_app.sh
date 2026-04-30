@@ -28,7 +28,7 @@ export MQTT_PASSWORD=$(echo "$SECRET_JSON" | python3 -c "import sys,json; print(
 
 # ── 2. Variables no secretas ─────────────────────────────────────
 export NODE_ENV="production"
-export PORT="5000"
+export PORT="3000"
 # Cambia esto por tu dominio real de CloudFront o dominio propio:
 export FRONTEND_URL="https://d2o5jbwvatrobt.cloudfront.net/"
 
