@@ -30,7 +30,7 @@ export MQTT_PASSWORD=$(echo "$SECRET_JSON" | python3 -c "import sys,json; print(
 export NODE_ENV="production"
 export PORT="5000"
 # Cambia esto por tu dominio real de CloudFront o dominio propio:
-export FRONTEND_URL="${FRONTEND_URL:-https://d2o5jbwvatrobt.cloudfront.net/}"
+export FRONTEND_URL="https://d2o5jbwvatrobt.cloudfront.net/"
 
 # ── 3. Crear directorio de logs si no existe ─────────────────────
 mkdir -p /var/log/render-app
