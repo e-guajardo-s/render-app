@@ -6,16 +6,23 @@ const { verifyToken, verifyTokenAndAdmin } = require('../authMiddleware');
 const { updateDeviceCache } = require('../services/mqttService');
 const audit = require('../middlewares/audit');
 
+// Helper: verifica que un semáforo pertenece a la comuna del usuario municipal
+const checkComunaAccess = (semaphore, user) => {
+    if (!semaphore) return false;
+    if (user.role === 'municipalidad' && user.comuna) {
+        return semaphore.comuna.toLowerCase() === user.comuna.toLowerCase();
+    }
+    return true; // admin y superadmin tienen acceso total
+};
+
 // GET /api/semaphores - Obtener TODOS
 router.get('/', verifyToken, async (req, res) => {
     try {
         let query = {};
-        // Filtro para usuarios municipales
         if (req.user && req.user.role === 'municipalidad' && req.user.comuna) {
             query.comuna = { $regex: new RegExp(`^${req.user.comuna}$`, 'i') };
         }
         const semaphores = await Semaphore.find(query).sort({ cruceId: 1 });
-        // Orden numérico real en memoria (1, 2, 3... en lugar de '1','10','2')
         semaphores.sort((a, b) => {
             const nA = parseInt(a.cruceId, 10);
             const nB = parseInt(b.cruceId, 10);
@@ -64,15 +71,23 @@ router.get('/search', verifyToken, async (req, res) => {
     }
 });
 
-// GET /api/semaphores/stats/summary — debe estar ANTES de /:id para que Express no confunda 'stats' con un ObjectId
+// GET /api/semaphores/stats/summary — debe estar ANTES de /:id
 router.get('/stats/summary', verifyToken, async (req, res) => {
     try {
         const StatusLog = require('../models/StatusLog.model');
         const Ticket    = require('../models/Ticket.model');
 
+        const isMunicipalidad = req.user.role === 'municipalidad' && req.user.comuna;
+        const semaphoreQuery = isMunicipalidad
+            ? { comuna: { $regex: new RegExp(`^${req.user.comuna}$`, 'i') } }
+            : {};
+
         const [semaphores, openTickets, recentLogs] = await Promise.all([
-            Semaphore.find({}, 'monitoreando enMantencion status cruceId cruce').lean(),
-            Ticket.countDocuments({ status: { $in: ['pending', 'in_progress'] } }),
+            Semaphore.find(semaphoreQuery, 'monitoreando enMantencion status cruceId cruce').lean(),
+            // Municipalidad solo ve sus propios tickets, admin ve todos
+            isMunicipalidad
+                ? Ticket.countDocuments({ status: { $in: ['pending', 'in_progress'] }, createdBy: req.user._id })
+                : Ticket.countDocuments({ status: { $in: ['pending', 'in_progress'] } }),
             StatusLog.find({ timestamp: { $gte: new Date(Date.now() - 24*60*60*1000) } })
                 .sort({ timestamp: -1 }).limit(500).lean()
         ]);
@@ -82,10 +97,10 @@ router.get('/stats/summary', verifyToken, async (req, res) => {
             if (s.enMantencion) { mantencion++; continue; }
             if (!s.monitoreando) { sinMonitoreo++; continue; }
             const st = s.status || {};
-            const ctrl  = (st.controlador  || '').toLowerCase();
-            const alim  = (st.alimentacion || '').toLowerCase();
-            const luces = (st.luces        || '').toLowerCase();
-            const upsEst = (st.ups_estado || '').toLowerCase();
+            const ctrl   = (st.controlador  || '').toLowerCase();
+            const alim   = (st.alimentacion || '').toLowerCase();
+            const luces  = (st.luces        || '').toLowerCase();
+            const upsEst = (st.ups_estado   || '').toLowerCase();
             if (ctrl !== 'prendido' && alim !== 'prendido' && upsEst !== 'prendido') offline++;
             else if (ctrl !== 'prendido') aislado++;
             else if (alim !== 'prendido' && upsEst === 'prendido') ups++;
@@ -93,9 +108,11 @@ router.get('/stats/summary', verifyToken, async (req, res) => {
             else operativo++;
         }
 
+        // topFallas filtrado — solo semáforos visibles al usuario
+        const semCruceIds = new Set(semaphores.map(s => s.cruceId));
         const failMap = {};
         for (const l of recentLogs) {
-            if (l.type === 'error' || l.type === 'offline') {
+            if ((l.type === 'error' || l.type === 'offline') && semCruceIds.has(l.cruceId)) {
                 failMap[l.cruceId] = (failMap[l.cruceId] || 0) + 1;
             }
         }
@@ -113,11 +130,17 @@ router.get('/stats/summary', verifyToken, async (req, res) => {
     }
 });
 
-// GET /api/semaphores/:id
+// GET /api/semaphores/:id — con control de acceso por comuna
 router.get('/:id', verifyToken, async (req, res) => {
     try {
         const semaphore = await Semaphore.findById(req.params.id);
         if (!semaphore) return res.status(404).json({ message: "Semáforo no encontrado." });
+
+        // Usuario municipal solo puede ver semáforos de su comuna
+        if (!checkComunaAccess(semaphore, req.user)) {
+            return res.status(403).json({ message: "No tienes acceso a este semáforo." });
+        }
+
         res.status(200).json(semaphore);
     } catch (error) {
         res.status(500).json({ message: "Error al obtener semáforo" });
@@ -209,10 +232,8 @@ router.put('/:id/status', verifyTokenAndAdmin, async (req, res) => {
     const { id } = req.params;
     const { action } = req.body;
     let updateData;
-    // set_offline = pausar monitoreo (blanco en mapa)
     if (action === 'set_offline') {
         updateData = { $set: { monitoreando: false, status: { controlador: 'Desconocido', alimentacion: 'Desconocido', luces: 'Desconocido', ups_estado: 'Apagado' } } };
-    // set_online = activar monitoreo (esperar mensajes MQTT)
     } else if (action === 'set_online') {
         updateData = { $set: { monitoreando: true, status: { controlador: 'Desconocido', alimentacion: 'Desconocido', luces: 'Desconocido', ups_estado: 'Apagado' } } };
     } else {
@@ -222,7 +243,6 @@ router.put('/:id/status', verifyTokenAndAdmin, async (req, res) => {
     try {
         const updated = await Semaphore.findByIdAndUpdate(id, updateData, { new: true });
         if (!updated) return res.status(404).json({ message: 'No encontrado' });
-        // Sincronizar caché del mqttService
         if (updated.mqtt_topic) {
             updateDeviceCache(updated.mqtt_topic, { monitoreando: updated.monitoreando });
         }
@@ -230,7 +250,7 @@ router.put('/:id/status', verifyTokenAndAdmin, async (req, res) => {
     } catch (error) { res.status(500).json({ message: 'Error status' }); }
 });
 
-// PUT /api/semaphores/:id/maintenance — activar/desactivar mantención
+// PUT /api/semaphores/:id/maintenance
 router.put('/:id/maintenance', verifyTokenAndAdmin, async (req, res) => {
     const { action, motivo } = req.body;
     let updateData;
@@ -244,7 +264,6 @@ router.put('/:id/maintenance', verifyTokenAndAdmin, async (req, res) => {
     try {
         const updated = await Semaphore.findByIdAndUpdate(req.params.id, updateData, { new: true });
         if (!updated) return res.status(404).json({ message: 'No encontrado' });
-        // Sincronizar caché del mqttService para que las alertas se inhiban inmediatamente
         if (updated.mqtt_topic) {
             updateDeviceCache(updated.mqtt_topic, { enMantencion: updated.enMantencion });
         }
